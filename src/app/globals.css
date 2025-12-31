@@ -3,8 +3,25 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
+  /* Brand Core - NRT-LOFT */
+  --color-orbital-steel: #4A4F55;
+  --color-orbital-steel-dark: #2F343A;
+  --color-orbital-steel-light: #6B7280;
+
+  /* UI Neutral */ 
+  --color-steel-surface: #ECEFF1;
+  --color-steel-border: #D1D5DB;
+  --color-steel-muted: #9CA3AF;
+
+  /* Accent (NEBULAB) */
+  --color-cosmic-latte-soft: #EDE6D8;
+
+  /* Text */
+  --color-text-on-steel: #FFFFFF;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
 }
+
 
 html,
 body {
@@ -15,3 +32,69 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
 }
+
+/* Project-wide color mapping
+   Background        -> --color-steel-surface
+   Headings          -> --color-orbital-steel
+   Body text         -> --color-text-primary
+   Subtext           -> --color-text-secondary
+   Divider / borders -> --color-steel-border
+   Footer            -> --color-orbital-steel-dark
+   Accent (rare)     -> --color-cosmic-latte-soft
+*/
+
+/* Base page */
+body {
+  background-color: var(--color-steel-surface);
+  color: var(--color-text-primary);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-orbital-steel);
+}
+
+/* Prose / content */
+.prose {
+  color: var(--color-text-primary);
+}
+.prose a {
+  color: var(--color-orbital-steel);
+}
+
+/* Subtext */
+small,
+.subtext,
+.text-secondary,
+.muted {
+  color: var(--color-text-secondary);
+}
+
+/* Horizontal rule / separators */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-steel-border);
+  background: transparent;
+  height: 0;
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--color-orbital-steel-dark);
+  color: var(--color-text-on-steel);
+}
+footer a {
+  color: inherit;
+}
+
+/* Accent class for rare use */
+.accent-rare {
+  background-color: var(--color-cosmic-latte-soft);
+  color: var(--color-text-primary);
+}
+

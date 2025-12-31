@@ -7,7 +7,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        orbital: {
+          steel: "#4A4F55",
+          "steel-light": "#5A5F65",
+          "steel-dark": "#3A3F45",
+        },
+      },
+    },
   },
   plugins: [],
 };
