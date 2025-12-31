@@ -10,28 +10,6 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 export default function HomePage() {
   return (
     <main className="min-h-dvh bg-neutral-50 text-neutral-900">
-      <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-6">
-        <div className="leading-tight">
-          <div className="text-sm font-semibold tracking-wide">NRT-LOFT</div>
-          <div className="text-xs text-neutral-500">a small base in Narita</div>
-        </div>
-
-        <nav className="hidden items-center gap-6 text-sm text-neutral-700 md:flex">
-          <a className="hover:text-black" href="#about">
-            About
-          </a>
-          <a className="hover:text-black" href="#use">
-            Use
-          </a>
-          <a className="hover:text-black" href="#rules">
-            Policy
-          </a>
-          <a className="hover:text-black" href="#contact">
-            Contact
-          </a>
-        </nav>
-      </header>
-
       <section className="mx-auto w-full max-w-5xl px-6 pb-16 pt-6">
         <div className="flex flex-wrap gap-2">
           <Badge>紹介制</Badge>
@@ -150,10 +128,6 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-
-        <footer className="mt-14 pb-10 text-xs text-neutral-500">
-          © {new Date().getFullYear()} NRT-LOFT
-        </footer>
       </section>
     </main>
   );
