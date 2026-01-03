@@ -1,4 +1,5 @@
 // src/components/layout/Header.tsx
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -14,16 +15,16 @@ export default function Header() {
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5">
         {/* ブランド */}
         <Link href="/" className="inline-flex items-center gap-3">
-          <span
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold tracking-tight"
-            style={{
-              border: "1px solid var(--color-steel-border)",
-              backgroundColor: "var(--color-orbital-steel)",
-              color: "var(--color-text-on-steel)",
-            }}
-          >
-            N
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="NEBULAB"
+            width={160}
+            height={40}
+            priority
+            className="h-8 w-auto sm:h-9 rotate-180"
+          />
+
+
 
           <div className="flex flex-col leading-tight">
             <span
