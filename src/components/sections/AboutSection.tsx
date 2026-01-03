@@ -1,5 +1,6 @@
 // src/components/sections/AboutSection.tsx
 import Card from "@/components/ui/Card";
+import Reveal from "@/components/ui/Reveal";
 
 const aboutItems = [
   {
@@ -20,8 +21,16 @@ export default function AboutSection() {
   return (
     <section id="about" className="mx-auto w-full max-w-5xl px-6">
       <div className="grid gap-4 sm:grid-cols-3">
-        {aboutItems.map((item) => (
-          <Card key={item.title} title={item.title} description={item.desc} />
+        {aboutItems.map((item, index) => (
+          <Reveal
+            key={item.title}
+            delayMs={index * 180}      // 1枚ずつ遅延
+            durationMs={1100}         // ゆっくり
+            y={18}
+            threshold={0.2}
+          >
+            <Card title={item.title} description={item.desc} />
+          </Reveal>
         ))}
       </div>
     </section>

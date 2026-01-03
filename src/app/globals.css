@@ -8,7 +8,7 @@
   --color-orbital-steel-dark: #2F343A;
   --color-orbital-steel-light: #6B7280;
 
-  /* UI Neutral */ 
+  /* UI Neutral */
   --color-steel-surface: #ECEFF1;
   --color-steel-border: #D1D5DB;
   --color-steel-muted: #9CA3AF;
@@ -63,6 +63,7 @@ h6 {
 .prose {
   color: var(--color-text-primary);
 }
+
 .prose a {
   color: var(--color-orbital-steel);
 }
@@ -88,6 +89,7 @@ footer {
   background-color: var(--color-orbital-steel-dark);
   color: var(--color-text-on-steel);
 }
+
 footer a {
   color: inherit;
 }
@@ -98,3 +100,19 @@ footer a {
   color: var(--color-text-primary);
 }
 
+@keyframes loftGlow {
+  0% {
+    transform: translate3d(-6%, -6%, 0) scale(1);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(6%, 2%, 0) scale(1.06);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate3d(-6%, -6%, 0) scale(1);
+    opacity: 0.55;
+  }
+}

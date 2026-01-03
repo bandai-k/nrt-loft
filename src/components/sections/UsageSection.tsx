@@ -1,5 +1,6 @@
 // src/components/sections/UsageSection.tsx
 import Card from "@/components/ui/Card";
+import Reveal from "@/components/ui/Reveal";
 
 const usageItems = [
   {
@@ -15,12 +16,17 @@ const usageItems = [
 export default function UsageSection() {
   return (
     <section id="use" className="mx-auto w-full max-w-5xl px-6">
-      <h2 className="text-lg font-semibold" style={{ color: "var(--color-orbital-steel)" }}>
-        使い方
-      </h2>
+      <Reveal>
+        <h2 className="text-lg font-semibold" style={{ color: "var(--color-orbital-steel)" }}>
+          使い方
+        </h2>
+      </Reveal>
+
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {usageItems.map((item) => (
-          <Card key={item.title} title={item.title} description={item.desc} />
+        {usageItems.map((item, index) => (
+          <Reveal key={item.title} delayMs={index * 140} durationMs={900} y={14}>
+            <Card title={item.title} description={item.desc} />
+          </Reveal>
         ))}
       </div>
     </section>

@@ -9,7 +9,8 @@ export default function HomePage() {
   return (
     <main className="min-h-dvh">
       <HeroSection />
-      <div className="space-y-14 pb-16">
+
+      <div className="space-y-16 pb-20 sm:space-y-20">
         <AboutSection />
         <UsageSection />
         <PolicySection />
