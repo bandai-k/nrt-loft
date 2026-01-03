@@ -19,13 +19,35 @@ const aboutItems = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="mx-auto w-full max-w-5xl px-6">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="
+        mx-auto w-full max-w-5xl px-6
+        scroll-mt-28
+        py-14 sm:py-16
+      "
+    >
+      {/* 見出し（アンカー着地した時に“ここに来た感”が出る） */}
+      <div className="mb-6 sm:mb-8">
+        <h2
+          id="about-heading"
+          className="text-xl font-semibold tracking-wide"
+          style={{ color: "var(--color-orbital-steel)" }}
+        >
+          About
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-secondary">
+          NRT-LOFTの考え方と、空間の前提をまとめています。
+        </p>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-3">
         {aboutItems.map((item, index) => (
           <Reveal
             key={item.title}
-            delayMs={index * 180}      // 1枚ずつ遅延
-            durationMs={1100}         // ゆっくり
+            delayMs={index * 180}
+            durationMs={1100}
             y={18}
             threshold={0.2}
           >

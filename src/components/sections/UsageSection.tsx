@@ -15,14 +15,31 @@ const usageItems = [
 
 export default function UsageSection() {
   return (
-    <section id="use" className="mx-auto w-full max-w-5xl px-6">
-      <Reveal>
-        <h2 className="text-lg font-semibold" style={{ color: "var(--color-orbital-steel)" }}>
-          使い方
-        </h2>
+    <section
+      id="use"
+      aria-labelledby="use-heading"
+      className="
+        mx-auto w-full max-w-5xl px-6
+        scroll-mt-28
+        py-14 sm:py-16
+      "
+    >
+      <Reveal y={14} durationMs={900}>
+        <div className="mb-6 sm:mb-8">
+          <h2
+            id="use-heading"
+            className="text-xl font-semibold tracking-wide"
+            style={{ color: "var(--color-orbital-steel)" }}
+          >
+            使い方
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-secondary">
+            平日と週末で、想定している運用のかたちが少し異なります。
+          </p>
+        </div>
       </Reveal>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {usageItems.map((item, index) => (
           <Reveal key={item.title} delayMs={index * 140} durationMs={900} y={14}>
             <Card title={item.title} description={item.desc} />
