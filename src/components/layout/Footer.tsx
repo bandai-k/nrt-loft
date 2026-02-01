@@ -51,7 +51,6 @@ export default function Footer() {
             </div>
             <div className="text-xs" style={{ color: "var(--color-text-on-steel)" }}>
               <p>〒286-0033 千葉県成田市花崎町</p>
-              <p className="mt-1">hello@nrt-loft.jp</p>
             </div>
           </div>
 

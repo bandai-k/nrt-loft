@@ -36,20 +36,22 @@ export default function ContactSection() {
           }}
         >
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-            <a
+            <span
               className="
                 inline-flex items-center justify-center rounded-xl px-5 py-3
-                text-sm font-semibold transition-transform duration-200 ease-out
-                hover:-translate-y-[1px] active:scale-[0.98]
+                text-sm font-semibold select-none
               "
-              href="mailto:hello@nrt-loft.jp"
+              aria-disabled="true"
               style={{
-                backgroundColor: "var(--color-orbital-steel)",
-                color: "var(--color-text-on-steel)",
+                border: "1px solid var(--color-steel-border)",
+                backgroundColor: "var(--color-steel-surface)",
+                color: "var(--color-orbital-steel)",
+                opacity: 0.65,
+                cursor: "not-allowed",
               }}
             >
-              hello@nrt-loft.jp にメール
-            </a>
+              （準備中）メールでお問い合わせ
+            </span>
 
             {/* 準備中：クリック不可にする（イベントなし） */}
             <span

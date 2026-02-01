@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import UnderConstructionModal from "@/components/ui/UnderConstructionModal";
 
 export const metadata: Metadata = {
   title: "NRT LOFT",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <UnderConstructionModal />
         <Header />
         <main>{children}</main>
         <Footer />
