@@ -106,19 +106,3 @@ footer a {
   color: var(--color-text-primary);
 }
 
-@keyframes loftGlow {
-  0% {
-    transform: translate3d(-6%, -6%, 0) scale(1);
-    opacity: 0.55;
-  }
-
-  50% {
-    transform: translate3d(6%, 2%, 0) scale(1.06);
-    opacity: 0.7;
-  }
-
-  100% {
-    transform: translate3d(-6%, -6%, 0) scale(1);
-    opacity: 0.55;
-  }
-}

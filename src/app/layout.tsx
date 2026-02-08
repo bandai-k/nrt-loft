@@ -3,11 +3,26 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import UnderConstructionModal from "@/components/ui/UnderConstructionModal";
 
 export const metadata: Metadata = {
-  title: "NRT LOFT",
-  description: "成田駅前の小さな拠点。平日は作業場、土日はイベント/レンタル。",
+  title: "NRT LOFT | 成田の旧釣具屋2階をDIYリノベ中",
+  description:
+    "成田市の旧山中釣具店2階をDIYでリノベーション中。エンジニアの拠点として、地域のIT相談場所として、小さく始めます。",
+  openGraph: {
+    title: "NRT LOFT | 成田の旧釣具屋2階をDIYリノベ中",
+    description:
+      "成田市の旧山中釣具店2階をDIYでリノベーション中。エンジニアの拠点として、地域のIT相談場所として、小さく始めます。",
+    url: "https://www.nrt-loft.jp",
+    siteName: "NRT LOFT",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NRT LOFT | 成田の旧釣具屋2階をDIYリノベ中",
+    description:
+      "成田市の旧山中釣具店2階をDIYでリノベーション中。エンジニアの拠点として、地域のIT相談場所として、小さく始めます。",
+  },
 };
 
 export default function RootLayout({
@@ -18,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="ja" data-scroll-behavior="smooth">
       <body>
-        <UnderConstructionModal />
         <Header />
         <main>{children}</main>
         <Footer />
