@@ -39,7 +39,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="service" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section id="service" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
         <Reveal><SectionLabel>04 · SERVICE</SectionLabel></Reveal>
         <Reveal>
@@ -47,7 +47,7 @@ export default function ServicesSection() {
             className="mb-2"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "48px",
+              fontSize: "clamp(32px, 6vw, 48px)",
               letterSpacing: "0.08em",
               color: "#e8e2d4",
             }}
@@ -62,7 +62,7 @@ export default function ServicesSection() {
           </div>
         </Reveal>
 
-        <div className="mb-10 grid auto-rows-[1fr] gap-4 sm:grid-cols-3">
+        <div className="mb-10 grid auto-rows-[1fr] gap-4 md:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.title} delayMs={i * 100} className="flex">
               <div

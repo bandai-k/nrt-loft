@@ -37,7 +37,7 @@ const socials = [
 
 export default function SNSSection() {
   return (
-    <section id="sns" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section id="sns" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
         <Reveal><SectionLabel>03 · SNS</SectionLabel></Reveal>
         <Reveal>
@@ -45,7 +45,7 @@ export default function SNSSection() {
             className="mb-3"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "48px",
+              fontSize: "clamp(32px, 6vw, 48px)",
               letterSpacing: "0.08em",
               color: "#e8e2d4",
             }}
@@ -60,7 +60,7 @@ export default function SNSSection() {
           </p>
         </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {socials.map((s, i) => (
             <Reveal key={s.name} delayMs={i * 100}>
               <a

@@ -35,7 +35,7 @@ function Arrow({ active, isLast }: { active: boolean; isLast: boolean }) {
 
 export default function StatusSection() {
   return (
-    <section id="status" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section id="status" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
         <Reveal><SectionLabel>02 · STATUS</SectionLabel></Reveal>
         <Reveal>
@@ -43,7 +43,7 @@ export default function StatusSection() {
             className="mb-12"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "48px",
+              fontSize: "clamp(32px, 6vw, 48px)",
               letterSpacing: "0.08em",
               color: "#e8e2d4",
             }}
