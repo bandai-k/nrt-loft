@@ -1,98 +1,114 @@
 // src/components/sections/ServicesSection.tsx
 import Reveal from "@/components/ui/Reveal";
-import Link from "next/link";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 const services = [
   {
-    emoji: "\u{1F91D}",
     title: "お店のIT相談",
-    description:
-      "成田エリアの飲食店・小売店の方、気軽にお越しください",
+    desc: "成田エリアの飲食店・小売店の方、気軽にお越しください。",
+    icon: (
+      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+      </svg>
+    ),
   },
   {
-    emoji: "\u{1F4DA}",
     title: "少人数ワークショップ",
-    description:
-      "Googleマップの使い方、SNS写真の撮り方など（4〜6名）",
+    desc: "Googleマップの使い方、SNS写真の撮り方など（4〜6名）。",
+    icon: (
+      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+      </svg>
+    ),
   },
   {
-    emoji: "\u{1F4BB}",
     title: "時間貸しスペース",
-    description: "作業場として使いたい方に開放予定",
+    desc: "作業場として使いたい方に開放予定。",
+    icon: (
+      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="px-5 py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl">
+    <section id="service" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+      <div className="mx-auto max-w-[960px]">
+        <Reveal><SectionLabel>04 · SERVICE</SectionLabel></Reveal>
         <Reveal>
           <h2
-            className="mb-3 text-xl font-bold tracking-wide sm:text-2xl"
-            style={{ color: "var(--color-orbital-steel)" }}
+            className="mb-2"
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "48px",
+              letterSpacing: "0.08em",
+              color: "#e8e2d4",
+            }}
           >
             できること
           </h2>
-          <p
-            className="mb-10 text-sm sm:text-base"
-            style={{ color: "var(--color-text-secondary)" }}
+          <div
+            className="mb-12 text-[11px] tracking-[0.3em]"
+            style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
           >
-            2025年4月〜予定
-          </p>
+            2025年5月〜予定
+          </div>
         </Reveal>
 
-        <Reveal delayMs={100}>
-          <p
-            className="mb-8 text-sm sm:text-base"
-            style={{ color: "var(--color-text-primary)" }}
-          >
-            NRT LOFTでは、こんなことを予定しています。
-          </p>
-        </Reveal>
-
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="mb-10 grid auto-rows-[1fr] gap-4 sm:grid-cols-3">
           {services.map((s, i) => (
-            <Reveal key={s.title} delayMs={150 + i * 100}>
+            <Reveal key={s.title} delayMs={i * 100} className="flex">
               <div
-                className="rounded-2xl px-5 py-6"
+                className="relative flex h-full flex-col overflow-hidden rounded-sm px-6 py-7"
                 style={{
-                  backgroundColor: "var(--color-text-on-steel)",
-                  border: "1px solid var(--color-steel-border)",
+                  border: "1px solid rgba(217,119,6,0.18)",
+                  background: "rgba(255,255,255,0.01)",
                 }}
               >
-                <span className="text-2xl">{s.emoji}</span>
-                <h3
-                  className="mt-3 text-sm font-semibold sm:text-base"
-                  style={{ color: "var(--color-orbital-steel)" }}
+                {/* Corner decoration */}
+                <div
+                  className="absolute left-0 top-0 h-6 w-6 border-l border-t"
+                  style={{ borderColor: "rgba(217,119,6,0.5)" }}
+                />
+                <div className="mb-4" style={{ color: "#d97706" }}>{s.icon}</div>
+                <div
+                  className="mb-2 text-[22px] tracking-[0.1em]"
+                  style={{ fontFamily: "var(--font-heading)", color: "#e8e2d4" }}
                 >
                   {s.title}
-                </h3>
-                <p
-                  className="mt-2 text-xs leading-relaxed sm:text-sm"
-                  style={{ color: "var(--color-text-secondary)" }}
+                </div>
+                <div
+                  className="text-[14px] leading-[1.9] tracking-[0.04em]"
+                  style={{ color: "#7a6a4a" }}
                 >
-                  {s.description}
-                </p>
+                  {s.desc}
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delayMs={500}>
+        <Reveal>
           <p
-            className="mt-10 text-sm sm:text-base"
-            style={{ color: "var(--color-text-secondary)" }}
+            className="text-[14px] tracking-[0.05em]"
+            style={{ color: "#4a3a22", fontFamily: "var(--font-body)" }}
           >
-            詳しくは
-            <Link
+            詳しくは{" "}
+            <a
               href="https://www.nebulab.jp/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
-              style={{ color: "var(--color-orbital-steel)" }}
+              style={{ color: "#d97706", borderBottom: "1px solid rgba(217,119,6,0.4)" }}
             >
               NEBULABのサイト
-            </Link>
+            </a>{" "}
             をご覧ください。
           </p>
         </Reveal>

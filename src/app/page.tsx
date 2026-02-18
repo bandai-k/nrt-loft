@@ -8,13 +8,13 @@ import AccessSection from "@/components/sections/AccessSection";
 
 export default function HomePage() {
   return (
-    <main className="min-h-dvh pt-[var(--header-height)]">
+    <>
       <HeroSection />
       <AboutSection />
       <StatusSection />
       <SNSSection />
       <ServicesSection />
       <AccessSection />
-    </main>
+    </>
   );
 }

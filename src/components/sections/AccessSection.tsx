@@ -1,50 +1,95 @@
 // src/components/sections/AccessSection.tsx
 import Reveal from "@/components/ui/Reveal";
+import SectionLabel from "@/components/ui/SectionLabel";
+
+const infoItems = [
+  { label: "ADDRESS", value: "〒286-0033\n千葉県成田市花崎町" },
+  { label: "BUILDING", value: "旧山中釣具店 2階" },
+  { label: "CONTACT", value: "hello@nebulab.jp" },
+];
 
 export default function AccessSection() {
   return (
-    <section id="access" className="px-5 py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <h2
-            className="mb-10 text-xl font-bold tracking-wide sm:text-2xl"
-            style={{ color: "var(--color-orbital-steel)" }}
-          >
-            アクセス
-          </h2>
-        </Reveal>
+    <section id="access" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+      <div className="mx-auto max-w-[960px]">
+        <Reveal><SectionLabel>05 · ACCESS</SectionLabel></Reveal>
 
-        <Reveal delayMs={100}>
-          <div className="space-y-2">
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--color-text-primary)" }}
+        <div className="grid items-start gap-16 md:grid-cols-2">
+          {/* Left: Info */}
+          <Reveal>
+            <h2
+              className="mb-10"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "48px",
+                letterSpacing: "0.08em",
+                color: "#e8e2d4",
+              }}
             >
-              〒286-0033 千葉県成田市花崎町
-            </p>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--color-text-primary)" }}
-            >
-              旧山中釣具店 2階
-            </p>
-          </div>
-        </Reveal>
+              アクセス
+            </h2>
+            {infoItems.map((item) => (
+              <div
+                key={item.label}
+                className="mb-7 pb-7"
+                style={{ borderBottom: "1px solid rgba(217,119,6,0.1)" }}
+              >
+                <div
+                  className="mb-2 text-[10px] tracking-[0.35em]"
+                  style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
+                >
+                  {item.label}
+                </div>
+                <div
+                  className="whitespace-pre-line text-[15px] leading-[1.8] tracking-[0.06em]"
+                  style={{ color: "#c8bfa8" }}
+                >
+                  {item.value}
+                </div>
+              </div>
+            ))}
+          </Reveal>
 
-        <Reveal delayMs={200}>
-          <div className="mt-8 overflow-hidden rounded-2xl" style={{ border: "1px solid var(--color-steel-border)" }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.5!2d140.316!3d35.776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5oiQ55Sw5biC6Iqx5bSO55S6!5e0!3m2!1sja!2sjp!4v1700000000000"
-              width="100%"
-              height="300"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="NRT LOFT 所在地"
-            />
-          </div>
-        </Reveal>
+          {/* Right: Map placeholder */}
+          <Reveal delayMs={150}>
+            <div
+              className="relative flex h-[300px] flex-col items-center justify-center gap-3 overflow-hidden rounded-sm"
+              style={{
+                border: "1px solid rgba(217,119,6,0.2)",
+                background: "rgba(217,119,6,0.02)",
+              }}
+            >
+              {/* Grid pattern */}
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(217,119,6,0.06) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(217,119,6,0.06) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "24px 24px",
+                }}
+              />
+              {/* Location pin icon */}
+              <svg className="relative z-10 h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <div
+                className="relative z-10 text-[12px] tracking-[0.2em]"
+                style={{ fontFamily: "var(--font-mono)", color: "#d97706" }}
+              >
+                NARITA, CHIBA
+              </div>
+              <div
+                className="relative z-10 text-[10px] tracking-[0.15em]"
+                style={{ fontFamily: "var(--font-mono)", color: "#4a3a22" }}
+              >
+                35.9806° N, 140.3069° E
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
