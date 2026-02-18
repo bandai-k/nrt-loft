@@ -134,3 +134,16 @@ hr {
   border-color: rgba(217, 119, 6, 0.6);
   color: #d97706;
 }
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+}

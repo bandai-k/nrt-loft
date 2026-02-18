@@ -4,7 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="px-6 py-[100px] md:px-12" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section id="about" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
         <Reveal><SectionLabel>01 · ABOUT</SectionLabel></Reveal>
 
@@ -15,7 +15,7 @@ export default function AboutSection() {
               className="mb-8 leading-tight"
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: "clamp(32px, 5vw, 52px)",
+                fontSize: "clamp(28px, 5vw, 52px)",
                 letterSpacing: "0.08em",
                 color: "#e8e2d4",
               }}

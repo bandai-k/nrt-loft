@@ -22,12 +22,12 @@ const linkGroups = [
 export default function Footer() {
   return (
     <footer
-      className="px-6 pb-8 pt-12 md:px-12"
+      className="px-5 pb-8 pt-12 md:px-12"
       style={{ borderTop: "1px solid rgba(217,119,6,0.15)" }}
     >
       <div className="mx-auto max-w-[960px]">
         {/* Top: Logo + Links */}
-        <div className="mb-10 flex flex-wrap items-start justify-between gap-8">
+        <div className="mb-10 flex flex-col items-start gap-8 md:flex-row md:flex-wrap md:justify-between">
           <Logo scale={0.7} />
           <div className="flex gap-12">
             {linkGroups.map((group) => (

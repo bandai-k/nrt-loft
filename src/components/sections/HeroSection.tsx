@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-[120px] md:px-12"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-5 py-[80px] md:px-12 md:py-[120px]"
     >
       {/* Cross-hatch grid background — layered breathing animation */}
       <div
@@ -44,7 +44,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-[800px]">
         <Reveal>
           <div
-            className="mb-6 text-[11px] tracking-[0.5em]"
+            className="mb-4 text-[9px] tracking-[0.3em] md:mb-6 md:text-[11px] md:tracking-[0.5em]"
             style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
           >
             — NARITA, CHIBA · DIY RENOVATION PROJECT
@@ -56,7 +56,7 @@ export default function HeroSection() {
             className="mb-2 leading-none"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(56px, 10vw, 110px)",
+              fontSize: "clamp(40px, 10vw, 110px)",
               letterSpacing: "0.06em",
               color: "#e8e2d4",
             }}
@@ -70,7 +70,7 @@ export default function HeroSection() {
             className="mb-10 opacity-70"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(16px, 3vw, 28px)",
+              fontSize: "clamp(14px, 3vw, 28px)",
               letterSpacing: "0.15em",
               color: "#d97706",
             }}
@@ -81,7 +81,7 @@ export default function HeroSection() {
 
         <Reveal delayMs={200}>
           <p
-            className="mb-12 max-w-[520px] text-[17px] font-light leading-[2.1] tracking-[0.06em]"
+            className="mb-8 max-w-[520px] text-[14px] font-light leading-[2.1] tracking-[0.06em] md:mb-12 md:text-[17px]"
             style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
           >
             成田の旧釣具屋2階を<br />
