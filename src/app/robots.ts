@@ -1,14 +1,13 @@
 // src/app/robots.ts
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://nrt-loft.jp";
-
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/api/", "/admin/"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: "https://www.nrt-loft.jp/sitemap.xml",
   };
 }

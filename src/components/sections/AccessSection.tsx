@@ -12,7 +12,7 @@ export default function AccessSection() {
   return (
     <section id="access" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
-        <Reveal><SectionLabel>05 · ACCESS</SectionLabel></Reveal>
+        <Reveal><SectionLabel>07 · ACCESS</SectionLabel></Reveal>
 
         <div className="grid items-start gap-16 md:grid-cols-2">
           {/* Left: Info */}

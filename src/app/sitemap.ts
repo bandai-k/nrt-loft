@@ -1,24 +1,22 @@
 // src/app/sitemap.ts
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.nrt-loft.jp";
-
   return [
     {
-      url: baseUrl,
+      url: "https://www.nrt-loft.jp",
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 1,
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/privacy`,
+      url: "https://www.nrt-loft.jp/privacy",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/terms`,
+      url: "https://www.nrt-loft.jp/terms",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,

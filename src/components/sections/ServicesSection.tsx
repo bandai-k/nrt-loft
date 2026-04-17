@@ -41,7 +41,7 @@ export default function ServicesSection() {
   return (
     <section id="service" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
-        <Reveal><SectionLabel>04 · SERVICE</SectionLabel></Reveal>
+        <Reveal><SectionLabel>05 · SERVICE</SectionLabel></Reveal>
         <Reveal>
           <h2
             className="mb-2"
