@@ -11,6 +11,7 @@ const navLinks = [
   { href: "#status", label: "ステータス" },
   { href: "#sns", label: "SNS" },
   { href: "#service", label: "できること" },
+  { href: "#pricing", label: "料金" },
   { href: "#access", label: "アクセス" },
 ];
 
