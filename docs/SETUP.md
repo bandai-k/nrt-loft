@@ -1,5 +1,15 @@
 # SETUP
 
+## OGP画像
+
+`public/og-image.png` (1200×630) はダークグレー単色 (`#171717`) の**仮プレースホルダー**です。オープン前に Koki-san がデザインした正式版（ロゴ＋"OPEN FLOOR, OPEN MIND"＋"NARITA, CHIBA" を含む想定）に差し替えてください。ファイル名・サイズを維持すればコード側の修正は不要です。
+
+差し替え後は以下でOGP表示を検証:
+
+- Facebook: <https://developers.facebook.com/tools/debug/>
+- X (Twitter): <https://cards-dev.twitter.com/validator>
+- Google リッチリザルト: <https://search.google.com/test/rich-results>
+
 ## Resend (お問い合わせフォームのメール送信)
 
 お問い合わせフォーム (`/#contact`) は [Resend](https://resend.com/) 経由で `hello@nebulab.jp` にメール送信します。無料枠: 月3,000通 / 日100通。
