@@ -29,7 +29,7 @@ export const pricingPlans: PricingPlan[] = [
       "IT相談 初回30分無料",
     ],
     cta: "予約する",
-    ctaHref: "mailto:hello@nebulab.jp?subject=ドロップイン予約",
+    ctaHref: "/#contact",
   },
   {
     id: "regular",
@@ -47,7 +47,7 @@ export const pricingPlans: PricingPlan[] = [
       "コミュニティSlack招待",
     ],
     cta: "申し込む",
-    ctaHref: "mailto:hello@nebulab.jp?subject=月額レギュラー申込",
+    ctaHref: "/#contact",
     featured: true,
     badge: "オープン記念 37% OFF",
   },
@@ -65,6 +65,6 @@ export const pricingPlans: PricingPlan[] = [
       "ワークショップ企画相談可",
     ],
     cta: "問い合わせる",
-    ctaHref: "mailto:hello@nebulab.jp?subject=貸切・法人プラン",
+    ctaHref: "/#contact",
   },
 ];

@@ -13,6 +13,7 @@ const navLinks = [
   { href: "#service", label: "できること" },
   { href: "#pricing", label: "料金" },
   { href: "#access", label: "アクセス" },
+  { href: "#contact", label: "お問い合わせ" },
 ];
 
 export default function Header() {

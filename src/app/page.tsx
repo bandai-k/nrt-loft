@@ -6,6 +6,7 @@ import SNSSection from "@/components/sections/SNSSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import PricingSection from "@/components/PricingSection";
 import AccessSection from "@/components/sections/AccessSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ServicesSection />
       <PricingSection />
       <AccessSection />
+      <ContactSection />
     </>
   );
 }
