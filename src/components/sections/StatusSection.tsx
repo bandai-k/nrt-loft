@@ -37,7 +37,7 @@ export default function StatusSection() {
   return (
     <section id="status" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
-        <Reveal><SectionLabel>02 · STATUS</SectionLabel></Reveal>
+        <Reveal><SectionLabel>03 · STATUS</SectionLabel></Reveal>
         <Reveal>
           <h2
             className="mb-12"

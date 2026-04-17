@@ -13,7 +13,7 @@ export default function PricingSection() {
     >
       <div className="mx-auto max-w-[960px]">
         <Reveal>
-          <SectionLabel>05 · PRICING</SectionLabel>
+          <SectionLabel>06 · PRICING</SectionLabel>
         </Reveal>
         <Reveal>
           <h2

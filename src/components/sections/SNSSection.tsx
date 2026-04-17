@@ -39,7 +39,7 @@ export default function SNSSection() {
   return (
     <section id="sns" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
       <div className="mx-auto max-w-[960px]">
-        <Reveal><SectionLabel>03 · SNS</SectionLabel></Reveal>
+        <Reveal><SectionLabel>04 · SNS</SectionLabel></Reveal>
         <Reveal>
           <h2
             className="mb-3"

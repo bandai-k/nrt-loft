@@ -8,6 +8,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 const navLinks = [
   { href: "#about", label: "NRT LOFTとは" },
+  { href: "#for-who", label: "対象" },
   { href: "#status", label: "ステータス" },
   { href: "#sns", label: "SNS" },
   { href: "#service", label: "できること" },

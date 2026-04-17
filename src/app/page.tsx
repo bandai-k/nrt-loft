@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
+import PersonasSection from "@/components/PersonasSection";
 import StatusSection from "@/components/sections/StatusSection";
 import SNSSection from "@/components/sections/SNSSection";
 import ServicesSection from "@/components/sections/ServicesSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <AboutSection />
+      <PersonasSection />
       <StatusSection />
       <SNSSection />
       <ServicesSection />

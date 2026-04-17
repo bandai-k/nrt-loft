@@ -98,7 +98,7 @@ export default function ContactSection() {
     >
       <div className="mx-auto max-w-[720px]">
         <Reveal>
-          <SectionLabel>07 · CONTACT</SectionLabel>
+          <SectionLabel>08 · CONTACT</SectionLabel>
         </Reveal>
         <Reveal>
           <h2
