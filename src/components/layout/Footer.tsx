@@ -6,7 +6,7 @@ const linkGroups = [
   {
     heading: "LINKS",
     items: [
-      { label: "NEBULAB", href: "https://www.nebulab.jp/", external: true },
+      { label: "NEBULAB合同会社", href: "https://www.nebulab.jp/", external: true },
       { label: "Instagram", href: "https://www.instagram.com/nebulab_koki/", external: true },
     ],
   },
@@ -63,13 +63,13 @@ export default function Footer() {
             className="text-[8px] tracking-[0.2em]"
             style={{ fontFamily: "var(--font-mono)", color: "#2a1e0e" }}
           >
-            &copy; 2026 NEBULAB. ALL RIGHTS RESERVED.
+            &copy; 2026 Nebulab合同会社. ALL RIGHTS RESERVED.
           </span>
           <span
             className="text-[8px] tracking-[0.15em]"
             style={{ fontFamily: "var(--font-mono)", color: "#2a1e0e" }}
           >
-            運営: NEBULAB
+            運営: Nebulab合同会社
           </span>
         </div>
       </div>

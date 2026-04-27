@@ -2,7 +2,7 @@
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import PricingCard from "@/components/PricingCard";
-import { pricingPlans } from "@/data/pricing";
+import { pricingPlans, openingCampaign, pricingNotes } from "@/data/pricing";
 
 export default function PricingSection() {
   return (
@@ -31,7 +31,7 @@ export default function PricingSection() {
             className="mb-12 text-[11px] tracking-[0.3em]"
             style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
           >
-            OPENING CAMPAIGN · 2025
+            OPENING CAMPAIGN · {openingCampaign.periodLabel}
           </div>
         </Reveal>
 
@@ -46,23 +46,34 @@ export default function PricingSection() {
         </div>
 
         <Reveal>
-          <p
-            className="text-[13px] leading-[1.9] tracking-[0.05em]"
+          <div
+            className="space-y-2 text-[13px] leading-[1.9] tracking-[0.05em]"
             style={{ color: "#4a3a22", fontFamily: "var(--font-body)" }}
           >
-            表記は全て税込み。オープン記念価格は2025年末までの新規ご契約が対象です。
-            個別プランのご相談は{" "}
-            <a
-              href="mailto:hello@nebulab.jp"
-              style={{
-                color: "#d97706",
-                borderBottom: "1px solid rgba(217,119,6,0.4)",
-              }}
-            >
-              hello@nebulab.jp
-            </a>{" "}
-            まで。
-          </p>
+            <p>{openingCampaign.endNote}</p>
+            {pricingNotes.map((note, i) => {
+              const mailMatch = note.match(/(.*?)(hello@nebulab\.jp)(.*)/);
+              if (mailMatch) {
+                const [, before, mail, after] = mailMatch;
+                return (
+                  <p key={i}>
+                    {before}
+                    <a
+                      href={`mailto:${mail}`}
+                      style={{
+                        color: "#d97706",
+                        borderBottom: "1px solid rgba(217,119,6,0.4)",
+                      }}
+                    >
+                      {mail}
+                    </a>
+                    {after}
+                  </p>
+                );
+              }
+              return <p key={i}>{note}</p>;
+            })}
+          </div>
         </Reveal>
       </div>
     </section>

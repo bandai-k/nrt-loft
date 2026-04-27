@@ -3,9 +3,9 @@ import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const phases = [
-  { label: "DIYリノベ", period: "2月〜4月", active: true },
-  { label: "拠点として稼働開始", period: "4月〜", active: false },
-  { label: "ワークショップ・時間貸し", period: "5月〜", active: false },
+  { label: "DIYリノベ", period: "2026年2月〜4月", active: true },
+  { label: "拠点として稼働開始", period: "2026年4月〜", active: false },
+  { label: "ワークショップ・時間貸し", period: "2026年5月〜", active: false },
 ];
 
 function Arrow({ active, isLast }: { active: boolean; isLast: boolean }) {

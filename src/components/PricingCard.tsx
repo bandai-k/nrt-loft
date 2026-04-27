@@ -5,8 +5,11 @@ type Props = {
   plan: PricingPlan;
 };
 
+const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
+
 export default function PricingCard({ plan }: Props) {
   const featured = plan.featured ?? false;
+  const hasCampaign = typeof plan.campaignPrice === "number";
 
   const cardStyle: React.CSSProperties = featured
     ? {
@@ -21,6 +24,7 @@ export default function PricingCard({ plan }: Props) {
       };
 
   const nameColor = "#e8e2d4";
+  const nameEnColor = featured ? "#f59e0b" : "#92400e";
   const taglineColor = featured ? "#d97706" : "#7a6a4a";
   const priceColor = featured ? "#f59e0b" : "#e8e2d4";
   const unitColor = featured ? "#d97706" : "#7a6a4a";
@@ -29,6 +33,8 @@ export default function PricingCard({ plan }: Props) {
   const dividerColor = featured
     ? "rgba(217,119,6,0.25)"
     : "rgba(217,119,6,0.12)";
+
+  const displayPrice = hasCampaign ? plan.campaignPrice! : plan.price;
 
   return (
     <div
@@ -49,21 +55,6 @@ export default function PricingCard({ plan }: Props) {
         }}
       />
 
-      {/* Badge */}
-      {plan.badge && (
-        <div
-          className="absolute right-4 top-4 px-3 py-1 text-[10px] tracking-[0.25em]"
-          style={{
-            fontFamily: "var(--font-mono)",
-            color: "#0e0b06",
-            background: "#f59e0b",
-            borderRadius: "1px",
-          }}
-        >
-          {plan.badge}
-        </div>
-      )}
-
       {/* Code */}
       <div
         className="mb-3 text-[10px] tracking-[0.35em]"
@@ -72,7 +63,15 @@ export default function PricingCard({ plan }: Props) {
         {plan.code}
       </div>
 
-      {/* Name */}
+      {/* English label */}
+      <div
+        className="mb-2 text-[11px] tracking-[0.3em]"
+        style={{ fontFamily: "var(--font-mono)", color: nameEnColor }}
+      >
+        {plan.nameEn}
+      </div>
+
+      {/* Name (large heading) */}
       <div
         className="mb-1 text-[24px] tracking-[0.1em]"
         style={{ fontFamily: "var(--font-heading)", color: nameColor }}
@@ -89,29 +88,39 @@ export default function PricingCard({ plan }: Props) {
       </div>
 
       {/* Price */}
-      <div className="mb-6 flex items-baseline gap-2">
+      <div className="mb-2 flex items-baseline gap-2">
         <span
           className="text-[36px] leading-none tracking-[0.02em]"
           style={{ fontFamily: "var(--font-heading)", color: priceColor }}
         >
-          {plan.price}
+          {yen(displayPrice)}
         </span>
         <span
           className="text-[11px] tracking-[0.2em]"
           style={{ fontFamily: "var(--font-mono)", color: unitColor }}
         >
-          {plan.priceUnit}
+          / {plan.unit}
         </span>
       </div>
 
-      {plan.originalPrice && (
+      {hasCampaign && (
         <div
-          className="-mt-4 mb-6 text-[11px] tracking-[0.2em] line-through"
+          className="mb-1 text-[11px] tracking-[0.2em] line-through"
           style={{ fontFamily: "var(--font-mono)", color: originalColor }}
         >
-          通常 {plan.originalPrice}
+          通常 {yen(plan.price)} / {plan.unit}
         </div>
       )}
+
+      {plan.campaignNote && (
+        <div
+          className="mb-6 text-[11px] leading-[1.6] tracking-[0.08em]"
+          style={{ fontFamily: "var(--font-mono)", color: featured ? "#f59e0b" : "#d97706" }}
+        >
+          — {plan.campaignNote}
+        </div>
+      )}
+      {!plan.campaignNote && <div className="mb-6" />}
 
       {/* Divider */}
       <div
@@ -141,7 +150,7 @@ export default function PricingCard({ plan }: Props) {
 
       {/* CTA */}
       <a
-        href={plan.ctaHref}
+        href="#contact"
         className={featured ? "btn-primary" : "btn-ghost"}
         style={{
           textAlign: "center",
@@ -149,7 +158,7 @@ export default function PricingCard({ plan }: Props) {
           fontSize: "11px",
         }}
       >
-        {plan.cta} →
+        {plan.ctaLabel} →
       </a>
     </div>
   );

@@ -2,46 +2,41 @@
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 
-const services = [
+type Service = {
+  label: string;
+  title: string;
+  desc: string;
+};
+
+const services: Service[] = [
   {
-    title: "お店のIT相談",
-    desc: "成田エリアの飲食店・小売店の方、気軽にお越しください。",
-    icon: (
-      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
-      </svg>
-    ),
+    label: "FOCUSED WORK",
+    title: "集中作業の場として",
+    desc: "3席限定の静かな空間で、深い集中時間を確保。レギュラーメンバー・ドロップインで利用可能。",
   },
   {
-    title: "少人数ワークショップ",
-    desc: "Googleマップの使い方、SNS写真の撮り方など（4〜6名）。",
-    icon: (
-      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
-        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
-      </svg>
-    ),
+    label: "IT CONSULTATION",
+    title: "お店のIT相談・コンサル",
+    desc: "成田エリアの飲食店・小売店向けに、Googleマップ対策、SNS運用、IT化のご相談を承ります。レギュラーメンバーは回数無制限で対応。",
   },
   {
-    title: "時間貸しスペース",
-    desc: "作業場として使いたい方に開放予定。",
-    icon: (
-      <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
+    label: "TEAM USE / WORKSHOP",
+    title: "チーム利用・ワークショップ",
+    desc: "少人数のチーム作業、Googleマップやキャッシュレスの使い方ワークショップなどに、半日単位で貸切利用可能。法人登記オプションあり。",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="service" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section
+      id="service"
+      className="px-5 py-[60px] md:px-12 md:py-[100px]"
+      style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}
+    >
       <div className="mx-auto max-w-[960px]">
-        <Reveal><SectionLabel>05 · SERVICE</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel>05 · SERVICE</SectionLabel>
+        </Reveal>
         <Reveal>
           <h2
             className="mb-2"
@@ -54,17 +49,17 @@ export default function ServicesSection() {
           >
             できること
           </h2>
-          <div
-            className="mb-12 text-[11px] tracking-[0.3em]"
-            style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
+          <p
+            className="mb-12 text-[14px] leading-[1.9] tracking-[0.05em]"
+            style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
           >
-            2025年5月〜予定
-          </div>
+            NRT LOFTは、3つの利用シーンに対応します。
+          </p>
         </Reveal>
 
         <div className="mb-10 grid auto-rows-[1fr] gap-4 md:grid-cols-3">
           {services.map((s, i) => (
-            <Reveal key={s.title} delayMs={i * 100} className="flex">
+            <Reveal key={s.label} delayMs={i * 100} className="flex">
               <div
                 className="relative flex h-full flex-col overflow-hidden rounded-sm px-6 py-7"
                 style={{
@@ -77,15 +72,27 @@ export default function ServicesSection() {
                   className="absolute left-0 top-0 h-6 w-6 border-l border-t"
                   style={{ borderColor: "rgba(217,119,6,0.5)" }}
                 />
-                <div className="mb-4" style={{ color: "#d97706" }}>{s.icon}</div>
                 <div
-                  className="mb-2 text-[22px] tracking-[0.1em]"
+                  className="absolute bottom-0 right-0 h-6 w-6 border-b border-r"
+                  style={{ borderColor: "rgba(217,119,6,0.5)" }}
+                />
+
+                <div
+                  className="mb-3 text-[10px] tracking-[0.35em]"
+                  style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
+                >
+                  — {s.label}
+                </div>
+
+                <div
+                  className="mb-3 text-[20px] tracking-[0.08em]"
                   style={{ fontFamily: "var(--font-heading)", color: "#e8e2d4" }}
                 >
                   {s.title}
                 </div>
+
                 <div
-                  className="text-[14px] leading-[1.9] tracking-[0.04em]"
+                  className="text-[13px] leading-[1.95] tracking-[0.04em]"
                   style={{ color: "#7a6a4a" }}
                 >
                   {s.desc}
@@ -102,14 +109,25 @@ export default function ServicesSection() {
           >
             詳しくは{" "}
             <a
-              href="https://www.nebulab.jp/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#d97706", borderBottom: "1px solid rgba(217,119,6,0.4)" }}
+              href="#pricing"
+              style={{
+                color: "#d97706",
+                borderBottom: "1px solid rgba(217,119,6,0.4)",
+              }}
             >
-              NEBULABのサイト
+              料金
+            </a>
+            {" / "}
+            <a
+              href="#contact"
+              style={{
+                color: "#d97706",
+                borderBottom: "1px solid rgba(217,119,6,0.4)",
+              }}
+            >
+              お問い合わせ
             </a>{" "}
-            をご覧ください。
+            へ。
           </p>
         </Reveal>
       </div>
