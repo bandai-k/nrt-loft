@@ -1,18 +1,47 @@
-// src/components/PersonasSection.tsx
+// src/components/sections/ConceptSection.tsx
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollGuide from "@/components/ui/ScrollGuide";
 import { personas } from "@/data/personas";
 
-export default function PersonasSection() {
+export default function ConceptSection() {
   return (
     <section
-      id="for-who"
-      className="px-5 py-[60px] md:px-12 md:py-[100px]"
-      style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}
+      id="concept"
+      className="section-rhythm relative overflow-hidden px-5 py-[80px] md:px-12 md:py-[140px]"
     >
-      <div className="mx-auto max-w-[960px]">
+      <Image
+        src="/concept-bg.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.8) contrast(1.05) brightness(0.45)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0.78) 45%, rgba(10,7,4,0.6) 75%, rgba(10,7,4,0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.5) 0%, transparent 25%, transparent 75%, rgba(10,7,4,0.65) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-[960px]">
         <Reveal>
-          <SectionLabel>02 · FOR WHO</SectionLabel>
+          <SectionLabel>01 · CONCEPT</SectionLabel>
         </Reveal>
         <Reveal>
           <h2
@@ -24,16 +53,31 @@ export default function PersonasSection() {
               color: "#e8e2d4",
             }}
           >
-            こんな方のための場所です
+            コンセプト
           </h2>
           <div
             className="mb-12 text-[11px] tracking-[0.3em]"
             style={{ fontFamily: "var(--font-mono)", color: "#92400e" }}
           >
-            TARGET PERSONAS
+            FOR WHO
           </div>
         </Reveal>
 
+        <Reveal>
+          <h3
+            className="mb-12"
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "clamp(24px, 4vw, 36px)",
+              letterSpacing: "0.08em",
+              color: "#e8e2d4",
+            }}
+          >
+            こんな方のために
+          </h3>
+        </Reveal>
+
+        {/* Block 2: Personas */}
         <div className="grid auto-rows-[1fr] gap-4 md:grid-cols-3">
           {personas.map((p, i) => {
             const featured = p.featured ?? false;
@@ -67,7 +111,6 @@ export default function PersonasSection() {
                   className={`group relative flex h-full w-full flex-col overflow-hidden rounded-sm ${padding}`}
                   style={articleStyle}
                 >
-                  {/* Corner decoration */}
                   <div
                     className="absolute left-0 top-0 h-6 w-6 border-l border-t"
                     style={{ borderColor: cornerColor }}
@@ -91,7 +134,7 @@ export default function PersonasSection() {
                     {p.labelJa}
                   </div>
 
-                  <h3
+                  <h4
                     className="mb-3 text-[18px] leading-[1.55] tracking-[0.04em]"
                     style={{
                       fontFamily: "var(--font-body)",
@@ -100,7 +143,7 @@ export default function PersonasSection() {
                     }}
                   >
                     {p.title}
-                  </h3>
+                  </h4>
 
                   <p
                     className="mb-6 text-[13px] leading-[1.9] tracking-[0.04em]"
@@ -130,38 +173,20 @@ export default function PersonasSection() {
           })}
         </div>
 
-        {/* — ABOUT "BETWEEN TIME" 補足メッセージ */}
-        <Reveal delayMs={150}>
-          <div className="mt-16 border-t pt-10" style={{ borderColor: "rgba(217,119,6,0.15)" }}>
-            <div
-              className="mb-6 text-[11px] tracking-[0.35em]"
-              style={{ fontFamily: "var(--font-mono)", color: "#d97706" }}
-            >
-              — ABOUT &quot;BETWEEN TIME&quot;
-            </div>
-            <p
-              className="text-[15px] leading-[2.1] tracking-[0.06em] md:text-[16px]"
-              style={{
-                fontFamily: "var(--font-body)",
-                color: "#c8bfa8",
-                fontWeight: 300,
-              }}
-            >
-              到着した。でも、まだ早い。
-              <br />
-              そんな「間(あいだ)」の時間を、
-              <br />
-              ただの待ち時間ではなく、自分のための時間にする。
-            </p>
-            <p
-              className="mt-6 text-[13px] leading-[2] tracking-[0.05em]"
-              style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
-            >
-              NRT LOFTは、成田で「間」を過ごすための場所でもあります。
-            </p>
-          </div>
-        </Reveal>
       </div>
+
+      <ScrollGuide
+        direction="up"
+        targetId="top"
+        size="sm"
+        className="absolute left-1/2 top-4 z-10 -translate-x-1/2 md:top-6"
+      />
+      <ScrollGuide
+        direction="down"
+        targetId="service"
+        size="sm"
+        className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 md:bottom-6"
+      />
     </section>
   );
 }

@@ -150,7 +150,7 @@ export default function PricingCard({ plan }: Props) {
 
       {/* CTA */}
       <a
-        href="#contact"
+        href="/reservation"
         className={featured ? "btn-primary" : "btn-ghost"}
         style={{
           textAlign: "center",

@@ -1,5 +1,7 @@
 // src/components/sections/HeroSection.tsx
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
+import ScrollGuide from "@/components/ui/ScrollGuide";
 
 export default function HeroSection() {
   return (
@@ -7,6 +9,37 @@ export default function HeroSection() {
       id="top"
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-5 py-[80px] md:px-12 md:py-[120px]"
     >
+      {/* Background photo */}
+      <Image
+        src="/nrt-loft.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.85) contrast(1.05) brightness(0.55)",
+        }}
+        aria-hidden="true"
+      />
+      {/* Dark gradient overlay for text legibility */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.92) 0%, rgba(10,7,4,0.75) 45%, rgba(10,7,4,0.55) 75%, rgba(10,7,4,0.45) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.4) 0%, transparent 30%, transparent 70%, rgba(10,7,4,0.6) 100%)",
+        }}
+        aria-hidden="true"
+      />
       {/* Cross-hatch grid background — layered breathing animation */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -93,14 +126,6 @@ export default function HeroSection() {
         <Reveal delayMs={250}>
           <div className="flex flex-wrap gap-4">
             <a
-              href="https://www.instagram.com/nebulab_koki/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Instagramで過程を見る →
-            </a>
-            <a
               href="https://www.nebulab.jp/"
               target="_blank"
               rel="noopener noreferrer"
@@ -120,6 +145,13 @@ export default function HeroSection() {
           </div>
         </Reveal>
       </div>
+
+      <ScrollGuide
+        direction="down"
+        targetId="concept"
+        size="lg"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 md:bottom-12"
+      />
     </section>
   );
 }

@@ -10,7 +10,7 @@ const infoItems = [
 
 export default function AccessSection() {
   return (
-    <section id="access" className="px-5 py-[60px] md:px-12 md:py-[100px]" style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}>
+    <section id="access" className="section-rhythm px-5 py-[80px] md:px-12 md:py-[140px]">
       <div className="mx-auto max-w-[960px]">
         <Reveal><SectionLabel>07 · ACCESS</SectionLabel></Reveal>
 

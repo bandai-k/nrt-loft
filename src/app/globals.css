@@ -86,6 +86,52 @@ hr {
   50% { opacity: 0.5; background-position: 6px -3px, 6px -3px; }
 }
 
+@keyframes scroll-down {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes scroll-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+@keyframes bounce-up {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Section rhythm: decorative top divider with center ornament */
+.section-rhythm {
+  position: relative;
+}
+.section-rhythm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70vw, 720px);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(217, 119, 6, 0.5) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* Nav link */
 .nav-link {
   font-family: var(--font-mono);

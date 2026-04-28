@@ -2,8 +2,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollGuide from "@/components/ui/ScrollGuide";
 
 const inquiryOptions = [
   { value: "", label: "選択してください" },
@@ -93,12 +95,39 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="px-5 py-[60px] md:px-12 md:py-[100px]"
-      style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}
+      className="section-rhythm relative overflow-hidden px-5 py-[80px] md:px-12 md:py-[140px]"
     >
-      <div className="mx-auto max-w-[720px]">
+      <Image
+        src="/contact-bg.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.8) contrast(1.05) brightness(0.45)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0.78) 45%, rgba(10,7,4,0.6) 75%, rgba(10,7,4,0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.5) 0%, transparent 25%, transparent 75%, rgba(10,7,4,0.65) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-[960px]">
         <Reveal>
-          <SectionLabel>08 · CONTACT</SectionLabel>
+          <SectionLabel>03 · CONTACT</SectionLabel>
         </Reveal>
         <Reveal>
           <h2
@@ -121,7 +150,11 @@ export default function ContactSection() {
         </Reveal>
 
         <Reveal>
-          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            className="max-w-[720px] space-y-6"
+            noValidate
+          >
             <div>
               <label htmlFor="contact-name" style={labelStyle}>
                 お名前 *
@@ -257,6 +290,13 @@ export default function ContactSection() {
           </form>
         </Reveal>
       </div>
+
+      <ScrollGuide
+        direction="up"
+        targetId="service"
+        size="sm"
+        className="absolute left-1/2 top-4 z-10 -translate-x-1/2 md:top-6"
+      />
     </section>
   );
 }

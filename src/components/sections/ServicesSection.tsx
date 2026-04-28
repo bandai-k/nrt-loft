@@ -1,6 +1,8 @@
 // src/components/sections/ServicesSection.tsx
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollGuide from "@/components/ui/ScrollGuide";
 
 type Service = {
   label: string;
@@ -30,12 +32,39 @@ export default function ServicesSection() {
   return (
     <section
       id="service"
-      className="px-5 py-[60px] md:px-12 md:py-[100px]"
-      style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}
+      className="section-rhythm relative overflow-hidden px-5 py-[80px] md:px-12 md:py-[140px]"
     >
-      <div className="mx-auto max-w-[960px]">
+      <Image
+        src="/service-bg.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.8) contrast(1.05) brightness(0.45)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0.78) 45%, rgba(10,7,4,0.6) 75%, rgba(10,7,4,0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.5) 0%, transparent 25%, transparent 75%, rgba(10,7,4,0.65) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-[960px]">
         <Reveal>
-          <SectionLabel>05 · SERVICE</SectionLabel>
+          <SectionLabel>02 · SERVICE</SectionLabel>
         </Reveal>
         <Reveal>
           <h2
@@ -109,7 +138,7 @@ export default function ServicesSection() {
           >
             詳しくは{" "}
             <a
-              href="#pricing"
+              href="/pricing"
               style={{
                 color: "#d97706",
                 borderBottom: "1px solid rgba(217,119,6,0.4)",
@@ -131,6 +160,19 @@ export default function ServicesSection() {
           </p>
         </Reveal>
       </div>
+
+      <ScrollGuide
+        direction="up"
+        targetId="concept"
+        size="sm"
+        className="absolute left-1/2 top-4 z-10 -translate-x-1/2 md:top-6"
+      />
+      <ScrollGuide
+        direction="down"
+        targetId="contact"
+        size="sm"
+        className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 md:bottom-6"
+      />
     </section>
   );
 }

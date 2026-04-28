@@ -1,25 +1,17 @@
 // src/app/page.tsx
 import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
-import PersonasSection from "@/components/PersonasSection";
-import StatusSection from "@/components/sections/StatusSection";
-import SNSSection from "@/components/sections/SNSSection";
+import ConceptSection from "@/components/sections/ConceptSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import PricingSection from "@/components/PricingSection";
-import AccessSection from "@/components/sections/AccessSection";
 import ContactSection from "@/components/ContactSection";
+import HomeSidebar from "@/components/layout/HomeSidebar";
 
 export default function HomePage() {
   return (
     <>
+      <HomeSidebar />
       <HeroSection />
-      <AboutSection />
-      <PersonasSection />
-      <StatusSection />
-      <SNSSection />
+      <ConceptSection />
       <ServicesSection />
-      <PricingSection />
-      <AccessSection />
       <ContactSection />
     </>
   );

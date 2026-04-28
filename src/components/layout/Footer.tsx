@@ -4,10 +4,19 @@ import Logo from "@/components/ui/Logo";
 
 const linkGroups = [
   {
+    heading: "MENU",
+    items: [
+      { label: "料金", href: "/pricing", external: false },
+      { label: "予約", href: "/reservation", external: false },
+      { label: "アクセス", href: "/access", external: false },
+      { label: "お問い合わせ", href: "/#contact", external: false },
+    ],
+  },
+  {
     heading: "LINKS",
     items: [
       { label: "NEBULAB合同会社", href: "https://www.nebulab.jp/", external: true },
-      { label: "Instagram", href: "https://www.instagram.com/nebulab_koki/", external: true },
+      { label: "Instagram", href: "https://www.instagram.com/nrt_loft/", external: true },
     ],
   },
   {
@@ -29,7 +38,7 @@ export default function Footer() {
         {/* Top: Logo + Links */}
         <div className="mb-10 flex flex-col items-start gap-8 md:flex-row md:flex-wrap md:justify-between">
           <Logo scale={0.7} />
-          <div className="flex gap-12">
+          <div className="flex flex-wrap gap-8 md:gap-12">
             {linkGroups.map((group) => (
               <div key={group.heading}>
                 <div

@@ -8,8 +8,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="px-5 py-[60px] md:px-12 md:py-[100px]"
-      style={{ borderTop: "1px solid rgba(217,119,6,0.1)" }}
+      className="section-rhythm px-5 py-[80px] md:px-12 md:py-[140px]"
     >
       <div className="mx-auto max-w-[960px]">
         <Reveal>

@@ -7,24 +7,33 @@ import Logo from "@/components/ui/Logo";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const navLinks = [
-  { href: "#about", label: "NRT LOFTとは" },
-  { href: "#for-who", label: "対象" },
-  { href: "#status", label: "ステータス" },
-  { href: "#sns", label: "SNS" },
-  { href: "#service", label: "できること" },
-  { href: "#pricing", label: "料金" },
-  { href: "#access", label: "アクセス" },
-  { href: "#contact", label: "お問い合わせ" },
+  { href: "/pricing", label: "料金" },
+  { href: "/reservation", label: "予約" },
+  { href: "/access", label: "アクセス" },
+  { href: "/#contact", label: "お問い合わせ" },
 ];
 
 export default function Header() {
   const [scrollY, setScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrollY(y);
+      if (y < 80) {
+        setHidden(false);
+      } else if (y > lastY + 4) {
+        setHidden(true);
+      } else if (y < lastY - 4) {
+        setHidden(false);
+      }
+      lastY = y;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -49,6 +58,7 @@ export default function Header() {
           borderBottom: scrollY > 40 ? "1px solid rgba(217,119,6,0.12)" : "none",
           backdropFilter: "blur(8px)",
           height: "var(--header-height)",
+          transform: hidden && !menuOpen ? "translateY(-100%)" : "translateY(0)",
         }}
       >
         <Link href="/">
@@ -63,7 +73,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="https://www.instagram.com/nebulab_koki/"
+            href="https://www.instagram.com/nrt_loft/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -132,7 +142,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="https://www.instagram.com/nebulab_koki/"
+            href="https://www.instagram.com/nrt_loft/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
