@@ -1,16 +1,20 @@
 // src/components/LineContactCard.tsx
-import Image from "next/image";
 
 type Props = {
   variant?: "card" | "compact";
 };
 
-const FALLBACK_LINE_URL = "https://line.me/R/ti/p/@nrt-loft"; // 環境変数未設定時のフォールバック
+// LINE 公式アカウント
+const FALLBACK_LINE_URL = "https://lin.ee/qtvP3Pt";
+const FALLBACK_LINE_DISPLAY_ID = "@946tiavs";
+const QR_IMAGE_URL =
+  "https://qr-official.line.me/gs/M_946tiavs_GW.png?oat_content=qr";
 
 export default function LineContactCard({ variant = "card" }: Props) {
   const lineUrl =
     process.env.NEXT_PUBLIC_LINE_FRIEND_URL || FALLBACK_LINE_URL;
-  const displayId = process.env.NEXT_PUBLIC_LINE_DISPLAY_ID || "@nrt-loft";
+  const displayId =
+    process.env.NEXT_PUBLIC_LINE_DISPLAY_ID || FALLBACK_LINE_DISPLAY_ID;
 
   if (variant === "compact") {
     return (
@@ -85,19 +89,20 @@ export default function LineContactCard({ variant = "card" }: Props) {
 
       <div className="mb-5 flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-5">
         <div
-          className="relative h-[120px] w-[120px] shrink-0 overflow-hidden rounded-sm md:h-[140px] md:w-[140px]"
+          className="flex h-[120px] w-[120px] shrink-0 items-center justify-center overflow-hidden rounded-sm md:h-[140px] md:w-[140px]"
           style={{
             background: "#f5f1e8",
             border: "1px solid rgba(217,119,6,0.25)",
           }}
         >
-          <Image
-            src="/line-qr.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={QR_IMAGE_URL}
             alt={`LINE 公式アカウント ${displayId} のQRコード`}
-            fill
-            sizes="140px"
-            className="object-contain"
-            // 画像未配置でも壊れにくいように onError で代替テキストを表示
+            width={140}
+            height={140}
+            className="h-full w-full object-contain"
+            loading="lazy"
           />
         </div>
         <div className="flex flex-1 flex-col items-center gap-2 md:items-start">

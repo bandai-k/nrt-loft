@@ -16,6 +16,10 @@ type Props = {
 
 type Status = "idle" | "loading" | "success" | "error";
 
+// 送信機能の有効化フラグ
+// オープン準備中はフォーム送信を無効化。Resend 連携 / 運営フローが整い次第 true に。
+const FORM_SUBMISSION_ENABLED = false;
+
 // 月額会員(REGULAR)はモーダルからの予約対象外。ドロップイン+貸切のみ。
 const reservablePlans = mainPlans.filter((p) => p.category !== "monthly");
 
@@ -707,17 +711,42 @@ export default function DayReservationModal({ day, onClose }: Props) {
               {/* Submit */}
               <button
                 type="submit"
-                disabled={status === "loading"}
+                disabled={status === "loading" || !FORM_SUBMISSION_ENABLED}
+                aria-disabled={!FORM_SUBMISSION_ENABLED}
+                title={
+                  !FORM_SUBMISSION_ENABLED
+                    ? "現在、フォームでの受付は準備中です。"
+                    : undefined
+                }
                 className="btn-primary w-full"
                 style={{
                   padding: "13px 20px",
                   fontSize: "11px",
-                  opacity: status === "loading" ? 0.6 : 1,
-                  cursor: status === "loading" ? "not-allowed" : "pointer",
+                  opacity:
+                    status === "loading" || !FORM_SUBMISSION_ENABLED ? 0.5 : 1,
+                  cursor:
+                    status === "loading" || !FORM_SUBMISSION_ENABLED
+                      ? "not-allowed"
+                      : "pointer",
                 }}
               >
-                {status === "loading" ? "送信中..." : "予約を送信 →"}
+                {!FORM_SUBMISSION_ENABLED
+                  ? "受付準備中"
+                  : status === "loading"
+                    ? "送信中..."
+                    : "予約を送信 →"}
               </button>
+              {!FORM_SUBMISSION_ENABLED && (
+                <p
+                  className="text-[11px] leading-[1.7] tracking-[0.04em]"
+                  style={{
+                    color: "#7a6a4a",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  * 現在フォームの受付は準備中です。お急ぎの場合は LINE 公式アカウントまたは hello@nebulab.jp までご連絡ください。
+                </p>
+              )}
 
               {status === "error" && errorMsg && (
                 <div

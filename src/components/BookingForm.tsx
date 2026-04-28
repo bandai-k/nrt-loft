@@ -6,6 +6,12 @@ import { useSearchParams } from "next/navigation";
 import CancellationPolicyDisplay from "@/components/CancellationPolicyDisplay";
 
 // ──────────────────────────────────────────────
+// 送信機能の有効化フラグ
+// オープン準備中はフォーム送信を無効化。Resend 連携 / 運営フローが整い次第 true に。
+// ──────────────────────────────────────────────
+const FORM_SUBMISSION_ENABLED = false;
+
+// ──────────────────────────────────────────────
 // 型定義
 // ──────────────────────────────────────────────
 
@@ -676,17 +682,46 @@ export default function BookingForm() {
       <div className="pt-2">
         <button
           type="submit"
-          disabled={disabled}
+          disabled={disabled || !FORM_SUBMISSION_ENABLED}
+          aria-disabled={!FORM_SUBMISSION_ENABLED}
+          title={
+            !FORM_SUBMISSION_ENABLED
+              ? "現在、フォームでの受付は準備中です。お問い合わせは LINE または hello@nebulab.jp までお願いします。"
+              : undefined
+          }
           className="btn-primary w-full md:w-auto"
           style={{
             padding: "14px 32px",
             fontSize: "11px",
-            opacity: disabled ? 0.6 : 1,
-            cursor: disabled ? "not-allowed" : "pointer",
+            opacity: disabled || !FORM_SUBMISSION_ENABLED ? 0.5 : 1,
+            cursor:
+              disabled || !FORM_SUBMISSION_ENABLED ? "not-allowed" : "pointer",
           }}
         >
-          {status === "loading" ? "送信中..." : "申し込み内容を送信 →"}
+          {!FORM_SUBMISSION_ENABLED
+            ? "受付準備中"
+            : status === "loading"
+              ? "送信中..."
+              : "申し込み内容を送信 →"}
         </button>
+        {!FORM_SUBMISSION_ENABLED && (
+          <p
+            className="mt-3 text-[12px] leading-[1.85] tracking-[0.04em]"
+            style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
+          >
+            * 現在フォームの受付は準備中です。お急ぎの場合は{" "}
+            <a
+              href="mailto:hello@nebulab.jp"
+              style={{
+                color: "#d97706",
+                borderBottom: "1px solid rgba(217,119,6,0.4)",
+              }}
+            >
+              hello@nebulab.jp
+            </a>
+            {" "}または LINE 公式アカウントよりご連絡ください。
+          </p>
+        )}
       </div>
 
       {status === "error" && errorMsg && (
