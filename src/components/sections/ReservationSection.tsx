@@ -64,7 +64,7 @@ export default function ReservationSection() {
   return (
     <section
       id="reservation"
-      className="section-rhythm px-5 py-[80px] md:px-12 md:py-[140px]"
+      className="section-rhythm px-5 pt-[40px] pb-[80px] md:px-12 md:pt-[64px] md:pb-[140px]"
     >
       <div className="mx-auto max-w-[960px]">
         <Reveal>
@@ -192,7 +192,7 @@ export default function ReservationSection() {
         <Reveal>
           <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
             <a
-              href="/#contact"
+              href="/contact"
               className="btn-primary"
               style={{ padding: "14px 28px", fontSize: "11px" }}
             >

@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 const items = [
   { id: "concept", label: "コンセプト", num: "01" },
   { id: "service", label: "できること", num: "02" },
-  { id: "contact", label: "お問い合わせ", num: "03" },
 ];
 
 export default function HomeSidebar() {

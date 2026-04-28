@@ -8,9 +8,10 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 const navLinks = [
   { href: "/pricing", label: "料金" },
+  { href: "/usage", label: "利用方法" },
   { href: "/reservation", label: "予約" },
   { href: "/access", label: "アクセス" },
-  { href: "/#contact", label: "お問い合わせ" },
+  { href: "/contact", label: "お問い合わせ" },
 ];
 
 export default function Header() {
@@ -72,15 +73,14 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a
-            href="https://www.instagram.com/nrt_loft/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            title="ログイン機能は準備中です"
             className="btn-primary"
             style={{ padding: "8px 20px", fontSize: "9px" }}
           >
-            Instagram →
-          </a>
+            ログイン →
+          </button>
         </div>
 
         {/* Hamburger button (mobile) */}
@@ -141,16 +141,15 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a
-            href="https://www.instagram.com/nrt_loft/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            title="ログイン機能は準備中です"
             onClick={() => setMenuOpen(false)}
             className="btn-primary mt-4"
             style={{ padding: "12px 28px", fontSize: "11px" }}
           >
-            Instagram →
-          </a>
+            ログイン →
+          </button>
         </div>
       )}
     </>

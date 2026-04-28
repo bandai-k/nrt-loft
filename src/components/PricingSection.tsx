@@ -1,16 +1,45 @@
 // src/components/PricingSection.tsx
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import PricingCard from "@/components/PricingCard";
-import { pricingPlans, openingCampaign, pricingNotes } from "@/data/pricing";
+import { mainPlans, openingCampaign, pricingNotes } from "@/data/pricing";
 
 export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="section-rhythm px-5 py-[80px] md:px-12 md:py-[140px]"
+      className="section-rhythm relative overflow-hidden px-5 pt-[40px] pb-[80px] md:px-12 md:pt-[64px] md:pb-[140px]"
     >
-      <div className="mx-auto max-w-[960px]">
+      <Image
+        src="/pricing-bg.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.8) contrast(1.05) brightness(0.45)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0.78) 45%, rgba(10,7,4,0.6) 75%, rgba(10,7,4,0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.5) 0%, transparent 25%, transparent 75%, rgba(10,7,4,0.65) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-[960px]">
         <Reveal>
           <SectionLabel>06 · PRICING</SectionLabel>
         </Reveal>
@@ -35,7 +64,7 @@ export default function PricingSection() {
         </Reveal>
 
         <div className="mb-10 grid auto-rows-[1fr] gap-4 md:grid-cols-3">
-          {pricingPlans.map((plan, i) => (
+          {mainPlans.map((plan, i) => (
             <Reveal key={plan.id} delayMs={i * 100} className="flex">
               <div className="flex w-full">
                 <PricingCard plan={plan} />

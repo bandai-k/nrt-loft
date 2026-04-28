@@ -1,4 +1,5 @@
 // src/components/sections/AccessSection.tsx
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -10,8 +11,36 @@ const infoItems = [
 
 export default function AccessSection() {
   return (
-    <section id="access" className="section-rhythm px-5 py-[80px] md:px-12 md:py-[140px]">
-      <div className="mx-auto max-w-[960px]">
+    <section id="access" className="section-rhythm relative overflow-hidden px-5 pt-[40px] pb-[80px] md:px-12 md:pt-[64px] md:pb-[140px]">
+      <Image
+        src="/access-bg.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+        style={{
+          zIndex: 0,
+          filter: "saturate(0.8) contrast(1.05) brightness(0.45)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,7,4,0.95) 0%, rgba(10,7,4,0.78) 45%, rgba(10,7,4,0.6) 75%, rgba(10,7,4,0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,7,4,0.5) 0%, transparent 25%, transparent 75%, rgba(10,7,4,0.65) 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-[960px]">
         <Reveal><SectionLabel>07 · ACCESS</SectionLabel></Reveal>
 
         <div className="grid items-start gap-16 md:grid-cols-2">
@@ -50,42 +79,50 @@ export default function AccessSection() {
             ))}
           </Reveal>
 
-          {/* Right: Map placeholder */}
+          {/* Right: Google Map */}
           <Reveal delayMs={150}>
-            <div
-              className="relative flex h-[300px] flex-col items-center justify-center gap-3 overflow-hidden rounded-sm"
-              style={{
-                border: "1px solid rgba(217,119,6,0.2)",
-                background: "rgba(217,119,6,0.02)",
-              }}
-            >
-              {/* Grid pattern */}
+            <div className="flex flex-col gap-3">
               <div
-                className="pointer-events-none absolute inset-0"
+                className="relative h-[320px] overflow-hidden rounded-sm md:h-[380px]"
                 style={{
-                  backgroundImage: `
-                    linear-gradient(rgba(217,119,6,0.06) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(217,119,6,0.06) 1px, transparent 1px)
-                  `,
-                  backgroundSize: "24px 24px",
+                  border: "1px solid rgba(217,119,6,0.25)",
+                  boxShadow:
+                    "0 0 0 1px rgba(217,119,6,0.08), 0 16px 40px -16px rgba(0,0,0,0.6)",
                 }}
-              />
-              {/* Location pin icon */}
-              <svg className="relative z-10 h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <div
-                className="relative z-10 text-[12px] tracking-[0.2em]"
-                style={{ fontFamily: "var(--font-mono)", color: "#d97706" }}
               >
-                NARITA, CHIBA
+                <iframe
+                  src="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%88%90%E7%94%B0%E5%B8%82%E8%8A%B1%E5%B4%8E%E7%94%BA&z=16&output=embed"
+                  title="NRT LOFT の所在地"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-full w-full"
+                  style={{ border: 0, filter: "grayscale(0.2) contrast(0.95)" }}
+                  allowFullScreen
+                />
               </div>
-              <div
-                className="relative z-10 text-[10px] tracking-[0.15em]"
-                style={{ fontFamily: "var(--font-mono)", color: "#4a3a22" }}
-              >
-                35.9806° N, 140.3069° E
+              <div className="flex items-center justify-between gap-2">
+                <span
+                  className="text-[10px] tracking-[0.2em]"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    color: "#6b5a3a",
+                  }}
+                >
+                  35.9806° N, 140.3069° E
+                </span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E8%91%89%E7%9C%8C%E6%88%90%E7%94%B0%E5%B8%82%E8%8A%B1%E5%B4%8E%E7%94%BA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] tracking-[0.2em] transition-colors hover:text-amber-500"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    color: "#d97706",
+                    borderBottom: "1px solid rgba(217,119,6,0.4)",
+                  }}
+                >
+                  Google マップで開く →
+                </a>
               </div>
             </div>
           </Reveal>

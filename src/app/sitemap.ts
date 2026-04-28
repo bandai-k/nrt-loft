@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.nrt-loft.jp/usage",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://www.nrt-loft.jp/reservation",
       lastModified,
       changeFrequency: "monthly",
@@ -29,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: "https://www.nrt-loft.jp/contact",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.nrt-loft.jp/privacy",
       lastModified,
       changeFrequency: "yearly",
@@ -36,6 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://www.nrt-loft.jp/terms",
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: "https://www.nrt-loft.jp/commerce-law",
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,

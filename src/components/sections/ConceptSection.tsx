@@ -9,7 +9,7 @@ export default function ConceptSection() {
   return (
     <section
       id="concept"
-      className="section-rhythm relative overflow-hidden px-5 py-[80px] md:px-12 md:py-[140px]"
+      className="section-rhythm relative overflow-hidden px-5 pt-[40px] pb-[80px] md:px-12 md:pt-[64px] md:pb-[140px]"
     >
       <Image
         src="/concept-bg.png"

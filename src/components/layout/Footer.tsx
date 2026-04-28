@@ -1,15 +1,17 @@
 // src/components/layout/Footer.tsx
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
+import LineContactCard from "@/components/LineContactCard";
 
 const linkGroups = [
   {
     heading: "MENU",
     items: [
       { label: "料金", href: "/pricing", external: false },
+      { label: "利用方法", href: "/usage", external: false },
       { label: "予約", href: "/reservation", external: false },
       { label: "アクセス", href: "/access", external: false },
-      { label: "お問い合わせ", href: "/#contact", external: false },
+      { label: "お問い合わせ", href: "/contact", external: false },
     ],
   },
   {
@@ -24,6 +26,7 @@ const linkGroups = [
     items: [
       { label: "プライバシーポリシー", href: "/privacy", external: false },
       { label: "利用規約", href: "/terms", external: false },
+      { label: "特定商取引法に基づく表記", href: "/commerce-law", external: false },
     ],
   },
 ];
@@ -61,6 +64,31 @@ export default function Footer() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Contact prompt — メール・LINE */}
+        <div
+          className="mb-6 flex flex-col items-start gap-2 pt-5 md:flex-row md:items-center md:gap-4"
+          style={{ borderTop: "1px solid rgba(217,119,6,0.08)" }}
+        >
+          <span
+            className="text-[10px] tracking-[0.2em]"
+            style={{ fontFamily: "var(--font-mono)", color: "#6b5a3a" }}
+          >
+            お問い合わせ: メール・LINE どちらでも
+          </span>
+          <Link
+            href="/contact"
+            className="text-[10px] tracking-[0.2em] transition-colors hover:text-amber-500"
+            style={{
+              fontFamily: "var(--font-mono)",
+              color: "#d97706",
+              borderBottom: "1px solid rgba(217,119,6,0.3)",
+            }}
+          >
+            フォーム →
+          </Link>
+          <LineContactCard variant="compact" />
         </div>
 
         {/* Bottom bar */}

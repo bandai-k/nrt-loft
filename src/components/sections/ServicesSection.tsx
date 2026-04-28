@@ -19,7 +19,7 @@ const services: Service[] = [
   {
     label: "IT CONSULTATION",
     title: "お店のIT相談・コンサル",
-    desc: "成田エリアの飲食店・小売店向けに、Googleマップ対策、SNS運用、IT化のご相談を承ります。レギュラーメンバーは回数無制限で対応。",
+    desc: "成田エリアの飲食店・小売店向けに、Googleマップ対策、SNS運用、IT化のご相談を承ります。月額プランをご検討の方はお気軽にお問い合わせください。",
   },
   {
     label: "TEAM USE / WORKSHOP",
@@ -32,7 +32,7 @@ export default function ServicesSection() {
   return (
     <section
       id="service"
-      className="section-rhythm relative overflow-hidden px-5 py-[80px] md:px-12 md:py-[140px]"
+      className="section-rhythm relative overflow-hidden px-5 pt-[40px] pb-[80px] md:px-12 md:pt-[64px] md:pb-[140px]"
     >
       <Image
         src="/service-bg.png"
@@ -148,7 +148,7 @@ export default function ServicesSection() {
             </a>
             {" / "}
             <a
-              href="#contact"
+              href="/contact"
               style={{
                 color: "#d97706",
                 borderBottom: "1px solid rgba(217,119,6,0.4)",
@@ -166,12 +166,6 @@ export default function ServicesSection() {
         targetId="concept"
         size="sm"
         className="absolute left-1/2 top-4 z-10 -translate-x-1/2 md:top-6"
-      />
-      <ScrollGuide
-        direction="down"
-        targetId="contact"
-        size="sm"
-        className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 md:bottom-6"
       />
     </section>
   );
