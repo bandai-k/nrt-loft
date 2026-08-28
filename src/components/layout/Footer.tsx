@@ -7,11 +7,10 @@ const linkGroups = [
   {
     heading: "MENU",
     items: [
-      { label: "料金", href: "/pricing", external: false },
-      { label: "利用方法", href: "/usage", external: false },
-      { label: "予約", href: "/reservation", external: false },
-      { label: "アクセス", href: "/access", external: false },
-      { label: "お問い合わせ", href: "/contact", external: false },
+      { label: "SHOP", href: "/shop", external: false },
+      { label: "LOCAL ORDERS", href: "/contact", external: false },
+      { label: "ACCESS", href: "/access", external: false },
+      { label: "CONTACT", href: "/contact", external: false },
     ],
   },
   {

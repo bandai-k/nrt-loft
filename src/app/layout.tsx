@@ -9,21 +9,21 @@ import StructuredData from "@/components/StructuredData";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nrt-loft.jp"),
   title: {
-    default: "NRT LOFT | 成田の小さなコワーキングスペース",
+    default: "NRT LOFT | 成田の小さな工房・ショップ",
     template: "%s | NRT LOFT",
   },
   description:
-    "成田の旧釣具屋2階、3席だけの集中できるコワーキングスペース。ドロップイン¥700/時〜、月額¥15,000〜。成田駅エリアで静かに働きたいフリーランス・出張者・地域事業者のための場所。",
+    "成田の旧釣具屋2階、DIYでリノベーションした小さな工房。木と革の名入れ品・ノベルティ・記念品を、ひとつずつ手作業で仕上げています。",
   keywords: [
-    "成田 コワーキング",
-    "成田 コワーキングスペース",
-    "成田駅 作業スペース",
-    "成田 ワーキングスペース",
-    "千葉 コワーキング",
-    "成田空港 作業",
+    "成田 工房",
+    "成田 名入れ",
+    "成田 ノベルティ",
+    "成田 記念品",
+    "成田 ハンドメイド",
+    "成田 ギフト",
     "NRT LOFT",
-    "成田 ドロップイン",
-    "成田 フリーランス",
+    "成田 お土産",
+    "漢字 木札",
   ],
   authors: [{ name: "NEBULAB" }],
   creator: "NEBULAB",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "https://www.nrt-loft.jp",
     siteName: "NRT LOFT",
-    title: "NRT LOFT | 成田の小さなコワーキングスペース",
+    title: "NRT LOFT | 成田の小さな工房・ショップ",
     description:
-      "成田の旧釣具屋2階、3席だけの集中できるコワーキングスペース。使うほど、しっくりくる場所。",
+      "成田の旧釣具屋2階、小さな工房。間の時間に、形に残るものを。",
     images: [
       {
         url: "/og-image.png",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NRT LOFT | 成田の小さなコワーキングスペース",
+    title: "NRT LOFT | 成田の小さな工房・ショップ",
     description:
-      "成田の旧釣具屋2階、3席だけの集中できるコワーキングスペース。",
+      "成田の旧釣具屋2階、小さな工房。間の時間に、形に残るものを。",
     images: ["/og-image.png"],
   },
   robots: {

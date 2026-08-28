@@ -12,19 +12,19 @@ type Service = {
 
 const services: Service[] = [
   {
-    label: "FOCUSED WORK",
-    title: "集中作業の場として",
-    desc: "3席限定の静かな空間で、深い集中時間を確保。レギュラーメンバー・ドロップインで利用可能。",
+    label: "SHOP",
+    title: "完成品の小さなショップ",
+    desc: "工房で作られた、木と革のもの。ひとつひとつ、丁寧に仕上げています。",
   },
   {
     label: "BETWEEN TIME",
-    title: "間(あいだ)の時間のために",
-    desc: "飲み会の前に、フライトまでの待ち時間に、商談の前に。ただの待機ではなく、自分のための数時間として使える場所として。",
+    title: "間の時間に立ち寄る",
+    desc: "フライト前に、待ち合わせ前に。旅の記念や、誰かへの贈り物を、その場で。",
   },
   {
-    label: "TEAM USE / WORKSHOP",
-    title: "チーム利用・ワークショップ",
-    desc: "5名まで快適に使える小さな空間。少人数のチーム作業、面接、勉強会、撮影など、2時間から貸切でご利用いただけます。",
+    label: "LOCAL ORDERS",
+    title: "地域からのご注文",
+    desc: "お店の周年記念、開店祝い、ノベルティ。成田の事業者の方からのご依頼を承ります。",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function ServicesSection() {
             className="mb-12 text-[14px] leading-[1.9] tracking-[0.05em]"
             style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
           >
-            NRT LOFTは、3つの利用シーンに対応します。
+            ささやかな工房から、3つの形でお届けします。
           </p>
         </Reveal>
 
@@ -138,13 +138,13 @@ export default function ServicesSection() {
           >
             詳しくは{" "}
             <a
-              href="/pricing"
+              href="/shop"
               style={{
                 color: "#d97706",
                 borderBottom: "1px solid rgba(217,119,6,0.4)",
               }}
             >
-              料金
+              SHOP
             </a>
             {" / "}
             <a

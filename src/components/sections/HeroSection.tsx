@@ -117,9 +117,8 @@ export default function HeroSection() {
             className="mb-8 max-w-[520px] text-[14px] font-light leading-[2.1] tracking-[0.06em] md:mb-12 md:text-[17px]"
             style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
           >
-            成田の旧釣具屋2階を<br />
-            DIYでリノベーションした、3席の小さなコワーキング。<br />
-            地域に開かれた拠点として、2026年5月オープン。
+            成田の旧釣具屋2階を、DIYでリノベーションした小さな場所。<br />
+            「間の時間」を、形にする工房として。
           </p>
         </Reveal>
 
@@ -141,7 +140,7 @@ export default function HeroSection() {
             className="mt-12 text-[11px] tracking-[0.3em]"
             style={{ fontFamily: "var(--font-mono)", color: "#4a3a22" }}
           >
-            2026.05 OPEN
+            2026.X OPEN
           </div>
         </Reveal>
       </div>

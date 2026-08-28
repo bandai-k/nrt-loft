@@ -11,22 +11,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: "https://www.nrt-loft.jp/shop",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.nrt-loft.jp/pricing",
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.4,
     },
     {
       url: "https://www.nrt-loft.jp/usage",
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.3,
     },
     {
       url: "https://www.nrt-loft.jp/reservation",
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.4,
     },
     {
       url: "https://www.nrt-loft.jp/access",

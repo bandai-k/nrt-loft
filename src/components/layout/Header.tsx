@@ -7,11 +7,10 @@ import Logo from "@/components/ui/Logo";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const navLinks = [
-  { href: "/pricing", label: "料金" },
-  { href: "/usage", label: "利用方法" },
-  { href: "/reservation", label: "予約" },
-  { href: "/access", label: "アクセス" },
-  { href: "/contact", label: "お問い合わせ" },
+  { href: "/shop", label: "SHOP" },
+  { href: "/contact", label: "LOCAL ORDERS" },
+  { href: "/access", label: "ACCESS" },
+  { href: "/contact", label: "CONTACT" },
 ];
 
 export default function Header() {
@@ -69,18 +68,10 @@ export default function Header() {
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map(({ href, label }) => (
-            <a key={href} href={href} className="nav-link">
+            <a key={label} href={href} className="nav-link">
               {label}
             </a>
           ))}
-          <button
-            type="button"
-            title="ログイン機能は準備中です"
-            className="btn-primary"
-            style={{ padding: "8px 20px", fontSize: "9px" }}
-          >
-            ログイン →
-          </button>
         </div>
 
         {/* Hamburger button (mobile) */}
@@ -129,7 +120,7 @@ export default function Header() {
         >
           {navLinks.map(({ href, label }) => (
             <a
-              key={href}
+              key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="text-[24px] tracking-[0.15em] transition-colors hover:text-amber-500"
@@ -141,15 +132,6 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <button
-            type="button"
-            title="ログイン機能は準備中です"
-            onClick={() => setMenuOpen(false)}
-            className="btn-primary mt-4"
-            style={{ padding: "12px 28px", fontSize: "11px" }}
-          >
-            ログイン →
-          </button>
         </div>
       )}
     </>

@@ -1,26 +1,27 @@
-// src/app/reservation/page.tsx
+// src/app/shop/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import SubPageLayout from "@/components/ui/SubPageLayout";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export const metadata: Metadata = {
-  title: "ご相談・お申し込み",
+  title: "SHOP",
   description:
-    "NRT LOFT への個別のご相談は、お問い合わせフォームよりご連絡ください。",
-  alternates: { canonical: "https://www.nrt-loft.jp/reservation" },
+    "NRT LOFTのショップは現在準備中です。工房で作られた、木と革のもの。ひとつひとつ、丁寧に仕上げています。",
+  alternates: { canonical: "https://www.nrt-loft.jp/shop" },
   openGraph: {
-    title: "ご相談・お申し込み | NRT LOFT",
-    description: "個別のご相談はお問い合わせください。",
-    url: "https://www.nrt-loft.jp/reservation",
+    title: "SHOP | NRT LOFT",
+    description:
+      "NRT LOFTのショップは現在準備中です。間の時間に、形に残るものを。",
+    url: "https://www.nrt-loft.jp/shop",
   },
 };
 
-export default function ReservationPage() {
+export default function ShopPage() {
   return (
     <SubPageLayout>
       <section className="relative mx-auto flex min-h-[70vh] max-w-[720px] flex-col justify-center px-5 py-[80px] md:px-12 md:py-[120px]">
-        <SectionLabel>RESERVATION</SectionLabel>
+        <SectionLabel>SHOP</SectionLabel>
 
         <h1
           className="mb-4"
@@ -31,7 +32,7 @@ export default function ReservationPage() {
             color: "#e8e2d4",
           }}
         >
-          ご相談・お申し込み
+          完成品の小さなショップ
         </h1>
 
         <div
@@ -45,9 +46,11 @@ export default function ReservationPage() {
           className="mb-10 max-w-[520px] text-[14px] leading-[2] tracking-[0.05em] md:text-[15px]"
           style={{ color: "#7a6a4a", fontFamily: "var(--font-body)" }}
         >
-          個別のご相談は、お問い合わせください。
+          工房で作られた、木と革のもの。
           <br />
-          ノベルティ・記念品・周年記念品など、お気軽にご連絡いただけます。
+          ひとつひとつ、丁寧に仕上げています。
+          <br />
+          商品ページは現在準備中です。
         </p>
 
         <div className="flex flex-wrap gap-4">

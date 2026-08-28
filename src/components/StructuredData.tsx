@@ -6,7 +6,8 @@ export default function StructuredData() {
     "@id": "https://www.nrt-loft.jp",
     name: "NRT LOFT",
     alternateName: "NRTロフト",
-    description: "成田の小さなコワーキングスペース",
+    description:
+      "成田の旧釣具屋2階、DIYでリノベーションした小さな工房。木と革の名入れ品・ノベルティ・記念品を、ひとつずつ手作業で仕上げています。",
     url: "https://www.nrt-loft.jp",
     telephone: "",
     email: "hello@nebulab.jp",
@@ -39,7 +40,6 @@ export default function StructuredData() {
         closes: "22:00",
       },
     ],
-    priceRange: "¥700 - ¥35,000",
   };
 
   return (
