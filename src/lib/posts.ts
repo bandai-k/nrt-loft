@@ -71,11 +71,15 @@ function readPostFile(category: Category, slug: string): Post {
   const { data, content } = matter(raw);
   const context = `content/${category}/${slug}.mdx`;
 
-  const declaredCategory = requireString(data.category, "category", context);
-  if (declaredCategory !== category) {
-    throw new Error(
-      `${context}: frontmatter の category (${declaredCategory}) が置き場所 (${category}) と一致しません`,
-    );
+  // カテゴリの真実は置き場所のディレクトリ。frontmatter の category は任意で、
+  // 書かれている場合だけ食い違いを弾く（管理画面から書くときは省略される）。
+  if (data.category !== undefined && data.category !== null) {
+    const declared = requireString(data.category, "category", context);
+    if (declared !== category) {
+      throw new Error(
+        `${context}: frontmatter の category (${declared}) が置き場所 (${category}) と一致しません`,
+      );
+    }
   }
 
   return {

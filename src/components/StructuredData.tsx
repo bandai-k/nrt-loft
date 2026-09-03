@@ -55,7 +55,8 @@ export function ArticleStructuredData({
   url: string;
   datePublished: string;
   dateModified: string;
-  imageUrl: string;
+  /** 記事のカバー画像の絶対 URL。無い記事もあるので任意。 */
+  imageUrl?: string;
   keywords: string[];
 }) {
   return (
@@ -69,7 +70,7 @@ export function ArticleStructuredData({
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         datePublished,
         dateModified,
-        image: [imageUrl],
+        ...(imageUrl ? { image: [imageUrl] } : {}),
         inLanguage: "ja",
         ...(keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
         author: { "@type": "Organization", name: OPERATOR, url: OPERATOR_URL },

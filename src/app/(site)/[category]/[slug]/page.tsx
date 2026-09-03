@@ -76,7 +76,7 @@ export default async function PostPage({ params }: Props) {
         url={url}
         datePublished={post.date}
         dateModified={post.updated ?? post.date}
-        imageUrl={`${url}/opengraph-image`}
+        imageUrl={post.cover ? `${SITE_URL}${post.cover}` : undefined}
         keywords={[...post.tags, ...post.tools]}
       />
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_224px] lg:gap-14">

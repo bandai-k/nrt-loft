@@ -26,10 +26,9 @@ npm run lint
 ---
 title: "学校のプリントが処理しきれないので、撮るだけで予定になるツールを作った"
 description: "提出期限・持ち物・行事を自動で整理して、カレンダーにも登録する"
-category: build          # 置き場所のディレクトリ名と一致させる
 date: 2026-09-10
 updated: 2026-09-12      # 任意
-cover: /images/build-04.jpg
+cover: /images/<slug>/cover.webp
 tags: ["OCR", "カレンダー連携", "Claude Code", "Next.js"]
 tools: ["Claude Code"]   # 任意。使用したAI
 youtube: "xxxxxxxxxxx"   # 任意。動画ID。あると本文の前に埋め込まれる
@@ -37,11 +36,54 @@ draft: false             # true は本番ビルドから除外される（開発
 ---
 ```
 
-`title` / `description` / `category` / `date` は必須。`category` が置き場所と
-食い違っていると、ビルドが理由付きで落ちる。
+`title` / `description` / `date` は必須。カテゴリは置き場所のディレクトリで決まる
+ので frontmatter には書かない。
+
+カバー画像は記事ごとのフォルダに `public/images/<slug>/cover.<拡張子>` として置く。
+管理画面から画像を入れると自動でこの形になる。
 
 本文の見出し（`##` / `###`）から目次が自動生成される。コードブロックには
 コピーボタンが付くので、プロンプトはそのまま貼ってよい。
+
+## 記事の管理画面
+
+`/keystatic` にブラウザから記事を書く画面がある。保存するとリポジトリに
+コミットが積まれ、Vercel が再ビルドして 30 秒〜1 分で公開される。
+記事の実体はこれまでどおり `content/` の MDX なので、
+エディタで直接書いても管理画面から書いても結果は同じ。
+
+### 手元で使う
+
+```bash
+npm run dev
+# http://localhost:3000/keystatic
+```
+
+手元のファイルを直接読み書きするモードで動く。GitHub App の設定は要らない。
+
+### 本番（www.nrt-loft.jp/keystatic）で使う
+
+GitHub App が要る。手順は一度だけ。
+
+1. `.env.local` を作り、`NEXT_PUBLIC_KEYSTATIC_STORAGE=github` の 1 行を書く
+2. `npm run dev` して **`http://localhost:3000/keystatic/setup`** を開く
+   （`/keystatic` はログイン画面になるだけ。セットアップはこの URL）
+3. 「Deployed App URL」に `https://www.nrt-loft.jp` を入れる。
+   組織の欄は空のままでよい（個人アカウントに作られる）
+4. 「Create GitHub App」を押す。GitHub 側で作成すると戻ってきて、
+   `.env` に 3 つの値が書き込まれる
+   （`KEYSTATIC_GITHUB_CLIENT_ID` / `KEYSTATIC_GITHUB_CLIENT_SECRET` / `KEYSTATIC_SECRET`）
+5. その 3 つと `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` を Vercel の環境変数に登録する
+6. 再デプロイすると `/keystatic` で GitHub ログインが通る
+
+`.env` と `.env.local` は git 管理外なので、値がリポジトリに入ることはない。
+手元を GitHub App なしのモードに戻したいときは `.env.local` を消す。
+
+`NEXT_PUBLIC_KEYSTATIC_STORAGE` を入れるまでは GitHub モードにならない。
+3 つの値が無い状態で GitHub モードにするとビルドが落ちるため、
+明示的に切り替える形にしてある。
+
+管理画面は `robots.txt` で検索避けしてある。
 
 ## 設定の置き場所
 
@@ -84,7 +126,7 @@ Vercel の環境変数、独自ドメインの DNS）は [docs/SETUP.md](./docs/
 `LOGO_IMAGE_INCLUDES_TAGLINE` を `true` のままにする。含まれていなければ
 `false` にすると、ロゴの下にタグラインの文字が入る。
 
-記事のカバー画像は frontmatter の `cover` で指定する（`cover: /images/xxx.webp`）。
+記事のカバー画像は frontmatter の `cover` で指定する（`cover: /images/<slug>/cover.webp`）。
 
 写真は WebP（幅 1200〜1600px、quality 82）に変換して置いている。ロゴと
 カテゴリのアイコンは透過 PNG の線画で、本文色 `#2C2C2A` に塗り直してある。
