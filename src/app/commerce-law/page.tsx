@@ -1,12 +1,13 @@
 // src/app/commerce-law/page.tsx
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/ui/LegalPageLayout";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表記",
   description:
     "NRT LOFT(運営: Nebulab合同会社)の特定商取引法に基づく表記。販売事業者・所在地・連絡先・支払方法・キャンセル等を掲載予定。",
-  alternates: { canonical: "https://www.nrt-loft.jp/commerce-law" },
+  alternates: { canonical: `${SITE_URL}/commerce-law` },
   robots: { index: true, follow: true },
 };
 

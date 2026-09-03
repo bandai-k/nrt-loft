@@ -1,52 +1,84 @@
 // src/components/StructuredData.tsx
-export default function StructuredData() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.nrt-loft.jp",
-    name: "NRT LOFT",
-    alternateName: "NRTロフト",
-    description:
-      "成田の旧釣具屋2階、DIYでリノベーションした小さな工房。木と革の名入れ品・ノベルティ・記念品を、ひとつずつ手作業で仕上げています。",
-    url: "https://www.nrt-loft.jp",
-    telephone: "",
-    email: "hello@nebulab.jp",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "JP",
-      addressRegion: "千葉県",
-      addressLocality: "成田市",
-      streetAddress: "花崎町",
-      postalCode: "286-0033",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 35.9806,
-      longitude: 140.3069,
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "08:00",
-        closes: "22:00",
-      },
-    ],
-  };
+import {
+  OPERATOR,
+  OPERATOR_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/site";
 
+function Ld({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      // JSON.stringify is safe here: no user-controlled input and no </script> sequences.
+      // JSON.stringify で組んだ静的な値のみ。ユーザー入力は入らない。
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/** トップページ用。場所(LocalBusiness)ではなくサイトとして記述する。 */
+export function WebSiteStructuredData() {
+  return (
+    <Ld
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${SITE_URL}#website`,
+        name: SITE_TITLE,
+        alternateName: SITE_NAME,
+        description: SITE_DESCRIPTION,
+        url: SITE_URL,
+        inLanguage: "ja",
+        publisher: {
+          "@type": "Organization",
+          name: OPERATOR,
+          url: OPERATOR_URL,
+        },
+      }}
+    />
+  );
+}
+
+export function ArticleStructuredData({
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  imageUrl,
+  keywords,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  imageUrl: string;
+  keywords: string[];
+}) {
+  return (
+    <Ld
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        url,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        datePublished,
+        dateModified,
+        image: [imageUrl],
+        inLanguage: "ja",
+        ...(keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
+        author: { "@type": "Organization", name: OPERATOR, url: OPERATOR_URL },
+        publisher: {
+          "@type": "Organization",
+          name: OPERATOR,
+          url: OPERATOR_URL,
+        },
+      }}
     />
   );
 }

@@ -2,9 +2,17 @@
 
 ## OGP画像
 
-`public/og-image.png` (1200×630) はダークグレー単色 (`#171717`) の**仮プレースホルダー**です。オープン前に Koki-san がデザインした正式版（ロゴ＋"OPEN FLOOR, OPEN MIND"＋"NARITA, CHIBA" を含む想定）に差し替えてください。ファイル名・サイズを維持すればコード側の修正は不要です。
+OGP 画像はビルド時に `next/og` で生成する。差し替える画像ファイルは無い。
 
-差し替え後は以下でOGP表示を検証:
+- サイト全体: `src/app/opengraph-image.tsx`
+- 記事ごと: `src/app/[category]/[slug]/opengraph-image.tsx`
+- 共通の絵柄: `src/components/og/OgCard.tsx`
+
+日本語フォントは Google Fonts から必要な文字だけを取得する
+(`src/lib/og.ts`)。取得に失敗してもビルドは止まらず、欧文フォントで
+描画される。
+
+表示の検証:
 
 - Facebook: <https://developers.facebook.com/tools/debug/>
 - X (Twitter): <https://cards-dev.twitter.com/validator>
@@ -12,7 +20,7 @@
 
 ## Resend (お問い合わせフォームのメール送信)
 
-お問い合わせフォーム (`/#contact`) は [Resend](https://resend.com/) 経由で `hello@nebulab.jp` にメール送信します。無料枠: 月3,000通 / 日100通。
+お問い合わせフォーム (`/contact`) は [Resend](https://resend.com/) 経由で `hello@nebulab.jp` にメール送信します。無料枠: 月3,000通 / 日100通。
 
 ### 1. APIキーを取得する
 

@@ -1,16 +1,22 @@
 // src/app/page.tsx
-import HeroSection from "@/components/sections/HeroSection";
-import ConceptSection from "@/components/sections/ConceptSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import HomeSidebar from "@/components/layout/HomeSidebar";
+import { WebSiteStructuredData } from "@/components/StructuredData";
+import Hero from "@/components/home/Hero";
+import LatestBuild from "@/components/home/LatestBuild";
+import Tools from "@/components/home/Tools";
+import Categories from "@/components/home/Categories";
+import LatestAboutFollow from "@/components/home/LatestAboutFollow";
+import NebulabBand from "@/components/home/NebulabBand";
 
 export default function HomePage() {
   return (
     <>
-      <HomeSidebar />
-      <HeroSection />
-      <ConceptSection />
-      <ServicesSection />
+      <WebSiteStructuredData />
+      <Hero />
+      <LatestBuild />
+      <Tools />
+      <Categories />
+      <LatestAboutFollow />
+      <NebulabBand />
     </>
   );
 }

@@ -1,113 +1,50 @@
 // src/components/layout/Footer.tsx
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import LineContactCard from "@/components/LineContactCard";
+import { OPERATOR, OPERATOR_URL } from "@/lib/site";
 
-const linkGroups = [
-  {
-    heading: "MENU",
-    items: [
-      { label: "SHOP", href: "/shop", external: false },
-      { label: "LOCAL ORDERS", href: "/contact", external: false },
-      { label: "ACCESS", href: "/access", external: false },
-      { label: "CONTACT", href: "/contact", external: false },
-    ],
-  },
-  {
-    heading: "LINKS",
-    items: [
-      { label: "NEBULAB合同会社", href: "https://www.nebulab.jp/", external: true },
-      { label: "Instagram", href: "https://www.instagram.com/nrt_loft/", external: true },
-    ],
-  },
-  {
-    heading: "LEGAL",
-    items: [
-      { label: "プライバシーポリシー", href: "/privacy", external: false },
-      { label: "利用規約", href: "/terms", external: false },
-      { label: "特定商取引法に基づく表記", href: "/commerce-law", external: false },
-    ],
-  },
+// /commerce-law はナビゲーションに出さない。ページ自体は残す。
+const links = [
+  { href: "/about", label: "ABOUT" },
+  { href: "/contact", label: "CONTACT" },
+  { href: "/privacy", label: "PRIVACY POLICY" },
 ];
 
 export default function Footer() {
   return (
-    <footer
-      className="px-5 pb-8 pt-12 md:px-12"
-      style={{ borderTop: "1px solid rgba(217,119,6,0.15)" }}
-    >
-      <div className="mx-auto max-w-[960px]">
-        {/* Top: Logo + Links */}
-        <div className="mb-10 flex flex-col items-start gap-8 md:flex-row md:flex-wrap md:justify-between">
-          <Logo scale={0.7} />
-          <div className="flex flex-wrap gap-8 md:gap-12">
-            {linkGroups.map((group) => (
-              <div key={group.heading}>
-                <div
-                  className="mb-3 text-[8px] tracking-[0.3em]"
-                  style={{ fontFamily: "var(--font-mono)", color: "#4a3a22" }}
-                >
-                  {group.heading}
-                </div>
-                {group.items.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="mb-2 block text-[9px] tracking-[0.15em] transition-colors hover:text-amber-600"
-                    style={{ fontFamily: "var(--font-mono)", color: "#6b5a3a" }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+    <footer className="border-t border-line bg-paper-alt">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-8 md:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <Link href="/" aria-label="トップページ" className="shrink-0">
+          <Logo />
+        </Link>
 
-        {/* Contact prompt — メール・LINE */}
-        <div
-          className="mb-6 flex flex-col items-start gap-2 pt-5 md:flex-row md:items-center md:gap-4"
-          style={{ borderTop: "1px solid rgba(217,119,6,0.08)" }}
+        <nav
+          className="flex flex-wrap items-center gap-x-7 gap-y-2"
+          aria-label="フッターナビゲーション"
         >
-          <span
-            className="text-[10px] tracking-[0.2em]"
-            style={{ fontFamily: "var(--font-mono)", color: "#6b5a3a" }}
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-[12px] tracking-[0.1em] text-ink-muted transition-colors hover:text-ink"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href={OPERATOR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[12px] tracking-[0.1em] text-ink-muted transition-colors hover:text-ink"
           >
-            お問い合わせ: メール・LINE どちらでも
-          </span>
-          <Link
-            href="/contact"
-            className="text-[10px] tracking-[0.2em] transition-colors hover:text-amber-500"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "#d97706",
-              borderBottom: "1px solid rgba(217,119,6,0.3)",
-            }}
-          >
-            フォーム →
-          </Link>
-          <LineContactCard variant="compact" />
-        </div>
+            運営者情報
+          </a>
+        </nav>
 
-        {/* Bottom bar */}
-        <div
-          className="flex flex-col items-center justify-between gap-2 pt-5 md:flex-row"
-          style={{ borderTop: "1px solid rgba(217,119,6,0.08)" }}
-        >
-          <span
-            className="text-[8px] tracking-[0.2em]"
-            style={{ fontFamily: "var(--font-mono)", color: "#2a1e0e" }}
-          >
-            &copy; 2026 Nebulab合同会社. ALL RIGHTS RESERVED.
-          </span>
-          <span
-            className="text-[8px] tracking-[0.15em]"
-            style={{ fontFamily: "var(--font-mono)", color: "#2a1e0e" }}
-          >
-            運営: Nebulab合同会社
-          </span>
-        </div>
+        {/* 運営主体は法人。© NRT LOFT とは書かない。 */}
+        <p className="shrink-0 text-[11.5px] text-ink-faint">
+          &copy; 2026 {OPERATOR}
+        </p>
       </div>
     </footer>
   );
