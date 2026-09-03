@@ -83,7 +83,10 @@ Vercel の環境変数、独自ドメインの DNS）は [docs/SETUP.md](./docs/
 `LOGO_IMAGE_INCLUDES_TAGLINE` を `true` のままにする。含まれていなければ
 `false` にすると、ロゴの下にタグラインの文字が入る。
 
-記事のカバー画像は frontmatter の `cover` で指定する（`cover: /images/xxx.jpg`）。
+記事のカバー画像は frontmatter の `cover` で指定する（`cover: /images/xxx.webp`）。
+
+写真は WebP（幅 1200〜1600px、quality 82）に変換して置いている。ロゴと
+カテゴリのアイコンは透過 PNG の線画で、本文色 `#2C2C2A` に塗り直してある。
 
 ヒーロー画像には**コードが映った画面を使わない**。非エンジニアが最初に見る
 画面に黒いエディタがあると、伝えたいことと正反対の印象になる。プリントの束、

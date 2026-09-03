@@ -5,13 +5,14 @@ import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 export default function Logo({ compact = false }: { compact?: boolean }) {
   if (LOGO_IMAGE) {
     return (
-      <span className="flex flex-col leading-none">
-        {/* 縦横比が素材によって変わるため、高さだけ指定して幅は自動にする */}
+      <span className="flex flex-col items-start leading-none">
+        {/* 縦横比が素材によって変わるため、高さだけ指定して幅は自動にする。
+            列方向 flex の中では align-items: stretch で横に伸びるので self-start を付ける。 */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={LOGO_IMAGE}
           alt={SITE_NAME}
-          className="w-auto"
+          className="w-auto max-w-full self-start"
           style={{ height: compact ? 22 : 34 }}
         />
         {!compact && !LOGO_IMAGE_INCLUDES_TAGLINE && (
@@ -24,7 +25,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <span className="flex flex-col leading-none">
+    <span className="flex flex-col items-start leading-none">
       <span
         className="font-heading font-bold tracking-[0.12em] text-ink"
         style={{ fontSize: compact ? "1rem" : "1.125rem" }}

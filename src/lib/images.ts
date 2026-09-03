@@ -5,19 +5,21 @@
 // undefined のあいだは、その画像を使う箇所が描画されない（もしくは
 // プレースホルダのまま）ので、素材が揃う前でも壊れない。
 
-/** ヒーローの画像。コードが映った画面は使わない（生活側のものを使う）。 */
-export const HERO_IMAGE = "/images/hero-placeholder.svg";
+/**
+ * ヒーローの画像。コードが映った画面は使わない（生活側のものを使う）。
+ * 手書きの買い物メモと、自分で作ったアプリが並んでいる写真。
+ */
+export const HERO_IMAGE = "/images/hero.webp";
 
-/** ABOUT ページに置く外観写真。未設定なら写真の枠ごと出さない。 */
-export const ABOUT_IMAGE: string | undefined = undefined;
+/** ABOUT に置く外観写真。未設定なら写真の枠ごと出さない。 */
+export const ABOUT_IMAGE: string | undefined = "/images/about-storefront.webp";
 
-/** ABOUT 写真の説明。ABOUT_IMAGE を設定するときは一緒に書く。 */
-export const ABOUT_IMAGE_ALT = "NRT LOFT の外観";
+export const ABOUT_IMAGE_ALT = "NRT LOFT の外観。成田・花崎町の旧釣具屋2階";
 
 /**
  * ロゴ画像。未設定のあいだは文字組みのロゴを使う。
- * 画像にタグライン（OPEN FLOOR, OPEN MIND）が含まれている場合は
- * LOGO_IMAGE_INCLUDES_TAGLINE を true にして、文字の重複を避ける。
+ * この画像はタグライン（OPEN FLOOR, OPEN MIND）を含むので、
+ * 文字のタグラインは重ねて出さない。
  */
-export const LOGO_IMAGE: string | undefined = undefined;
+export const LOGO_IMAGE: string | undefined = "/images/nrt-loft-logo.png";
 export const LOGO_IMAGE_INCLUDES_TAGLINE = true;

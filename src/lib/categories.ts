@@ -16,11 +16,14 @@ export type CategoryMeta = {
    * こことマーカーだけ。
    */
   accent: string;
+  /** カテゴリのアイコン画像（透過 PNG の線画） */
+  icon: string;
 };
 
 export const CATEGORY_META: Record<Category, CategoryMeta> = {
   build: {
     slug: "build",
+    icon: "/images/icon-build.png",
     accent: "#f4e6c9",
     label: "BUILD",
     heading: "作ったもの",
@@ -28,6 +31,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   },
   learn: {
     slug: "learn",
+    icon: "/images/icon-learn.png",
     accent: "#dde8db",
     label: "LEARN",
     heading: "作って分かったこと",
@@ -35,6 +39,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   },
   toolkit: {
     slug: "toolkit",
+    icon: "/images/icon-toolkit.png",
     accent: "#d9e3ee",
     label: "TOOLKIT",
     heading: "使っている道具",
@@ -42,6 +47,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   },
   journey: {
     slug: "journey",
+    icon: "/images/icon-journey.png",
     accent: "#f2ddd4",
     label: "JOURNEY",
     heading: "活動の記録",
