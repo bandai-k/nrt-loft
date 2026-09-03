@@ -4,7 +4,7 @@ import Hero from "@/components/home/Hero";
 import LatestBuild from "@/components/home/LatestBuild";
 import Tools from "@/components/home/Tools";
 import Categories from "@/components/home/Categories";
-import LatestAndAbout from "@/components/home/LatestAndAbout";
+import LatestAboutFollow from "@/components/home/LatestAboutFollow";
 import NebulabBand from "@/components/home/NebulabBand";
 
 export default function HomePage() {
@@ -15,7 +15,7 @@ export default function HomePage() {
       <LatestBuild />
       <Tools />
       <Categories />
-      <LatestAndAbout />
+      <LatestAboutFollow />
       <NebulabBand />
     </>
   );

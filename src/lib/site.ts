@@ -18,6 +18,9 @@ export const CONTACT_EMAIL = "hello@nebulab.jp";
 // 未確定のあいだは undefined のままにしておくと、YouTube への導線は描画されない。
 export const YOUTUBE_URL: string | undefined = undefined;
 
+// TODO: アカウントが決まったら URL を入れる。undefined のあいだは導線を出さない。
+export const X_URL: string | undefined = undefined;
+
 export const RSS_PATH = "/rss.xml";
 
 /** サイト全体で統一する CTA 文言。「記事を見る」とは混在させない。 */

@@ -26,11 +26,22 @@
   --header-height: 72px;
   /* 本文の行長。全角40字程度に収める */
   --measure: 40em;
+  /* 中央寄せコンテナの最大幅。ヒーローの片側フルブリードで基準に使う */
+  --container: 1200px;
+  --hero-gutter: 1.25rem;
 }
 
 @media (min-width: 768px) {
   :root {
     --header-height: 84px;
+    --hero-gutter: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* 画面が広いときは中央寄せコンテナの左端に文字の頭を揃える */
+    --hero-gutter: max(2rem, calc((100vw - var(--container)) / 2 + 2rem));
   }
 }
 

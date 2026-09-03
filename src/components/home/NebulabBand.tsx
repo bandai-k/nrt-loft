@@ -4,7 +4,7 @@ import { OPERATOR_URL } from "@/lib/site";
 export default function NebulabBand() {
   return (
     <section className="border-t border-line bg-surface">
-      <div className="mx-auto flex max-w-[1120px] flex-col gap-5 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8 md:py-12">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-5 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8 md:py-12">
         <div>
           <h2 className="text-[17px]">本格的に開発したい方へ</h2>
           <p className="mt-1.5 text-[14px] leading-[1.9] text-ink-muted">

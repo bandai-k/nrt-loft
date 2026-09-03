@@ -34,7 +34,7 @@ export default function AboutPage() {
         lead="場所の名前であり、そこで行われている活動の名前です。"
       />
 
-      <section className="mx-auto max-w-[1120px] px-5 py-12 md:px-8 md:py-16">
+      <section className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
         {ABOUT_IMAGE && (
           <CoverImage
             src={ABOUT_IMAGE}

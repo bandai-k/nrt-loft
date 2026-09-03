@@ -69,7 +69,7 @@ export default async function PostPage({ params }: Props) {
   const url = `${SITE_URL}/${category}/${slug}`;
 
   return (
-    <div className="mx-auto max-w-[1120px] px-5 py-10 md:px-8 md:py-14">
+    <div className="mx-auto max-w-[1200px] px-5 py-10 md:px-8 md:py-14">
       <ArticleStructuredData
         title={post.title}
         description={post.description}

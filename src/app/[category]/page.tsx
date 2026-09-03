@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <PageHeader title={meta.heading} lead={meta.description} />
 
-      <section className="mx-auto max-w-[1120px] px-5 py-12 md:px-8 md:py-16">
+      <section className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
         {posts.length === 0 ? (
           <p className="text-[14px] leading-[1.95] text-ink-muted">
             このカテゴリの記事はまだありません。準備ができ次第、ここに並びます。

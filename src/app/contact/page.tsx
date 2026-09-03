@@ -25,7 +25,7 @@ export default function ContactPage() {
         title="お問い合わせ"
         lead="記事への感想・質問、取材のご連絡はこちらからどうぞ。内容を確認のうえ、必要に応じてご返信します。"
       />
-      <section className="mx-auto max-w-[1120px] px-5 py-12 md:px-8 md:py-16">
+      <section className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
         <ContactForm />
         <p className="mt-10 max-w-[34em] text-[13px] leading-[1.95] text-ink-muted">
           フォームがうまく動かない場合は{" "}
