@@ -87,12 +87,22 @@ Vercel に登録するのは、`.env` に書き込まれたこの 4 つ。**名�
 | `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | GitHub App の slug（`github` という文字列ではない） |
 
 `NEXT_PUBLIC_KEYSTATIC_STORAGE` は Vercel に登録しなくてよい。
-本番かどうかは `NODE_ENV` で自動的に判定される。
+GitHub モードになるのは「本番のビルドで、かつ
+`NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` が入っているとき」だけで、自動的に決まる。
 
-GitHub モードは上の 3 つ（slug 以外）が揃っていないとビルドが落ちる。
-値が揃うまで本番のビルドを通したい場合だけ、逃げ道として Vercel に
-`NEXT_PUBLIC_KEYSTATIC_STORAGE=local` を登録するとローカルモードでビルドできる
-（その状態では管理画面から保存はできない）。
+| 場面 | モード |
+|---|---|
+| 手元の `npm run dev` | local |
+| Vercel の Preview（変数を入れていない） | local |
+| Vercel の Production（4つを入れてある） | github |
+
+Preview に変数を入れないままでもビルドが落ちないのは、この判定のため。
+`KEYSTATIC_GITHUB_CLIENT_ID` / `_CLIENT_SECRET` / `KEYSTATIC_SECRET` が
+無い状態で GitHub モードに入るとビルドが落ちるので、
+**4 つはまとめて登録する**（slug だけ入れると落ちる）。
+
+どうしても手で切り替えたいときだけ `NEXT_PUBLIC_KEYSTATIC_STORAGE` に
+`local` / `github` を入れる。
 
 `.env` と `.env.local` は git 管理外なので、値がリポジトリに入ることはない。
 
