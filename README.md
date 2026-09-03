@@ -73,11 +73,12 @@ Vercel の環境変数、独自ドメインの DNS）は [docs/SETUP.md](./docs/
 画像は `public/images/` に置き、`src/lib/images.ts` のパスを差し替える。
 未設定のあいだはその箇所が描画されないので、素材が揃う前でも表示は壊れない。
 
-| 用途 | 置き場所の例 | 触る定数 |
+| 用途 | ファイル | 触る定数 |
 |---|---|---|
-| ヒーロー画像 | `public/images/hero.jpg` | `HERO_IMAGE` |
-| ABOUT の外観写真 | `public/images/about-storefront.jpg` | `ABOUT_IMAGE` / `ABOUT_IMAGE_ALT` |
-| ロゴ | `public/images/nrt-loft-logo.svg` | `LOGO_IMAGE` |
+| ヒーロー画像 | `public/images/hero.webp` | `HERO_IMAGE` |
+| ABOUT の外観写真 | `public/images/about-storefront.webp` | `ABOUT_IMAGE` / `ABOUT_IMAGE_ALT` |
+| ロゴ | `public/images/nrt-loft-logo.png` | `LOGO_IMAGE` |
+| カテゴリのアイコン | `public/images/icon-<category>.png` | `src/lib/categories.ts` の `icon` |
 
 ロゴ画像にタグライン（OPEN FLOOR, OPEN MIND）が含まれている場合は
 `LOGO_IMAGE_INCLUDES_TAGLINE` を `true` のままにする。含まれていなければ
