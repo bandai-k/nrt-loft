@@ -65,15 +65,22 @@ npm run dev
 
 GitHub App が要る。手順は一度だけ。
 
-1. 手元で `npm run dev` して `http://localhost:3000/keystatic` を開く
-2. 画面の案内にしたがって GitHub App を作る。`.env` に3つの値が書き込まれる
+1. `.env.local` を作り、`NEXT_PUBLIC_KEYSTATIC_STORAGE=github` の 1 行を書く
+2. `npm run dev` して **`http://localhost:3000/keystatic/setup`** を開く
+   （`/keystatic` はログイン画面になるだけ。セットアップはこの URL）
+3. 「Deployed App URL」に `https://www.nrt-loft.jp` を入れる。
+   組織の欄は空のままでよい（個人アカウントに作られる）
+4. 「Create GitHub App」を押す。GitHub 側で作成すると戻ってきて、
+   `.env` に 3 つの値が書き込まれる
    （`KEYSTATIC_GITHUB_CLIENT_ID` / `KEYSTATIC_GITHUB_CLIENT_SECRET` / `KEYSTATIC_SECRET`）
-3. その3つを Vercel の環境変数に登録する
-4. あわせて `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` を登録する
-5. 再デプロイすると `/keystatic` で GitHub ログインが出る
+5. その 3 つと `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` を Vercel の環境変数に登録する
+6. 再デプロイすると `/keystatic` で GitHub ログインが通る
+
+`.env` と `.env.local` は git 管理外なので、値がリポジトリに入ることはない。
+手元を GitHub App なしのモードに戻したいときは `.env.local` を消す。
 
 `NEXT_PUBLIC_KEYSTATIC_STORAGE` を入れるまでは GitHub モードにならない。
-3つの値が無い状態で GitHub モードにするとビルドが落ちるため、
+3 つの値が無い状態で GitHub モードにするとビルドが落ちるため、
 明示的に切り替える形にしてある。
 
 管理画面は `robots.txt` で検索避けしてある。
