@@ -1,10 +1,12 @@
 // src/app/privacy/page.tsx
 import { Metadata } from "next";
 import LegalPageLayout from "@/components/ui/LegalPageLayout";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | NRT LOFT",
-  description: "NRT LOFTのプライバシーポリシーをご確認いただけます。",
+  title: "プライバシーポリシー",
+  description: "NRT LOFT のプライバシーポリシーをご確認いただけます。",
+  alternates: { canonical: `${SITE_URL}/privacy` },
 };
 
 export default function PrivacyPage() {

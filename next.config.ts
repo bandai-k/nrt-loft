@@ -2,13 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   async redirects() {
+    // 場所としての機能（工房・ショップ・受注・来訪）の停止に伴う恒久リダイレクト。
+    // permanent: true は 308 になるため、301 を明示する。
     return [
-      // 場所としての機能（工房・ショップ・受注・来訪）の停止に伴う恒久リダイレクト
-      { source: "/shop", destination: "/", permanent: true },
-      { source: "/access", destination: "/about", permanent: true },
-      { source: "/pricing", destination: "/", permanent: true },
-      { source: "/usage", destination: "/", permanent: true },
-      { source: "/reservation", destination: "/contact", permanent: true },
+      { source: "/shop", destination: "/", statusCode: 301 },
+      { source: "/access", destination: "/about", statusCode: 301 },
+      { source: "/pricing", destination: "/", statusCode: 301 },
+      { source: "/usage", destination: "/", statusCode: 301 },
+      { source: "/reservation", destination: "/contact", statusCode: 301 },
     ];
   },
 };

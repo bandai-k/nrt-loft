@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NRT LOFT
 
-## Getting Started
+AIで自分のための道具をつくる活動を発信するサイト。Next.js (App Router) + Tailwind CSS v4。
 
-First, run the development server:
+## 開発
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 記事を書く
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+記事は `content/<category>/<slug>.mdx` に置く。CMS は使わない。
+`content/` 直下のディレクトリ名がそのままカテゴリ、ファイル名が URL の slug になる
+（`content/build/foo.mdx` → `/build/foo`）。
 
-## Environment variables
+カテゴリは `build` / `learn` / `toolkit` / `journey` の4つ。増やすときは
+`src/lib/categories.ts` に定義を足す。
 
-The contact form at `/#contact` requires [Resend](https://resend.com/) credentials. Copy `.env.example` to `.env.local` and set `RESEND_API_KEY`. See [docs/SETUP.md](./docs/SETUP.md) for the full setup (API key, Vercel env vars, custom-domain DNS records).
+### frontmatter
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```yaml
+---
+title: "学校のプリントが処理しきれないので、撮るだけで予定になるツールを作った"
+description: "提出期限・持ち物・行事を自動で整理して、カレンダーにも登録する"
+category: build          # 置き場所のディレクトリ名と一致させる
+date: 2026-09-10
+updated: 2026-09-12      # 任意
+cover: /images/build-04.jpg
+tags: ["OCR", "カレンダー連携", "Claude Code", "Next.js"]
+tools: ["Claude Code"]   # 任意。使用したAI
+youtube: "xxxxxxxxxxx"   # 任意。動画ID。あると本文の前に埋め込まれる
+draft: false             # true は本番ビルドから除外される（開発中は表示）
+---
+```
 
-## Learn More
+`title` / `description` / `category` / `date` は必須。`category` が置き場所と
+食い違っていると、ビルドが理由付きで落ちる。
 
-To learn more about Next.js, take a look at the following resources:
+本文の見出し（`##` / `###`）から目次が自動生成される。コードブロックには
+コピーボタンが付くので、プロンプトはそのまま貼ってよい。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 設定の置き場所
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| やりたいこと | 触るファイル |
+|---|---|
+| サイト名・説明・YouTube の URL・CTA 文言 | `src/lib/site.ts` |
+| カテゴリの追加と説明文 | `src/lib/categories.ts` |
+| 配色・書体・本文の組版 | `src/app/globals.css` |
+| リダイレクト | `next.config.ts` |
 
-## Deploy on Vercel
+YouTube チャンネルの URL は未確定のため `YOUTUBE_URL` を `undefined` にしてある。
+値を入れると、ヘッダー・フッター・ヒーローの YouTube 導線が現れる。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 環境変数
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+お問い合わせフォームは [Resend](https://resend.com/) を使う。`.env.example` を
+`.env.local` にコピーして `RESEND_API_KEY` を設定する。詳しい手順（API キー、
+Vercel の環境変数、独自ドメインの DNS）は [docs/SETUP.md](./docs/SETUP.md) を参照。
+
+## 配信
+
+- `/rss.xml` — 全カテゴリの記事フィード
+- `/sitemap.xml` — 記事から自動生成
+- OGP 画像 — 記事ごとに `next/og` でビルド時に生成する。日本語フォントは
+  Google Fonts から必要な文字だけ取得する（取得に失敗してもビルドは止まらない）

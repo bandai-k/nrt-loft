@@ -1,10 +1,12 @@
 // src/app/terms/page.tsx
 import { Metadata } from "next";
 import LegalPageLayout from "@/components/ui/LegalPageLayout";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "利用規約 | NRT LOFT",
-  description: "NRT LOFTの利用規約をご確認いただけます。",
+  title: "利用規約",
+  description: "NRT LOFT の利用規約をご確認いただけます。",
+  alternates: { canonical: `${SITE_URL}/terms` },
 };
 
 export default function TermsPage() {

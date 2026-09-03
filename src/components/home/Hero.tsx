@@ -7,10 +7,14 @@ import { YouTubeIcon } from "@/components/ui/Icons";
 export default function Hero() {
   return (
     <section className="mx-auto max-w-[1120px] px-5 py-14 md:px-8 md:py-20">
-      <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+      <div className="grid items-center gap-10 md:grid-cols-[1.15fr_1fr] md:gap-14">
         <div>
           {/* アイキャッチ上の英字ラベルは置かない。見出しから始める。 */}
-          <h1 className="rise-in text-[27px] leading-[1.62] tracking-[0.01em] md:text-[40px]">
+          <h1
+            className="rise-in leading-[1.62] tracking-[0.01em]"
+            // 指定した位置以外で折り返さないよう、桁数に合わせて字送りを可変にする
+            style={{ fontSize: "clamp(22px, 3.4vw, 38px)" }}
+          >
             欲しいものが無かったので、
             <br />
             <span className="marker">自分で作ることにした。</span>

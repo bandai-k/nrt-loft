@@ -11,7 +11,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
         {SITE_NAME}
       </span>
       {!compact && (
-        <span className="mt-1 text-[9px] tracking-[0.28em] text-ink-faint">
+        <span className="mt-1 whitespace-nowrap text-[9px] tracking-[0.28em] text-ink-faint">
           {SITE_TAGLINE}
         </span>
       )}

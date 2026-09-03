@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Nebulab合同会社" }],
   creator: "Nebulab合同会社",
   publisher: "Nebulab合同会社",
-  icons: { icon: "/favicon.ico" },
   openGraph: {
     type: "website",
     locale: "ja_JP",

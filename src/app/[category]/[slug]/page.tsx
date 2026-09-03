@@ -7,6 +7,7 @@ import ArticleFooterCta from "@/components/article/ArticleFooterCta";
 import TableOfContents from "@/components/article/TableOfContents";
 import YouTubeEmbed from "@/components/article/YouTubeEmbed";
 import CoverImage from "@/components/CoverImage";
+import { ArticleStructuredData } from "@/components/StructuredData";
 import MdxContent from "@/components/mdx/MdxContent";
 import { CATEGORIES, CATEGORY_META, isCategory } from "@/lib/categories";
 import { formatDate } from "@/lib/format";
@@ -62,9 +63,22 @@ export default async function PostPage({ params }: Props) {
   const toc = buildToc(post.body);
   const { newer, older } = getAdjacentPosts(category, slug);
   const categoryMeta = CATEGORY_META[category];
+  // 同じ語が tools と tags の両方にあるとチップが二重に出るので、tools を優先する
+  const tags = post.tags.filter((tag) => !post.tools.includes(tag));
+
+  const url = `${SITE_URL}/${category}/${slug}`;
 
   return (
     <div className="mx-auto max-w-[1120px] px-5 py-10 md:px-8 md:py-14">
+      <ArticleStructuredData
+        title={post.title}
+        description={post.description}
+        url={url}
+        datePublished={post.date}
+        dateModified={post.updated ?? post.date}
+        imageUrl={`${url}/opengraph-image`}
+        keywords={[...post.tags, ...post.tools]}
+      />
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_224px] lg:gap-14">
         <article>
           <header className="mb-8">
@@ -93,7 +107,7 @@ export default async function PostPage({ params }: Props) {
               {post.description}
             </p>
 
-            {(post.tags.length > 0 || post.tools.length > 0) && (
+            {(tags.length > 0 || post.tools.length > 0) && (
               <ul className="mt-5 flex flex-wrap gap-2">
                 {post.tools.map((tool) => (
                   <li
@@ -103,7 +117,7 @@ export default async function PostPage({ params }: Props) {
                     {tool}
                   </li>
                 ))}
-                {post.tags.map((tag) => (
+                {tags.map((tag) => (
                   <li
                     key={`tag-${tag}`}
                     className="rounded-full border border-line-strong px-2.5 py-1 text-[11px] text-ink-muted"

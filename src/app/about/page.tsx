@@ -14,7 +14,7 @@ const description =
   "NRT LOFT は、成田の旧釣具屋2階にある小さな場所の名前であり、そこで行われている活動の名前です。運営は Nebulab合同会社。";
 
 export const metadata: Metadata = {
-  title: "NRT LOFT について",
+  title: { absolute: "NRT LOFT について｜AIで自分のための道具をつくる" },
   description,
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
