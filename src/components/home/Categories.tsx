@@ -23,9 +23,9 @@ export default function Categories() {
               </p>
               <Link
                 href={`/${c.slug}`}
-                className="link-underline mt-4 inline-flex items-center gap-1.5 text-[12.5px]"
+                className="link-underline mt-4 inline-flex items-center gap-1.5 whitespace-nowrap text-[12.5px]"
               >
-                {c.heading}を見る
+                {c.linkLabel}
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </div>

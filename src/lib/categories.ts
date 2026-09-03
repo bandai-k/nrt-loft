@@ -18,12 +18,18 @@ export type CategoryMeta = {
   accent: string;
   /** カテゴリのアイコン画像（透過 PNG の線画） */
   icon: string;
+  /**
+   * カテゴリ帯のリンク文言。見出しから機械的に作ると長さが不揃いになり、
+   * 中間の幅で折り返して矢印だけが行末に残るので、短く揃えて持たせる。
+   */
+  linkLabel: string;
 };
 
 export const CATEGORY_META: Record<Category, CategoryMeta> = {
   build: {
     slug: "build",
     icon: "/images/icon-build.png",
+    linkLabel: "作ったものを見る",
     accent: "#f4e6c9",
     label: "BUILD",
     heading: "作ったもの",
@@ -32,6 +38,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   learn: {
     slug: "learn",
     icon: "/images/icon-learn.png",
+    linkLabel: "学んだことを見る",
     accent: "#dde8db",
     label: "LEARN",
     heading: "作って分かったこと",
@@ -40,6 +47,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   toolkit: {
     slug: "toolkit",
     icon: "/images/icon-toolkit.png",
+    linkLabel: "道具を見る",
     accent: "#d9e3ee",
     label: "TOOLKIT",
     heading: "使っている道具",
@@ -48,6 +56,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
   journey: {
     slug: "journey",
     icon: "/images/icon-journey.png",
+    linkLabel: "記録を見る",
     accent: "#f2ddd4",
     label: "JOURNEY",
     heading: "活動の記録",
