@@ -1,8 +1,9 @@
 // src/app/layout.tsx
+// ルートレイアウトは html / body とフォント、サイト全体のメタデータだけを持つ。
+// ヘッダーとフッターは (site) 側に置いてあるので、
+// 管理画面 /keystatic はサイトの外枠に挟まれない。
 import "./globals.css";
 import type { Metadata } from "next";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { fontBody, fontHeading } from "@/lib/fonts";
 import { RSS_PATH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
@@ -56,19 +57,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${fontHeading.variable} ${fontBody.variable}`}
     >
-      <body className="flex min-h-screen flex-col">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
-        >
-          本文へスキップ
-        </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
