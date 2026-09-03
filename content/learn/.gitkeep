@@ -1,0 +1,1 @@
+このディレクトリに <slug>.mdx を置くと記事になります。frontmatter の書式は src/lib/posts.ts を参照。
