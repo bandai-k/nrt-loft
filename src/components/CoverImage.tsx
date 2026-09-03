@@ -30,6 +30,8 @@ export default function CoverImage({
         fill
         sizes={sizes}
         priority={priority}
+        // SVG は画像最適化を通さない(既定では最適化サーバーが SVG を拒否する)
+        unoptimized={src.endsWith(".svg")}
         className="object-cover"
       />
     </div>
