@@ -45,9 +45,14 @@ export default function LatestBuild() {
 
               {/* 最新1本の見出しと説明 */}
               <div className="lg:pt-1">
-                <span className="text-[11px] font-medium tracking-[0.18em] text-ink-muted">
-                  BUILD
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] font-medium tracking-[0.18em] text-ink-muted">
+                    BUILD
+                  </span>
+                  <time dateTime={lead.date} className="text-[12px] text-ink-faint">
+                    {formatDate(lead.date)}
+                  </time>
+                </div>
                 <h3 className="mt-2 text-[19px] leading-[1.62] md:text-[21px]">
                   <Link
                     href={`/build/${lead.slug}`}
@@ -97,7 +102,7 @@ export default function LatestBuild() {
                             <span className="text-[10.5px] font-medium tracking-[0.18em] text-ink-faint">
                               BUILD
                             </span>
-                            <h3 className="mt-1 line-clamp-2 text-[13.5px] leading-[1.72] transition-colors group-hover:text-ink-muted">
+                            <h3 className="mt-1 line-clamp-3 text-[13.5px] leading-[1.72] transition-colors group-hover:text-ink-muted">
                               {post.title}
                             </h3>
                             <time
