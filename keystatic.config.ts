@@ -82,15 +82,28 @@ function postCollection(category: string, label: string) {
 }
 
 /**
- * GitHub モードは KEYSTATIC_GITHUB_CLIENT_ID / _CLIENT_SECRET / KEYSTATIC_SECRET が
- * 揃っていないとビルドが落ちる。GitHub App を用意する前でもデプロイできるよう、
- * 明示的に切り替える形にしてある。
+ * GitHub モードにするのは「本番のビルドで、GitHub App の値が入っているとき」だけ。
  *
- * 判定に NEXT_PUBLIC_ を使うのは、この設定を管理画面（ブラウザ側）と
- * API ルート（サーバー側）の両方が読むため。サーバー専用の変数だと
- * ブラウザ側では undefined になり、両者の認識がずれる。
+ * 判定に NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG の有無を使う。これは Keystatic が
+ * セットアップ時に他の3つと一緒に書き出す変数なので、こちらで管理する変数を
+ * 増やさずに済む。NEXT_PUBLIC_ なので管理画面（ブラウザ側）と API ルート
+ * （サーバー側）の両方から同じ値が見え、両者の認識がずれない。
+ *
+ * この形にしておくと、資格情報を Production だけに入れている構成でも
+ * Preview のビルドが落ちない（Preview では値が無いので local モードになる）。
+ * GitHub モードは残り3つが無いとビルドが落ちるため、
+ * 値の有無と関係なく本番=GitHub と決め打ちにはできない。
+ *
+ * NEXT_PUBLIC_KEYSTATIC_STORAGE に "local" / "github" を入れると明示的に上書きできる。
  */
-const useGitHubStorage = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
+const storageOverride = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE;
+const useGitHubStorage =
+  storageOverride === "github"
+    ? true
+    : storageOverride === "local"
+      ? false
+      : process.env.NODE_ENV === "production" &&
+        Boolean(process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG);
 
 export default config({
   storage: useGitHubStorage
