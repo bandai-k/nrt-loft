@@ -108,7 +108,9 @@ function byDateDesc(a: PostSummary, b: PostSummary): number {
   return a.slug.localeCompare(b.slug);
 }
 
-function stripBody({ body: _body, ...summary }: Post): PostSummary {
+function stripBody(post: Post): PostSummary {
+  const { body, ...summary } = post;
+  void body;
   return summary;
 }
 

@@ -1,139 +1,168 @@
 // src/components/layout/Header.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import useIsMobile from "@/hooks/useIsMobile";
+import { RssIcon, YouTubeIcon } from "@/components/ui/Icons";
+import { CATEGORY_LIST } from "@/lib/categories";
+import { CTA_LABEL, RSS_PATH, SITE_NAME, YOUTUBE_URL } from "@/lib/site";
 
 const navLinks = [
-  { href: "/shop", label: "SHOP" },
-  { href: "/contact", label: "LOCAL ORDERS" },
-  { href: "/access", label: "ACCESS" },
-  { href: "/contact", label: "CONTACT" },
+  ...CATEGORY_LIST.map((c) => ({ href: `/${c.slug}`, label: c.label })),
+  { href: "/about", label: "ABOUT" },
 ];
 
 export default function Header() {
-  const [scrollY, setScrollY] = useState(0);
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
 
+  // メニューを開いているあいだは背面をスクロールさせない
   useEffect(() => {
-    let lastY = window.scrollY;
-    const handleScroll = () => {
-      const y = window.scrollY;
-      setScrollY(y);
-      if (y < 80) {
-        setHidden(false);
-      } else if (y > lastY + 4) {
-        setHidden(true);
-      } else if (y < lastY - 4) {
-        setHidden(false);
-      }
-      lastY = y;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
+  // Esc で閉じる
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   return (
-    <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-5 py-4 transition-all duration-300 md:px-12"
-        style={{
-          background: `rgba(14,11,6,${Math.min(0.95, scrollY / 150)})`,
-          borderBottom: scrollY > 40 ? "1px solid rgba(217,119,6,0.12)" : "none",
-          backdropFilter: "blur(8px)",
-          height: "var(--header-height)",
-          transform: hidden && !menuOpen ? "translateY(-100%)" : "translateY(0)",
-        }}
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
+      <div
+        className="mx-auto flex max-w-[1120px] items-center justify-between gap-6 px-5 md:px-8"
+        style={{ height: "var(--header-height)" }}
       >
-        <Link href="/">
-          <Logo scale={isMobile ? 0.8 : 1.1} />
+        <Link href="/" aria-label={`${SITE_NAME} トップページ`}>
+          <Logo />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="メインナビゲーション">
           {navLinks.map(({ href, label }) => (
-            <a key={label} href={href} className="nav-link">
+            <Link
+              key={label}
+              href={href}
+              className="text-[12px] tracking-[0.16em] text-ink-muted transition-colors hover:text-ink"
+            >
               {label}
-            </a>
+            </Link>
           ))}
-        </div>
+        </nav>
 
-        {/* Hamburger button (mobile) */}
-        {isMobile && (
+        <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-1 sm:flex">
+            {YOUTUBE_URL && (
+              <a
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube チャンネル"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-surface hover:text-ink"
+              >
+                <YouTubeIcon className="h-[18px] w-[18px]" />
+              </a>
+            )}
+            <a
+              href={RSS_PATH}
+              aria-label="RSS フィード"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-surface hover:text-ink"
+            >
+              <RssIcon className="h-[17px] w-[17px]" />
+            </a>
+          </div>
+
+          <Link href="/build" className="btn btn-primary btn-sm hidden md:inline-flex">
+            {CTA_LABEL}
+          </Link>
+
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
             aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}
-            className="relative z-[110] flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden"
           >
             <span
-              className="block h-[1.5px] w-5 transition-all duration-300"
-              style={{
-                background: "#d97706",
-                transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none",
-              }}
+              className="block h-[1.5px] w-5 bg-ink transition-transform duration-200"
+              style={{ transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : undefined }}
             />
             <span
-              className="block h-[1.5px] w-5 transition-all duration-300"
-              style={{
-                background: "#d97706",
-                opacity: menuOpen ? 0 : 1,
-              }}
+              className="block h-[1.5px] w-5 bg-ink transition-opacity duration-200"
+              style={{ opacity: menuOpen ? 0 : 1 }}
             />
             <span
-              className="block h-[1.5px] w-5 transition-all duration-300"
-              style={{
-                background: "#d97706",
-                transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none",
-              }}
+              className="block h-[1.5px] w-5 bg-ink transition-transform duration-200"
+              style={{ transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : undefined }}
             />
           </button>
-        )}
-      </nav>
+        </div>
+      </div>
 
-      {/* Mobile menu overlay */}
-      {isMobile && (
+      {menuOpen && (
         <div
-          className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 transition-all duration-300"
-          style={{
-            background: "rgba(14,11,6,0.97)",
-            backdropFilter: "blur(12px)",
-            opacity: menuOpen ? 1 : 0,
-            pointerEvents: menuOpen ? "auto" : "none",
-          }}
+          id="mobile-menu"
+          className="border-t border-line bg-paper lg:hidden"
         >
-          {navLinks.map(({ href, label }) => (
-            <a
-              key={label}
-              href={href}
+          <nav className="mx-auto max-w-[1120px] px-5 py-4 md:px-8" aria-label="メインナビゲーション">
+            {CATEGORY_LIST.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/${c.slug}`}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-3 border-b border-line py-3"
+              >
+                <span className="w-[72px] shrink-0 text-[12px] tracking-[0.16em] text-ink">
+                  {c.label}
+                </span>
+                <span className="text-[13px] text-ink-muted">{c.heading}</span>
+              </Link>
+            ))}
+            <Link
+              href="/about"
               onClick={() => setMenuOpen(false)}
-              className="text-[24px] tracking-[0.15em] transition-colors hover:text-amber-500"
-              style={{
-                fontFamily: "var(--font-heading)",
-                color: "#c8bfa8",
-              }}
+              className="flex items-baseline gap-3 border-b border-line py-3"
             >
-              {label}
-            </a>
-          ))}
+              <span className="w-[72px] shrink-0 text-[12px] tracking-[0.16em] text-ink">
+                ABOUT
+              </span>
+              <span className="text-[13px] text-ink-muted">NRT LOFT と運営者について</span>
+            </Link>
+
+            <div className="flex flex-wrap items-center gap-3 pt-4">
+              <Link
+                href="/build"
+                onClick={() => setMenuOpen(false)}
+                className="btn btn-primary btn-sm"
+              >
+                {CTA_LABEL}
+              </Link>
+              {YOUTUBE_URL && (
+                <a
+                  href={YOUTUBE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                >
+                  <YouTubeIcon className="h-4 w-4" />
+                  YouTube
+                </a>
+              )}
+              <a href={RSS_PATH} className="btn btn-secondary btn-sm">
+                <RssIcon className="h-4 w-4" />
+                RSS
+              </a>
+            </div>
+          </nav>
         </div>
       )}
-    </>
+    </header>
   );
 }

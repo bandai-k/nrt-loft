@@ -1,59 +1,34 @@
-// app/layout.tsx
+// src/app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import GrainOverlay from "@/components/ui/GrainOverlay";
-import StructuredData from "@/components/StructuredData";
+import { fontBody, fontHeading } from "@/lib/fonts";
+import { RSS_PATH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.nrt-loft.jp"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "NRT LOFT | 成田の小さな工房・ショップ",
-    template: "%s | NRT LOFT",
+    default: SITE_TITLE,
+    template: `%s｜${SITE_NAME}`,
   },
-  description:
-    "成田の旧釣具屋2階、DIYでリノベーションした小さな工房。木と革の名入れ品・ノベルティ・記念品を、ひとつずつ手作業で仕上げています。",
-  keywords: [
-    "成田 工房",
-    "成田 名入れ",
-    "成田 ノベルティ",
-    "成田 記念品",
-    "成田 ハンドメイド",
-    "成田 ギフト",
-    "NRT LOFT",
-    "成田 お土産",
-    "漢字 木札",
-  ],
-  authors: [{ name: "NEBULAB" }],
-  creator: "NEBULAB",
-  publisher: "NEBULAB",
-  icons: {
-    icon: "/nrt-loft-symbol-dark.svg",
-  },
+  description: SITE_DESCRIPTION,
+  authors: [{ name: "Nebulab合同会社" }],
+  creator: "Nebulab合同会社",
+  publisher: "Nebulab合同会社",
+  icons: { icon: "/favicon.ico" },
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "https://www.nrt-loft.jp",
-    siteName: "NRT LOFT",
-    title: "NRT LOFT | 成田の小さな工房・ショップ",
-    description:
-      "成田の旧釣具屋2階、小さな工房。間の時間に、形に残るものを。",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "NRT LOFT - OPEN FLOOR, OPEN MIND",
-      },
-    ],
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "NRT LOFT | 成田の小さな工房・ショップ",
-    description:
-      "成田の旧釣具屋2階、小さな工房。間の時間に、形に残るものを。",
-    images: ["/og-image.png"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -66,7 +41,8 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.nrt-loft.jp",
+    canonical: SITE_URL,
+    types: { "application/rss+xml": `${SITE_URL}${RSS_PATH}` },
   },
 };
 
@@ -76,20 +52,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" data-scroll-behavior="smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+JP:wght@300;400&display=swap"
-          rel="stylesheet"
-        />
-        <StructuredData />
-      </head>
-      <body>
-        <GrainOverlay />
+    <html
+      lang="ja"
+      data-scroll-behavior="smooth"
+      className={`${fontHeading.variable} ${fontBody.variable}`}
+    >
+      <body className="flex min-h-screen flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+        >
+          本文へスキップ
+        </a>
         <Header />
-        <main>{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
