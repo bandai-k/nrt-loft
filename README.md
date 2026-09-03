@@ -66,22 +66,35 @@ npm run dev
 GitHub App が要る。手順は一度だけ。
 
 1. `.env.local` を作り、`NEXT_PUBLIC_KEYSTATIC_STORAGE=github` の 1 行を書く
+   （セットアップ画面に入るためだけの一時的な指定。あとで消す）
 2. `npm run dev` して **`http://localhost:3000/keystatic/setup`** を開く
    （`/keystatic` はログイン画面になるだけ。セットアップはこの URL）
 3. 「Deployed App URL」に `https://www.nrt-loft.jp` を入れる。
    組織の欄は空のままでよい（個人アカウントに作られる）
 4. 「Create GitHub App」を押す。GitHub 側で作成すると戻ってきて、
-   `.env` に 3 つの値が書き込まれる
-   （`KEYSTATIC_GITHUB_CLIENT_ID` / `KEYSTATIC_GITHUB_CLIENT_SECRET` / `KEYSTATIC_SECRET`）
-5. その 3 つと `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` を Vercel の環境変数に登録する
+   `.env` に **4 つ**の値が書き込まれる
+5. その 4 つをそのまま Vercel の環境変数に登録する（Environments は Production だけ）
 6. 再デプロイすると `/keystatic` で GitHub ログインが通る
+7. 手元の `.env.local` を消す（手元はローカルモードに戻る）
+
+Vercel に登録するのは、`.env` に書き込まれたこの 4 つ。**名前と値をそのまま写す。**
+
+| 変数 | 中身 |
+|---|---|
+| `KEYSTATIC_GITHUB_CLIENT_ID` | GitHub App のクライアント ID |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | GitHub App のシークレット |
+| `KEYSTATIC_SECRET` | セッションの署名鍵 |
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | GitHub App の slug（`github` という文字列ではない） |
+
+`NEXT_PUBLIC_KEYSTATIC_STORAGE` は Vercel に登録しなくてよい。
+本番かどうかは `NODE_ENV` で自動的に判定される。
+
+GitHub モードは上の 3 つ（slug 以外）が揃っていないとビルドが落ちる。
+値が揃うまで本番のビルドを通したい場合だけ、逃げ道として Vercel に
+`NEXT_PUBLIC_KEYSTATIC_STORAGE=local` を登録するとローカルモードでビルドできる
+（その状態では管理画面から保存はできない）。
 
 `.env` と `.env.local` は git 管理外なので、値がリポジトリに入ることはない。
-手元を GitHub App なしのモードに戻したいときは `.env.local` を消す。
-
-`NEXT_PUBLIC_KEYSTATIC_STORAGE` を入れるまでは GitHub モードにならない。
-3 つの値が無い状態で GitHub モードにするとビルドが落ちるため、
-明示的に切り替える形にしてある。
 
 管理画面は `robots.txt` で検索避けしてある。
 

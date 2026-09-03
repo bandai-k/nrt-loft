@@ -82,15 +82,25 @@ function postCollection(category: string, label: string) {
 }
 
 /**
- * GitHub モードは KEYSTATIC_GITHUB_CLIENT_ID / _CLIENT_SECRET / KEYSTATIC_SECRET が
- * 揃っていないとビルドが落ちる。GitHub App を用意する前でもデプロイできるよう、
- * 明示的に切り替える形にしてある。
+ * 本番は GitHub モード、手元は local。NODE_ENV で自動的に切り替わるので、
+ * ふだんは環境変数を足す必要がない。
  *
- * 判定に NEXT_PUBLIC_ を使うのは、この設定を管理画面（ブラウザ側）と
+ * NEXT_PUBLIC_KEYSTATIC_STORAGE に "local" / "github" を入れると上書きできる。
+ * 使うのは、GitHub App の値が揃っていなくて本番のビルドを通したいときだけ
+ * （GitHub モードは KEYSTATIC_GITHUB_CLIENT_ID / _CLIENT_SECRET /
+ * KEYSTATIC_SECRET が無いとビルドが落ちる）。
+ *
+ * NEXT_PUBLIC_ を使うのは、この設定を管理画面（ブラウザ側）と
  * API ルート（サーバー側）の両方が読むため。サーバー専用の変数だと
- * ブラウザ側では undefined になり、両者の認識がずれる。
+ * ブラウザ側で undefined になり、両者の認識がずれる。
  */
-const useGitHubStorage = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
+const storageOverride = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE;
+const useGitHubStorage =
+  storageOverride === "github"
+    ? true
+    : storageOverride === "local"
+      ? false
+      : process.env.NODE_ENV === "production";
 
 export default config({
   storage: useGitHubStorage
