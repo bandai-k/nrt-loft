@@ -67,3 +67,24 @@ Vercel の環境変数、独自ドメインの DNS）は [docs/SETUP.md](./docs/
 - `/sitemap.xml` — 記事から自動生成
 - OGP 画像 — 記事ごとに `next/og` でビルド時に生成する。日本語フォントは
   Google Fonts から必要な文字だけ取得する（取得に失敗してもビルドは止まらない）
+
+## 素材（写真・ロゴ）の差し替え
+
+画像は `public/images/` に置き、`src/lib/images.ts` のパスを差し替える。
+未設定のあいだはその箇所が描画されないので、素材が揃う前でも表示は壊れない。
+
+| 用途 | 置き場所の例 | 触る定数 |
+|---|---|---|
+| ヒーロー画像 | `public/images/hero.jpg` | `HERO_IMAGE` |
+| ABOUT の外観写真 | `public/images/about-storefront.jpg` | `ABOUT_IMAGE` / `ABOUT_IMAGE_ALT` |
+| ロゴ | `public/images/nrt-loft-logo.svg` | `LOGO_IMAGE` |
+
+ロゴ画像にタグライン（OPEN FLOOR, OPEN MIND）が含まれている場合は
+`LOGO_IMAGE_INCLUDES_TAGLINE` を `true` のままにする。含まれていなければ
+`false` にすると、ロゴの下にタグラインの文字が入る。
+
+記事のカバー画像は frontmatter の `cover` で指定する（`cover: /images/xxx.jpg`）。
+
+ヒーロー画像には**コードが映った画面を使わない**。非エンジニアが最初に見る
+画面に黒いエディタがあると、伝えたいことと正反対の印象になる。プリントの束、
+冷蔵庫のメモ、机の上の日用品など、生活側のものを使う。

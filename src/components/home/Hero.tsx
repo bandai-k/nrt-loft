@@ -1,6 +1,7 @@
 // src/components/home/Hero.tsx
 import Image from "next/image";
 import Link from "next/link";
+import { HERO_IMAGE } from "@/lib/images";
 import { CTA_LABEL_HERO, YOUTUBE_URL } from "@/lib/site";
 import { YouTubeIcon } from "@/components/ui/Icons";
 
@@ -48,11 +49,11 @@ export default function Hero() {
 
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-line bg-surface">
           <Image
-            src="/images/hero-placeholder.svg"
+            src={HERO_IMAGE}
             alt=""
             fill
             priority
-            unoptimized
+            unoptimized={HERO_IMAGE.endsWith(".svg")}
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
             aria-hidden="true"

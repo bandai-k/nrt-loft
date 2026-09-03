@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
+import CoverImage from "@/components/CoverImage";
+import { ABOUT_IMAGE, ABOUT_IMAGE_ALT } from "@/lib/images";
 import {
   CTA_LABEL,
   OPERATOR,
@@ -33,6 +35,16 @@ export default function AboutPage() {
       />
 
       <section className="mx-auto max-w-[1120px] px-5 py-12 md:px-8 md:py-16">
+        {ABOUT_IMAGE && (
+          <CoverImage
+            src={ABOUT_IMAGE}
+            alt={ABOUT_IMAGE_ALT}
+            className="mb-12 aspect-[4/3] w-full rounded-xl md:aspect-[16/9]"
+            priority
+            sizes="(min-width: 1120px) 1056px, 100vw"
+          />
+        )}
+
         <div className="prose">
           <p>
             NRT LOFT は、成田の旧釣具屋2階にある小さな場所の名前です。

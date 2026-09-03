@@ -30,23 +30,27 @@ export function RssIcon({ className }: IconProps) {
   );
 }
 
-/** BUILD: 組み立てる */
+/** BUILD: 箱 */
 export function BuildIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className}>
-      <path d="M4 20V9.5l8-5.5 8 5.5V20" />
-      <path d="M9.5 20v-6h5v6" />
+      <path d="M12 2.4 21 7.4v9.2L12 21.6 3 16.6V7.4z" />
+      <path d="M3 7.4 12 12.4l9-5" />
+      <path d="M12 12.4v9.2" />
+      <path d="m7.5 4.9 9 5" />
     </svg>
   );
 }
 
-/** LEARN: 気づく */
+/** LEARN: 開いた本 */
 export function LearnIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className}>
-      <path d="M9.5 18h5" />
-      <path d="M10 21h4" />
-      <path d="M12 3a6 6 0 0 1 3.5 10.9V15h-7v-1.1A6 6 0 0 1 12 3z" />
+      <path d="M12 7.6c-1.9-1.8-4.4-2.7-7-2.6v12.6c2.6-.1 5.1.8 7 2.6" />
+      <path d="M12 7.6c1.9-1.8 4.4-2.7 7-2.6v12.6c-2.6-.1-5.1.8-7 2.6" />
+      <path d="M12 7.6v12.6" />
+      <path d="M5 5.05 2.7 5.9v13.05c.65-.5 1.42-.78 2.3-.85" />
+      <path d="M19 5.05l2.3.85v13.05c-.65-.5-1.42-.78-2.3-.85" />
     </svg>
   );
 }
