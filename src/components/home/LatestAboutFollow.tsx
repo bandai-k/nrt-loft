@@ -2,6 +2,7 @@
 import Link from "next/link";
 import CoverImage from "@/components/CoverImage";
 import CategoryBadge from "@/components/CategoryBadge";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRightIcon, RssIcon, XIcon, YouTubeIcon } from "@/components/ui/Icons";
 import { formatDate } from "@/lib/format";
 import { ABOUT_IMAGE, ABOUT_IMAGE_ALT } from "@/lib/images";
@@ -22,10 +23,10 @@ export default function LatestAboutFollow() {
   const posts = getPostsExceptCategory("build").slice(0, 4);
 
   return (
-    <section className="bg-paper">
-      <div className="mx-auto grid max-w-[1200px] gap-10 border-t border-line px-5 py-14 md:px-8 md:py-18 lg:grid-cols-[1.15fr_1fr_0.8fr] lg:gap-12">
+    <section>
+      <div className="mx-auto grid max-w-[var(--container)] gap-10 border-t border-line px-5 py-14 md:px-8 md:py-18 lg:grid-cols-[1.15fr_1fr_0.8fr] lg:gap-12">
         <div>
-          <h2 className="text-[17px]">最新の記事</h2>
+          <SectionHeading size="sm">最新の記事</SectionHeading>
 
           {posts.length === 0 ? (
             <p className="mt-5 text-[13.5px] leading-[2] text-ink-muted">

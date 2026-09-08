@@ -11,6 +11,8 @@ export type CategoryMeta = {
   heading: string;
   /** トップページのカテゴリ帯・一覧ページの導入で使う 1〜2 行 */
   description: string;
+  /** トップページのカテゴリ帯から一覧へ渡すリンクの文言。見出しより短く切る。 */
+  cardCta: string;
   /**
    * アイコンの背景色。デザイン仕様上、無彩色を外して差し色を置けるのは
    * こことマーカーだけ。
@@ -27,6 +29,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     accent: "#f4e6c9",
     label: "BUILD",
     heading: "作ったもの",
+    cardCta: "作ったものを見る",
     description: "実際に何かを作る記録。小さな仕組みをひとつずつ。",
   },
   learn: {
@@ -35,6 +38,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     accent: "#dde8db",
     label: "LEARN",
     heading: "作って分かったこと",
+    cardCta: "学んだことを見る",
     description: "作って分かったことや失敗、AIとの付き合い方。",
   },
   toolkit: {
@@ -43,6 +47,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     accent: "#d9e3ee",
     label: "TOOLKIT",
     heading: "使っている道具",
+    cardCta: "道具を見る",
     description: "使っている道具やプロンプト、AI料金プラン。",
   },
   journey: {
@@ -51,6 +56,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     accent: "#f2ddd4",
     label: "JOURNEY",
     heading: "活動の記録",
+    cardCta: "記録を見る",
     description: "この活動自体の記録と、試行錯誤のプロセス。",
   },
 };

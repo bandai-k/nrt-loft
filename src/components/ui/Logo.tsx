@@ -2,22 +2,43 @@
 import { LOGO_IMAGE, LOGO_IMAGE_INCLUDES_TAGLINE } from "@/lib/images";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
-export default function Logo({ compact = false }: { compact?: boolean }) {
+/**
+ * タグラインの出し方。
+ * - none   : ロゴだけ。ヘッダーはこれ（ナビと高さを揃えたいので余計な行を足さない）
+ * - beside : ロゴの右に2行で添える。フッターはこれ
+ */
+type Tagline = "none" | "beside";
+
+// 「OPEN FLOOR, OPEN MIND」を2行に割って添える
+const TAGLINE_LINES = SITE_TAGLINE.split(",").map((s, i, all) =>
+  i < all.length - 1 ? `${s.trim()},` : `${s.trim()}.`,
+);
+
+export default function Logo({
+  compact = false,
+  tagline = "none",
+}: {
+  compact?: boolean;
+  tagline?: Tagline;
+}) {
+  const showTagline = tagline === "beside" && !LOGO_IMAGE_INCLUDES_TAGLINE;
+
   if (LOGO_IMAGE) {
     return (
-      <span className="flex flex-col items-start leading-none">
-        {/* 縦横比が素材によって変わるため、高さだけ指定して幅は自動にする。
-            列方向 flex の中では align-items: stretch で横に伸びるので self-start を付ける。 */}
+      <span className="flex items-center gap-3.5">
+        {/* 縦横比が素材によって変わるため、高さだけ指定して幅は自動にする */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={LOGO_IMAGE}
           alt={SITE_NAME}
-          className="w-auto max-w-full self-start"
-          style={{ height: compact ? 22 : 34 }}
+          className="w-auto max-w-full"
+          style={{ height: compact ? 24 : 34 }}
         />
-        {!compact && !LOGO_IMAGE_INCLUDES_TAGLINE && (
-          <span className="mt-1 whitespace-nowrap text-[9px] tracking-[0.28em] text-ink-faint">
-            {SITE_TAGLINE}
+        {showTagline && (
+          <span className="hidden flex-col text-[8.5px] leading-[1.7] tracking-[0.24em] text-ink-faint sm:flex">
+            {TAGLINE_LINES.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </span>
         )}
       </span>
@@ -32,11 +53,9 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
       >
         {SITE_NAME}
       </span>
-      {!compact && (
-        <span className="mt-1 whitespace-nowrap text-[9px] tracking-[0.28em] text-ink-faint">
-          {SITE_TAGLINE}
-        </span>
-      )}
+      <span className="mt-1 whitespace-nowrap text-[9px] tracking-[0.28em] text-ink-faint">
+        {SITE_TAGLINE}
+      </span>
     </span>
   );
 }

@@ -1,6 +1,7 @@
 // src/components/home/LatestBuild.tsx
 import Link from "next/link";
 import CoverImage from "@/components/CoverImage";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 import { formatDate } from "@/lib/format";
 import { getPostsByCategory } from "@/lib/posts";
@@ -12,9 +13,9 @@ export default function LatestBuild() {
   const sidePosts = rest.slice(0, 3);
 
   return (
-    <section className="bg-paper">
-      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-18">
-        <h2 className="text-[20px] md:text-[23px]">最近つくったもの</h2>
+    <section>
+      <div className="mx-auto max-w-[var(--container)] px-5 py-14 md:px-8 md:py-18">
+        <SectionHeading>最近つくったもの</SectionHeading>
 
         {!lead ? (
           <div className="mt-6 max-w-[34em]">
@@ -45,9 +46,17 @@ export default function LatestBuild() {
 
               {/* 最新1本の見出しと説明 */}
               <div className="lg:pt-1">
-                <span className="text-[11px] font-medium tracking-[0.18em] text-ink-muted">
-                  BUILD
-                </span>
+                <div className="flex items-center gap-4">
+                  <span className="text-[11px] font-medium tracking-[0.18em] text-ink-muted">
+                    BUILD
+                  </span>
+                  <time
+                    dateTime={lead.date}
+                    className="text-[12px] tabular-nums text-ink-faint"
+                  >
+                    {formatDate(lead.date)}
+                  </time>
+                </div>
                 <h3 className="mt-2 text-[19px] leading-[1.62] md:text-[21px]">
                   <Link
                     href={`/build/${lead.slug}`}
@@ -75,7 +84,7 @@ export default function LatestBuild() {
                   href={`/build/${lead.slug}`}
                   className="link-underline mt-5 inline-flex items-center gap-1.5 text-[13px]"
                 >
-                  この記録を読む
+                  この記事を読む
                   <ArrowRightIcon className="h-4 w-4" />
                 </Link>
               </div>
