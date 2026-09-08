@@ -15,6 +15,8 @@
   --color-ink-muted: #5f5e5a;
   --color-ink-faint: #888780;
   --color-marker: #faeeda;
+  /* ロゴのシンボルと同じ金。差し色ではなく、ロゴまわりの文字にだけ使う */
+  --color-gold: #b09254;
 
   --font-heading: var(--font-heading-src), "Hiragino Maru Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
@@ -26,8 +28,9 @@
   --header-height: 72px;
   /* 本文の行長。全角40字程度に収める */
   --measure: 40em;
-  /* 中央寄せコンテナの最大幅。ヒーローの片側フルブリードで基準に使う */
-  --container: 1200px;
+  /* 中央寄せコンテナの最大幅。ヒーローの片側フルブリードで基準に使う。
+     広い画面で左右の余白が空きすぎないように、上限まで幅に追従させる。 */
+  --container: min(1600px, 100vw);
   --hero-gutter: 1.25rem;
 }
 
@@ -53,13 +56,37 @@
     -webkit-text-size-adjust: 100%;
   }
 
-  body {
+  html {
     background-color: var(--color-paper);
+  }
+
+  body {
+    background-color: transparent;
+    position: relative;
     color: var(--color-ink);
     font-family: var(--font-body);
     line-height: 1.9;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
+  }
+
+  /* サイト全体の地。金の等角線画をビューポートに固定して薄く敷く。
+     本文より下（z-index: -1）に置くので、文字の読みやすさには触らない。 */
+  body::before {
+    content: "";
+    /* ページ全体にちょうど重なる大きさ。inset で高さを取るので、
+       この層自体がスクロール量を増やすことはない。 */
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("/images/site-background.webp");
+    /* ページ全体を1枚で覆う。四隅と左右の縁に線画が来るように、
+       比率よりも「どこに柄が出るか」を優先して伸ばす。 */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.3;
   }
 
   h1,
@@ -129,9 +156,8 @@
 
 @layer components {
   /* ヒーローの見出し。
-     1024px で2カラムになり列が急に細くなるので、そこで一段小さくする。
-     ビューポート幅に比例させると、この段差を越えられずに
-     意図しない位置で折り返す。 */
+     ビューポート幅に比例させると意図しない位置で折り返すので、
+     段階的なサイズ指定にして、折り返しは <br> で固定する。 */
   .hero-title {
     font-size: 22px;
     line-height: 1.6;
@@ -165,20 +191,14 @@
       font-size: 34px;
     }
   }
-  @media (min-width: 1024px) {
-    /* ここで2カラムになる。列幅が半分になるぶん縮める */
-    .hero-title {
-      font-size: 28px;
-    }
-  }
   @media (min-width: 1200px) {
     .hero-title {
-      font-size: 32px;
+      font-size: 36px;
     }
   }
   @media (min-width: 1400px) {
     .hero-title {
-      font-size: 36px;
+      font-size: 38px;
     }
   }
 

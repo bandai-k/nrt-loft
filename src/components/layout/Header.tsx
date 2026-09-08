@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-paper-alt/95 backdrop-blur-sm">
       <div
-        className="mx-auto flex max-w-[1200px] items-center gap-6 px-5 md:px-8"
+        className="mx-auto flex max-w-[var(--container)] items-center gap-6 px-5 md:px-8"
         style={{ height: "var(--header-height)" }}
       >
         <Link href="/" aria-label={`${SITE_NAME} トップページ`} className="shrink-0">
@@ -120,7 +120,7 @@ export default function Header() {
 
       {menuOpen && (
         <div id="mobile-menu" className="border-t border-line bg-paper-alt lg:hidden">
-          <nav className="mx-auto max-w-[1200px] px-5 py-4 md:px-8" aria-label="メインナビゲーション">
+          <nav className="mx-auto max-w-[var(--container)] px-5 py-4 md:px-8" aria-label="メインナビゲーション">
             {CATEGORY_LIST.map((c) => (
               <Link
                 key={c.slug}

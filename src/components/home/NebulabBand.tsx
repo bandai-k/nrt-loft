@@ -1,10 +1,11 @@
 // src/components/home/NebulabBand.tsx
+import { ArrowRightIcon } from "@/components/ui/Icons";
 import { OPERATOR_URL } from "@/lib/site";
 
 export default function NebulabBand() {
   return (
-    <section className="border-t border-line bg-surface">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-5 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8 md:py-12">
+    <section className="border-t border-line bg-surface/60">
+      <div className="mx-auto flex max-w-[var(--container)] flex-col gap-5 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8 md:py-12">
         <div>
           <h2 className="text-[17px]">本格的に開発したい方へ</h2>
           <p className="mt-1.5 text-[14px] leading-[1.9] text-ink-muted">
@@ -18,6 +19,7 @@ export default function NebulabBand() {
           className="btn btn-primary shrink-0 self-start md:self-auto"
         >
           NEBULAB を見る
+          <ArrowRightIcon className="h-[17px] w-[17px]" />
         </a>
       </div>
     </section>

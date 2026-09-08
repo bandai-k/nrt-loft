@@ -2,6 +2,7 @@
 import Link from "next/link";
 import CoverImage from "@/components/CoverImage";
 import CategoryBadge from "@/components/CategoryBadge";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRightIcon, RssIcon, XIcon, YouTubeIcon } from "@/components/ui/Icons";
 import { formatDate } from "@/lib/format";
 import { ABOUT_IMAGE, ABOUT_IMAGE_ALT } from "@/lib/images";
@@ -21,14 +22,14 @@ export default function LatestAboutFollow() {
   const posts = getPostsExceptCategory("build").slice(0, 4);
 
   return (
-    <section className="bg-paper">
+    <section>
       {/* 3カラムにするのは xl から。1024〜1200px では列が細すぎて
           日付・カテゴリ・タイトルが窮屈になる。
           items-start にしないと、記事が少ないときに列が引き伸ばされて
           下に大きな空きができる。 */}
-      <div className="mx-auto grid max-w-[1200px] items-start gap-10 border-t border-line px-5 py-14 md:grid-cols-2 md:px-8 md:py-18 xl:grid-cols-[1.15fr_1fr_0.85fr] xl:gap-12">
+      <div className="mx-auto grid max-w-[var(--container)] items-start gap-10 border-t border-line px-5 py-14 md:grid-cols-2 md:px-8 md:py-18 xl:grid-cols-[1.15fr_1fr_0.85fr] xl:gap-12">
         <div>
-          <h2 className="text-[17px]">最新の記事</h2>
+          <SectionHeading size="sm">最新の記事</SectionHeading>
 
           {posts.length === 0 ? (
             <p className="mt-5 text-[13.5px] leading-[2] text-ink-muted">

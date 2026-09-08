@@ -12,10 +12,10 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-paper-alt">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-8 md:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+    <footer className="border-t border-line bg-paper-alt/85">
+      <div className="mx-auto flex max-w-[var(--container)] flex-col gap-6 px-5 py-8 md:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <Link href="/" aria-label="トップページ" className="shrink-0">
-          <Logo />
+          <Logo tagline="beside" />
         </Link>
 
         <nav

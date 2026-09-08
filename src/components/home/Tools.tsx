@@ -9,8 +9,8 @@ const TOOLS = [
 
 export default function Tools() {
   return (
-    <section className="bg-paper">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-6 gap-y-3 border-t border-line px-5 py-7 md:px-8">
+    <section>
+      <div className="mx-auto flex max-w-[var(--container)] flex-wrap items-center gap-x-6 gap-y-3 border-t border-line px-5 py-7 md:px-8">
         <h2 className="text-[13px] text-ink-muted">使っている道具</h2>
         <ul className="flex flex-wrap gap-2.5">
           {TOOLS.map(({ name, Icon }) => (

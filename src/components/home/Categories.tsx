@@ -1,14 +1,15 @@
 // src/components/home/Categories.tsx
 import Link from "next/link";
 import CategoryIcon from "@/components/CategoryIcon";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 import { CATEGORY_LIST } from "@/lib/categories";
 
 export default function Categories() {
   return (
-    <section className="bg-paper-alt">
-      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-18">
-        <h2 className="text-[20px] md:text-[23px]">書いていること</h2>
+    <section className="bg-paper-alt/85">
+      <div className="mx-auto max-w-[var(--container)] px-5 py-14 md:px-8 md:py-18">
+        <SectionHeading>書いていること</SectionHeading>
 
         <div className="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORY_LIST.map((c, index) => (
