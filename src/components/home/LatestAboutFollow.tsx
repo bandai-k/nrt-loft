@@ -9,7 +9,6 @@ import { ABOUT_IMAGE, ABOUT_IMAGE_ALT } from "@/lib/images";
 import { getPostsExceptCategory } from "@/lib/posts";
 import {
   OPERATOR,
-  OPERATOR_REPRESENTATIVE,
   RSS_PATH,
   X_URL,
   YOUTUBE_URL,
@@ -24,7 +23,11 @@ export default function LatestAboutFollow() {
 
   return (
     <section>
-      <div className="mx-auto grid max-w-[var(--container)] gap-10 border-t border-line px-5 py-14 md:px-8 md:py-18 lg:grid-cols-[1.15fr_1fr_0.8fr] lg:gap-12">
+      {/* 3カラムにするのは xl から。1024〜1200px では列が細すぎて
+          日付・カテゴリ・タイトルが窮屈になる。
+          items-start にしないと、記事が少ないときに列が引き伸ばされて
+          下に大きな空きができる。 */}
+      <div className="mx-auto grid max-w-[var(--container)] items-start gap-10 border-t border-line px-5 py-14 md:grid-cols-2 md:px-8 md:py-18 xl:grid-cols-[1.15fr_1fr_0.85fr] xl:gap-12">
         <div>
           <SectionHeading size="sm">最新の記事</SectionHeading>
 
@@ -39,7 +42,7 @@ export default function LatestAboutFollow() {
                 <li key={`${post.category}/${post.slug}`}>
                   <Link
                     href={`/${post.category}/${post.slug}`}
-                    className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4"
+                    className="group flex flex-col gap-1 xl:flex-row xl:items-baseline xl:gap-4"
                   >
                     <span className="flex shrink-0 items-center gap-3">
                       <time
@@ -60,7 +63,9 @@ export default function LatestAboutFollow() {
           )}
         </div>
 
-        <div className="lg:border-l lg:border-line lg:pl-12">
+        {/* 2カラムのときは ABOUT を縦に跨がせ、左に 最新の記事 → 更新を受け取る を
+            積む。そうしないと ABOUT の高さに引きずられて左下に大きな空きが出る。 */}
+        <div className="md:row-span-2 xl:row-span-1 xl:border-l xl:border-line xl:pl-12">
           <h2 className="text-[17px]">NRT LOFT について</h2>
           <div className="mt-5 space-y-3 text-[13.5px] leading-[1.95] text-ink-muted">
             <p>
@@ -80,7 +85,7 @@ export default function LatestAboutFollow() {
           )}
 
           <p className="mt-5 text-[12.5px] text-ink-faint">
-            運営：{OPERATOR}（代表 {OPERATOR_REPRESENTATIVE}）
+            運営：{OPERATOR}
           </p>
           <Link
             href="/about"
@@ -91,7 +96,7 @@ export default function LatestAboutFollow() {
           </Link>
         </div>
 
-        <div className="lg:border-l lg:border-line lg:pl-12">
+        <div className="xl:border-l xl:border-line xl:pl-12">
           <h2 className="text-[17px]">更新を受け取る</h2>
 
           <div className="mt-5 flex items-center gap-2">

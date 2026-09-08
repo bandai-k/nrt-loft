@@ -11,8 +11,6 @@ export type CategoryMeta = {
   heading: string;
   /** トップページのカテゴリ帯・一覧ページの導入で使う 1〜2 行 */
   description: string;
-  /** トップページのカテゴリ帯から一覧へ渡すリンクの文言。見出しより短く切る。 */
-  cardCta: string;
   /**
    * アイコンの背景色。デザイン仕様上、無彩色を外して差し色を置けるのは
    * こことマーカーだけ。
@@ -20,43 +18,48 @@ export type CategoryMeta = {
   accent: string;
   /** カテゴリのアイコン画像（透過 PNG の線画） */
   icon: string;
+  /**
+   * カテゴリ帯のリンク文言。見出しから機械的に作ると長さが不揃いになり、
+   * 中間の幅で折り返して矢印だけが行末に残るので、短く揃えて持たせる。
+   */
+  linkLabel: string;
 };
 
 export const CATEGORY_META: Record<Category, CategoryMeta> = {
   build: {
     slug: "build",
     icon: "/images/icon-build.png",
+    linkLabel: "作ったものを見る",
     accent: "#f4e6c9",
     label: "BUILD",
     heading: "作ったもの",
-    cardCta: "作ったものを見る",
     description: "実際に何かを作る記録。小さな仕組みをひとつずつ。",
   },
   learn: {
     slug: "learn",
     icon: "/images/icon-learn.png",
+    linkLabel: "学んだことを見る",
     accent: "#dde8db",
     label: "LEARN",
     heading: "作って分かったこと",
-    cardCta: "学んだことを見る",
     description: "作って分かったことや失敗、AIとの付き合い方。",
   },
   toolkit: {
     slug: "toolkit",
     icon: "/images/icon-toolkit.png",
+    linkLabel: "道具を見る",
     accent: "#d9e3ee",
     label: "TOOLKIT",
     heading: "使っている道具",
-    cardCta: "道具を見る",
     description: "使っている道具やプロンプト、AI料金プラン。",
   },
   journey: {
     slug: "journey",
     icon: "/images/icon-journey.png",
+    linkLabel: "記録を見る",
     accent: "#f2ddd4",
     label: "JOURNEY",
     heading: "活動の記録",
-    cardCta: "記録を見る",
     description: "この活動自体の記録と、試行錯誤のプロセス。",
   },
 };

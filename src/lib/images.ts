@@ -23,9 +23,17 @@ export const ABOUT_IMAGE_ALT = "NRT LOFT の作業部屋。成田・花崎町の
  */
 export const LOGO_IMAGE: string | undefined = "/images/nrt-loft-logo.png";
 export const LOGO_IMAGE_INCLUDES_TAGLINE = false;
+/**
+ * ロゴの縦横比（幅 / 高さ）。高さだけ指定して幅を auto にすると、
+ * 読み込みが終わるまで幅 0 で置かれ、中央寄せのナビごと横にずれる。
+ * これを渡して、描画前から幅の分の場所を取っておく。
+ */
+export const LOGO_IMAGE_ASPECT = 900 / 217;
 
 /** ロゴのシンボルだけを切り出したもの。節見出しの頭に添える。 */
 export const MARK_IMAGE = "/images/nrt-loft-mark.png";
+/** シンボルの縦横比（幅 / 高さ）。理由は LOGO_IMAGE_ASPECT と同じ。 */
+export const MARK_IMAGE_ASPECT = 160 / 185;
 
 /**
  * サイト全体の背景に薄く敷く、金の等角線画。

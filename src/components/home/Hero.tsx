@@ -60,11 +60,12 @@ export default function Hero() {
               ))}
             </p>
 
-            <h1
-              className="rise-in leading-[1.62] tracking-[0.01em]"
-              style={{ fontSize: "clamp(22px, 3.4vw, 38px)" }}
-            >
-              欲しいものが無かったので、
+            {/* 折り返し位置は <br> で固定する（自動折り返しは keep-all で止めている）。
+                狭い画面では break-narrow が現れて3行になる。 */}
+            <h1 className="hero-title rise-in tracking-[0.01em]">
+              欲しいものが
+              <br className="break-narrow" />
+              無かったので、
               <br />
               <span className="marker">自分で作ることにした。</span>
             </h1>

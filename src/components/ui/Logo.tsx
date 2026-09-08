@@ -1,5 +1,9 @@
 // src/components/ui/Logo.tsx
-import { LOGO_IMAGE, LOGO_IMAGE_INCLUDES_TAGLINE } from "@/lib/images";
+import {
+  LOGO_IMAGE,
+  LOGO_IMAGE_ASPECT,
+  LOGO_IMAGE_INCLUDES_TAGLINE,
+} from "@/lib/images";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 /**
@@ -26,13 +30,14 @@ export default function Logo({
   if (LOGO_IMAGE) {
     return (
       <span className="flex items-center gap-3.5">
-        {/* 縦横比が素材によって変わるため、高さだけ指定して幅は自動にする */}
+        {/* 高さだけ決めて幅は比率から取る。aspect-ratio を先に渡しておくと、
+            画像が届く前から幅が確定するのでナビが横に飛ばない。 */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={LOGO_IMAGE}
           alt={SITE_NAME}
           className="w-auto max-w-full"
-          style={{ height: compact ? 24 : 34 }}
+          style={{ height: compact ? 24 : 34, aspectRatio: LOGO_IMAGE_ASPECT }}
         />
         {showTagline && (
           <span className="hidden flex-col text-[8.5px] leading-[1.7] tracking-[0.24em] text-ink-faint sm:flex">

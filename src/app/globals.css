@@ -155,6 +155,53 @@
    ────────────────────────────────────────────── */
 
 @layer components {
+  /* ヒーローの見出し。
+     ビューポート幅に比例させると意図しない位置で折り返すので、
+     段階的なサイズ指定にして、折り返しは <br> で固定する。 */
+  .hero-title {
+    font-size: 22px;
+    line-height: 1.6;
+    /* 指定した <br> 以外では折り返させない */
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  /* 狭い画面だけ、1行目をさらに割って3行にする */
+  .hero-title .break-narrow {
+    display: none;
+  }
+  @media (max-width: 479px) {
+    .hero-title .break-narrow {
+      display: inline;
+    }
+  }
+
+  @media (min-width: 480px) {
+    .hero-title {
+      font-size: 26px;
+    }
+  }
+  @media (min-width: 640px) {
+    .hero-title {
+      font-size: 30px;
+    }
+  }
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 34px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .hero-title {
+      font-size: 36px;
+    }
+  }
+  @media (min-width: 1400px) {
+    .hero-title {
+      font-size: 38px;
+    }
+  }
+
   /* 見出し2行目に敷く黄色のマーカー下線 */
   .marker {
     background-image: linear-gradient(

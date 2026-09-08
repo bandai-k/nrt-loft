@@ -1,7 +1,7 @@
 // src/components/ui/SectionHeading.tsx
 // トップページの節見出し。左に金のシンボルを添えて、
 // 記事本文の h2 とは別物であることを見た目で分ける。
-import { MARK_IMAGE } from "@/lib/images";
+import { MARK_IMAGE, MARK_IMAGE_ASPECT } from "@/lib/images";
 
 export default function SectionHeading({
   children,
@@ -26,7 +26,7 @@ export default function SectionHeading({
         alt=""
         aria-hidden="true"
         className="w-auto shrink-0"
-        style={{ height: large ? 28 : 22 }}
+        style={{ height: large ? 28 : 22, aspectRatio: MARK_IMAGE_ASPECT }}
       />
       {children}
     </h2>
