@@ -4,6 +4,7 @@
 // 管理画面 /keystatic はサイトの外枠に挟まれない。
 import "./globals.css";
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { fontBody, fontHeading } from "@/lib/fonts";
 import { RSS_PATH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     types: { "application/rss+xml": `${SITE_URL}${RSS_PATH}` },
   },
+  verification: {
+    google: "gM9GT0k3DIaLEwmLyaRDGOR2Aau2CGar-91jbYKxrEg",
+  },
 };
 
 export default function RootLayout({
@@ -58,6 +62,9 @@ export default function RootLayout({
       className={`${fontHeading.variable} ${fontBody.variable}`}
     >
       <body>{children}</body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   );
 }
