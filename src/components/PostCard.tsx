@@ -11,7 +11,7 @@ export default function PostCard({ post }: { post: PostSummary }) {
       <Link href={`/${post.category}/${post.slug}`} className="group block">
         <CoverImage
           src={post.cover}
-          alt=""
+          alt={post.title}
           className="aspect-[16/10] w-full rounded-lg"
         />
         <div className="mt-3 flex items-center gap-3">

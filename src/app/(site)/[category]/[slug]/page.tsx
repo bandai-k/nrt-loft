@@ -131,7 +131,7 @@ export default async function PostPage({ params }: Props) {
 
           <CoverImage
             src={post.cover}
-            alt=""
+            alt={post.title}
             className="mb-10 aspect-[16/9] w-full rounded-lg"
             priority
             sizes="(min-width: 1024px) 700px, 100vw"

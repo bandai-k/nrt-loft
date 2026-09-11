@@ -38,7 +38,7 @@ export default function LatestBuild() {
               >
                 <CoverImage
                   src={lead.cover}
-                  alt=""
+                  alt={lead.title}
                   className="aspect-[4/3] w-full rounded-xl"
                   sizes="(min-width: 1024px) 330px, 100vw"
                 />
@@ -95,7 +95,7 @@ export default function LatestBuild() {
                         <Link href={`/build/${post.slug}`} className="group flex gap-4">
                           <CoverImage
                             src={post.cover}
-                            alt=""
+                            alt={post.title}
                             className="h-[62px] w-[86px] shrink-0 rounded-lg"
                             sizes="86px"
                           />
