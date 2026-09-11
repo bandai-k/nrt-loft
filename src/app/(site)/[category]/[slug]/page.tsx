@@ -7,7 +7,7 @@ import ArticleFooterCta from "@/components/article/ArticleFooterCta";
 import TableOfContents from "@/components/article/TableOfContents";
 import YouTubeEmbed from "@/components/article/YouTubeEmbed";
 import CoverImage from "@/components/CoverImage";
-import { ArticleStructuredData } from "@/components/StructuredData";
+import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/StructuredData";
 import MdxContent from "@/components/mdx/MdxContent";
 import { CATEGORIES, CATEGORY_META, isCategory } from "@/lib/categories";
 import { formatDate } from "@/lib/format";
@@ -78,6 +78,13 @@ export default async function PostPage({ params }: Props) {
         dateModified={post.updated ?? post.date}
         imageUrl={post.cover ? `${SITE_URL}${post.cover}` : undefined}
         keywords={[...post.tags, ...post.tools]}
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: "ホーム", url: SITE_URL },
+          { name: categoryMeta.label, url: `${SITE_URL}/${category}` },
+          { name: post.title, url },
+        ]}
       />
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_224px] lg:gap-14">
         <article>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import PostCard from "@/components/PostCard";
+import { BreadcrumbStructuredData } from "@/components/StructuredData";
 import { CATEGORIES, CATEGORY_META, isCategory } from "@/lib/categories";
 import { getPostsByCategory } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
@@ -42,6 +43,12 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <>
+      <BreadcrumbStructuredData
+        items={[
+          { name: "ホーム", url: SITE_URL },
+          { name: meta.heading, url: `${SITE_URL}/${category}` },
+        ]}
+      />
       <PageHeader title={meta.heading} lead={meta.description} />
 
       <section className="mx-auto max-w-[var(--container)] px-5 py-12 md:px-8 md:py-16">
