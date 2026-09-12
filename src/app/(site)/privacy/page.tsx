@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPageLayout title="プライバシーポリシー" lastUpdated="2026年1月1日">
+    <LegalPageLayout title="プライバシーポリシー" lastUpdated="2026年9月12日">
       <section>
         <p>
-          NEBULAB（以下「当社」といいます）は、NRT LOFT（以下「当施設」といいます）の運営にあたり、
+          Nebulab合同会社（以下「当社」といいます）は、当社が運営するメディア「NRT LOFT」（以下「当サイト」といいます）における、
           ご利用者様の個人情報の重要性を認識し、個人情報の保護に関する法律（以下「個人情報保護法」といいます）を
           遵守するとともに、以下のプライバシーポリシー（以下「本ポリシー」といいます）に従い、
           適切な取扱い及び保護に努めます。
@@ -33,47 +33,37 @@ export default function PrivacyPage() {
 
       <section>
         <h2>2. 個人情報の収集方法</h2>
-        <p>当施設では、以下の方法により個人情報を収集いたします：</p>
+        <p>当サイトでは、以下の方法により個人情報を収集いたします：</p>
         <ul>
-          <li>施設利用申込時の登録フォーム</li>
-          <li>お問い合わせフォーム・メール</li>
-          <li>イベント参加申込</li>
-          <li>紹介制による入会手続き</li>
+          <li>お問い合わせフォームからのご入力</li>
+          <li>メールでのお問い合わせ</li>
         </ul>
       </section>
 
       <section>
         <h2>3. 収集する個人情報の項目</h2>
-        <p>当施設では、以下の個人情報を収集する場合があります：</p>
+        <p>当サイトでは、お問い合わせいただく際に、以下の情報をご入力いただきます：</p>
         <ul>
-          <li>氏名</li>
+          <li>お名前</li>
           <li>メールアドレス</li>
-          <li>電話番号</li>
-          <li>住所</li>
-          <li>職業・所属</li>
-          <li>紹介者情報</li>
-          <li>その他、利用目的の達成に必要な情報</li>
+          <li>お問い合わせ内容（メッセージ本文）</li>
         </ul>
       </section>
 
       <section>
         <h2>4. 個人情報の利用目的</h2>
-        <p>当施設は、収集した個人情報を以下の目的で利用いたします：</p>
+        <p>当社は、収集した個人情報を以下の目的で利用いたします：</p>
         <ul>
-          <li>施設利用サービスの提供</li>
-          <li>利用料金の請求・決済処理</li>
-          <li>施設に関するお知らせ・連絡</li>
-          <li>イベント・勉強会のご案内</li>
-          <li>お問い合わせへの対応</li>
-          <li>施設運営の改善・サービス向上</li>
-          <li>利用規約違反への対応</li>
+          <li>お問い合わせへの回答・対応</li>
+          <li>取材・掲載のご相談への対応</li>
+          <li>当サイトの運営・記事内容の改善</li>
         </ul>
       </section>
 
       <section>
         <h2>5. 個人情報の第三者提供</h2>
         <p>
-          当施設は、以下の場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません：
+          当社は、以下の場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません：
         </p>
         <ul>
           <li>法令に基づく場合</li>
@@ -96,7 +86,7 @@ export default function PrivacyPage() {
       <section>
         <h2>6. 個人情報の管理</h2>
         <p>
-          当施設は、個人情報の正確性を保ち、これを安全に管理いたします。
+          当社は、個人情報の正確性を保ち、これを安全に管理いたします。
           個人情報への不正アクセス、紛失、破壊、改ざん及び漏洩などを防止するため、
           適切なセキュリティ対策を実施し、個人情報の厳重な管理を行います。
         </p>
@@ -112,34 +102,79 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>8. Cookie（クッキー）について</h2>
+        <h2>8. アクセス解析ツールについて</h2>
         <p>
-          当サイトでは、より良いサービス提供のため、Cookieを使用する場合があります。
-          Cookieの使用を希望されない場合は、ブラウザの設定でCookieを無効にすることができます。
-          ただし、Cookieを無効にした場合、一部のサービスが正常に機能しない可能性があります。
+          当サイトでは、サイトの利用状況を把握するために、Googleが提供するアクセス解析ツール
+          「Google アナリティクス（Google Analytics）」を利用しています。
+          Google アナリティクスは、Cookieを使用してトラフィックデータを収集しますが、
+          この収集は匿名で行われており、個人を特定するものではありません。
+        </p>
+        <p>
+          この機能はCookieを無効にすることで収集を拒否することができますので、
+          お使いのブラウザの設定をご確認ください。
+          この規約に関して、詳しくは
+          <a
+            href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google アナリティクス利用規約
+          </a>
+          や
+          <a
+            href="https://policies.google.com/technologies/partner-sites?hl=ja"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Googleポリシーと規約
+          </a>
+          のページをご覧ください。
         </p>
       </section>
 
       <section>
-        <h2>9. プライバシーポリシーの変更</h2>
+        <h2>9. 広告配信について</h2>
         <p>
-          当施設は、法令の変更や事業内容の変更等により、本ポリシーを変更することがあります。
+          当サイトは、第三者配信の広告サービス（Google
+          AdSenseなど）を利用する場合があります。このような広告配信事業者は、
+          ユーザーの興味に応じた商品やサービスの広告を表示するため、
+          当サイトや他サイトへのアクセスに関する情報（氏名、住所、メールアドレス、電話番号は含まれません）
+          を使用することがあります。
+        </p>
+        <p>
+          Google 広告におけるCookieの取り扱いの詳細や、これらの情報が広告配信事業者に
+          使用されないようにする設定については、
+          <a
+            href="https://policies.google.com/technologies/ads?hl=ja"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            広告 – ポリシーと規約 – Google
+          </a>
+          をご覧ください。
+        </p>
+      </section>
+
+      <section>
+        <h2>10. プライバシーポリシーの変更</h2>
+        <p>
+          当社は、法令の変更や事業内容の変更等により、本ポリシーを変更することがあります。
           変更後のプライバシーポリシーは、当サイトに掲載した時点で効力を生じるものとします。
         </p>
       </section>
 
       <section>
-        <h2>10. お問い合わせ窓口</h2>
+        <h2>11. お問い合わせ窓口</h2>
         <p>
           個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。
         </p>
         <div className="not-prose mt-4 rounded-lg p-4">
-          <p className="text-sm font-semibold text-neutral-900">NEBULAB</p>
+          <p className="text-sm font-semibold text-neutral-900">Nebulab合同会社</p>
           <p className="mt-1 text-sm text-neutral-700">
             〒286-0033 千葉県成田市花崎町
           </p>
           <p className="mt-1 text-sm text-neutral-700">
-            Email: hello@nrt-loft.jp
+            Email: hello@nebulab.jp
           </p>
         </div>
       </section>
