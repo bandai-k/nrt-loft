@@ -86,7 +86,9 @@ export default async function PostPage({ params }: Props) {
           { name: post.title, url },
         ]}
       />
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_224px] lg:gap-14">
+      {/* 本文列を760px（xl以上は840px）に固定し、目次と一組で中央に置く。
+          以前は列が1fr・本文が40em左寄せで、広い画面だと本文の右に大きな空白ができていた */}
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,760px)_224px] lg:justify-center lg:gap-14 xl:grid-cols-[minmax(0,840px)_224px] xl:gap-16">
         <article>
           <header className="mb-8">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -141,7 +143,7 @@ export default async function PostPage({ params }: Props) {
             alt={post.title}
             className="mb-10 aspect-[16/9] w-full rounded-lg"
             priority
-            sizes="(min-width: 1024px) 700px, 100vw"
+            sizes="(min-width: 1280px) 840px, (min-width: 1024px) 760px, 100vw"
           />
 
           {/* 広い画面では右の追従目次を使うので、こちらはモバイルでだけ出す */}
@@ -151,7 +153,8 @@ export default async function PostPage({ params }: Props) {
 
           {post.youtube && <YouTubeEmbed id={post.youtube} title={post.title} />}
 
-          <div className="prose">
+          {/* 行長は本文列の幅で決める（xl以上は文字も18pxにして1行45字前後を保つ）。トップ画像・本文画像と端を揃えるため */}
+          <div className="prose max-w-none xl:text-[1.125rem]">
             <MdxContent source={post.body} />
           </div>
 
