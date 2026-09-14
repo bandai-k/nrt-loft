@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPageLayout title="利用規約" lastUpdated="2026年1月1日">
+    <LegalPageLayout title="利用規約" lastUpdated="2026年9月14日">
       <section>
         <p>
           本利用規約（以下「本規約」といいます）は、NEBULAB（以下「当社」といいます）が運営する
@@ -170,7 +170,35 @@ export default function TermsPage() {
       </section>
 
       <section>
-        <h2>第9条（利用規約の変更）</h2>
+        <h2>第9条（本サイトのコンテンツの著作権）</h2>
+        <ol>
+          <li>
+            当社が運営するウェブサイト「NRT LOFT」（{SITE_URL}、以下「本サイト」といいます）に掲載する
+            文章、画像、データその他のコンテンツの著作権その他の権利は、当社または正当な権利を有する第三者に帰属します。
+          </li>
+          <li>
+            当社は、本サイトのコンテンツについて、テキスト・データマイニング（TDM）および生成AI・機械学習の
+            学習データとしての利用を許諾しません（権利を留保します）。この方針は{" "}
+            <a href="/robots.txt">robots.txt</a>、各ページの meta タグ、TDM 権利留保の宣言（
+            <a href="/.well-known/tdmrep.json">TDMRep</a>）でも示しています。
+          </li>
+          <li>
+            本サイトを閲覧するすべての方は、以下の各号のいずれかに該当する行為をしてはなりません。
+            <ol>
+              <li>
+                本サイトのコンテンツ（文章、画像、データを含む）を、生成AI・機械学習の学習、
+                ファインチューニング、データセットの作成に利用する行為
+              </li>
+              <li>
+                前号の目的で、クローラー・スクレイピングツール等により本サイトのコンテンツを自動的に収集する行為
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>第10条（利用規約の変更）</h2>
         <ol>
           <li>
             当社は、必要と判断した場合には、利用者に通知することなくいつでも本規約を変更することができるものとします。
@@ -182,7 +210,7 @@ export default function TermsPage() {
       </section>
 
       <section>
-        <h2>第10条（個人情報の取扱い）</h2>
+        <h2>第11条（個人情報の取扱い）</h2>
         <p>
           当社は、当施設の利用によって取得する個人情報については、当社が別途定める
           「プライバシーポリシー」に従い適切に取り扱うものとします。
@@ -190,7 +218,7 @@ export default function TermsPage() {
       </section>
 
       <section>
-        <h2>第11条（通知または連絡）</h2>
+        <h2>第12条（通知または連絡）</h2>
         <p>
           利用者と当社との間の通知または連絡は、当社の定める方法によって行うものとします。
           当社は、利用者から、当社が別途定める方式に従った変更届け出がない限り、
@@ -200,7 +228,7 @@ export default function TermsPage() {
       </section>
 
       <section>
-        <h2>第12条（権利義務の譲渡の禁止）</h2>
+        <h2>第13条（権利義務の譲渡の禁止）</h2>
         <p>
           利用者は、当社の書面による事前の承諾なく、利用契約上の地位または本規約に基づく権利もしくは
           義務を第三者に譲渡し、または担保に供することはできません。
@@ -208,7 +236,7 @@ export default function TermsPage() {
       </section>
 
       <section>
-        <h2>第13条（準拠法・裁判管轄）</h2>
+        <h2>第14条（準拠法・裁判管轄）</h2>
         <ol>
           <li>本規約の解釈にあたっては、日本法を準拠法とします。</li>
           <li>
@@ -230,6 +258,13 @@ export default function TermsPage() {
             Email: hello@nrt-loft.jp
           </p>
         </div>
+      </section>
+      <section>
+        <p>
+          制定日：2026年1月1日
+          <br />
+          改定日：2026年9月14日（AIの学習目的の利用の禁止を追加）
+        </p>
       </section>
     </LegalPageLayout>
   );

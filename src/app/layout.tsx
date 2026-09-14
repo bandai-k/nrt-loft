@@ -6,7 +6,14 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { fontBody, fontHeading } from "@/lib/fonts";
-import { RSS_PATH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
+import {
+  RSS_PATH,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  TDM_POLICY_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -47,6 +54,14 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "gM9GT0k3DIaLEwmLyaRDGOR2Aau2CGar-91jbYKxrEg",
+  },
+  // AI の学習目的の利用を拒否する（2026-09-14）。
+  // 上の robots（index / follow）とは別に、noai 用の robots meta をもう1本出す。
+  // tdm-reservation / tdm-policy は TDM 権利留保の宣言（TDMRep）。
+  other: {
+    robots: "noai, noimageai",
+    "tdm-reservation": "1",
+    "tdm-policy": TDM_POLICY_URL,
   },
 };
 

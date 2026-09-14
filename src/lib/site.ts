@@ -23,6 +23,13 @@ export const X_URL: string | undefined = undefined;
 
 export const RSS_PATH = "/rss.xml";
 
+/**
+ * AI の学習目的の利用を拒否する方針（TDM 権利留保）を書いたページ。
+ * meta タグ・レスポンスヘッダー・/.well-known/tdmrep.json から参照する。
+ * next.config.ts からも読むので、ここは相対 import のない定数だけにしておく。
+ */
+export const TDM_POLICY_URL = `${SITE_URL}/terms`;
+
 /** サイト全体で統一する CTA 文言。「記事を見る」とは混在させない。 */
 export const CTA_LABEL = "制作記録を見る";
 export const CTA_LABEL_HERO = "最新の制作記録を見る";
