@@ -138,13 +138,15 @@ export default async function PostPage({ params }: Props) {
             )}
           </header>
 
-          <CoverImage
-            src={post.cover}
-            alt={post.title}
-            className="mb-10 aspect-[16/9] w-full rounded-lg"
-            priority
-            sizes="(min-width: 1280px) 840px, (min-width: 1024px) 760px, 100vw"
-          />
+          {!post.hideCoverInArticle && (
+            <CoverImage
+              src={post.cover}
+              alt={post.title}
+              className="mb-10 aspect-[16/9] w-full rounded-lg"
+              priority
+              sizes="(min-width: 1280px) 840px, (min-width: 1024px) 760px, 100vw"
+            />
+          )}
 
           {/* 広い画面では右の追従目次を使うので、こちらはモバイルでだけ出す */}
           <div className="lg:hidden">

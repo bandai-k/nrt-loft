@@ -19,6 +19,8 @@ export type PostFrontmatter = {
   /** YYYY-MM-DD に正規化済み */
   updated?: string;
   cover?: string;
+  /** true なら記事ページの冒頭にカバーを出さない（本文に同じ写真を置く記事用）。一覧・OGP では使う */
+  hideCoverInArticle: boolean;
   tags: string[];
   tools: string[];
   /** YouTube の動画 ID */
@@ -93,6 +95,7 @@ function readPostFile(category: Category, slug: string): Post {
         ? undefined
         : normalizeDate(data.updated, context),
     cover: typeof data.cover === "string" ? data.cover : undefined,
+    hideCoverInArticle: data.hideCoverInArticle === true,
     tags: toStringArray(data.tags),
     tools: toStringArray(data.tools),
     youtube: typeof data.youtube === "string" ? data.youtube : undefined,
