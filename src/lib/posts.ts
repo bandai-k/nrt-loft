@@ -104,9 +104,18 @@ function readPostFile(category: Category, slug: string): Post {
   };
 }
 
-/** draft を本番ビルドから除外する。開発中は下書きも見えるようにしておく。 */
-function isVisible(post: { draft: boolean }): boolean {
-  return !post.draft || process.env.NODE_ENV !== "production";
+/** 日本時間の今日を YYYY-MM-DD で返す。ビルド環境（Vercel）は UTC なので明示的に JST へ寄せる。 */
+function todayInJapan(): string {
+  return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Tokyo" }).format(new Date());
+}
+
+/**
+ * draft と、date が未来の記事（予約公開）を本番ビルドから除外する。開発中はどちらも見える。
+ * 判定はビルド時の日付なので、公開日を迎えた記事は .github/workflows/scheduled-rebuild.yml の再ビルドで出る。
+ */
+function isVisible(post: { draft: boolean; date: string }): boolean {
+  if (process.env.NODE_ENV !== "production") return true;
+  return !post.draft && post.date <= todayInJapan();
 }
 
 /** 新しい順。同日なら slug で安定させる。 */

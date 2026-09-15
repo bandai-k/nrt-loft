@@ -1,0 +1,34 @@
+name: Scheduled Rebuild (timed publishing)
+
+# 未来日で予約公開した記事を、公開日の到来にあわせて出すための定期リビルド。
+# 記事の公開判定はビルド時の日付（日本時間）で行う（src/lib/posts.ts の isVisible）。
+# 毎日リビルドすれば、公開日を迎えた記事が 404 から公開に切り替わる。
+#
+# 仕組み: cron で Vercel の Deploy Hook を叩き、main を再ビルド・再デプロイする。
+#
+# 事前準備（1回だけ）:
+#   1) Vercel ダッシュボード → nrt-loft → Settings → Git → Deploy Hooks で作成（ブランチ: main）
+#   2) 生成された URL を GitHub のリポジトリ Settings → Secrets and variables → Actions に
+#      `VERCEL_DEPLOY_HOOK` という名前で登録
+
+on:
+  schedule:
+    # 15:05 UTC = 00:05 JST（日付が変わった直後）、21:00 UTC = 06:00 JST（取りこぼし対策）
+    - cron: '5 15 * * *'
+    - cron: '0 21 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "::error::VERCEL_DEPLOY_HOOK secret が未設定です。Vercel の Deploy Hook URL を登録してください。"
+            exit 1
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK" > /dev/null
+          echo "Vercel の再ビルドをトリガーしました。"
