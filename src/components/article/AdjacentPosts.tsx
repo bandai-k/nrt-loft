@@ -1,5 +1,6 @@
 // src/components/article/AdjacentPosts.tsx
 import Link from "next/link";
+import CoverImage from "@/components/CoverImage";
 import type { PostSummary } from "@/lib/posts";
 
 function Item({
@@ -12,13 +13,21 @@ function Item({
   return (
     <Link
       href={`/${post.category}/${post.slug}`}
-      className="group flex-1 rounded-lg border border-line p-5 transition-colors hover:border-line-strong"
+      className="group flex flex-1 items-center gap-4 rounded-lg border border-line p-4 transition-colors hover:border-line-strong"
     >
-      <span className="text-[11px] text-ink-faint">
-        {direction === "newer" ? "次の記事" : "前の記事"}
-      </span>
-      <span className="mt-1.5 block text-[14px] leading-[1.7] transition-colors group-hover:text-ink-muted">
-        {post.title}
+      <CoverImage
+        src={post.cover}
+        alt=""
+        className="aspect-[16/10] w-24 shrink-0 rounded-md sm:w-28"
+        sizes="112px"
+      />
+      <span className="min-w-0">
+        <span className="text-[11px] text-ink-faint">
+          {direction === "newer" ? "次の記事" : "前の記事"}
+        </span>
+        <span className="mt-1 block text-[14px] leading-[1.7] transition-colors group-hover:text-ink-muted">
+          {post.title}
+        </span>
       </span>
     </Link>
   );
