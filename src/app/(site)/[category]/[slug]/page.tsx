@@ -8,6 +8,7 @@ import TableOfContents from "@/components/article/TableOfContents";
 import YouTubeEmbed from "@/components/article/YouTubeEmbed";
 import CoverImage from "@/components/CoverImage";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/StructuredData";
+import { hasGearLinks } from "@/components/mdx/Gear";
 import MdxContent from "@/components/mdx/MdxContent";
 import { CATEGORIES, CATEGORY_META, isCategory } from "@/lib/categories";
 import { formatDate } from "@/lib/format";
@@ -154,6 +155,13 @@ export default async function PostPage({ params }: Props) {
           </div>
 
           {post.youtube && <YouTubeEmbed id={post.youtube} title={post.title} />}
+
+          {/* 道具を紹介した記事にだけ、広告であることを一行で示す（景表法のステマ規制） */}
+          {hasGearLinks(post.body) && (
+            <p className="mb-6 text-[12px] leading-[1.9] text-ink-faint">
+              この記事の道具へのリンクには、アフィリエイトリンクを含みます。
+            </p>
+          )}
 
           {/* 行長は本文列の幅で決める（xl以上は文字も18pxにして1行45字前後を保つ）。トップ画像・本文画像と端を揃えるため */}
           <div className="prose max-w-none xl:text-[1.125rem]">

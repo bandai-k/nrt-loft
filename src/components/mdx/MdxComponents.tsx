@@ -2,6 +2,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import CopyButton from "./CopyButton";
+import { Gear, UsedGear } from "./Gear";
 
 /** rehype-pretty-code は pre を figure[data-rehype-pretty-code-figure] で包む。 */
 function Figure(props: ComponentPropsWithoutRef<"figure">) {
@@ -34,4 +35,6 @@ export const mdxComponents = {
   figure: Figure,
   a: Anchor,
   img: Img,
+  Gear,
+  UsedGear,
 };
