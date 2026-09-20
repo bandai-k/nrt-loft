@@ -150,9 +150,9 @@ export default async function PostPage({ params }: Props) {
         />
       )}
 
-      {/* 本文列を880px（xl 1000px、2xl 1080px）に固定し、目次と一組で中央に置く。
+      {/* 本文列を880px（xl 1000px、2xl 1080px）に固定し、左端をタイトルと揃える（左寄せ。2026-09-20 運営者の指摘）。目次はその右。
           以前は列が1fr・本文が40em左寄せで、広い画面だと本文の右に大きな空白ができていた */}
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,880px)_224px] lg:justify-center lg:gap-14 xl:grid-cols-[minmax(0,1000px)_224px] xl:gap-16 2xl:grid-cols-[minmax(0,1080px)_224px]">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,880px)_224px] lg:justify-start lg:gap-14 xl:grid-cols-[minmax(0,1000px)_224px] xl:gap-16 2xl:grid-cols-[minmax(0,1080px)_224px]">
         <article>
           {/* 広い画面では右の追従目次を使うので、こちらはモバイルでだけ出す */}
           <div className="lg:hidden">
