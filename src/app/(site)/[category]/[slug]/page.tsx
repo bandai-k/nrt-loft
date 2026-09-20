@@ -89,7 +89,7 @@ export default async function PostPage({ params }: Props) {
       />
       {/* ヘッダー・カバー画像・関連記事は一覧ページと同じ幅の枠（このdivのmax-w-[var(--container)]いっぱい）に置く。
           見出しやリード文自体はmax-w-[24em]/[36em]で読みやすい行長のまま。
-          本文だけは可読性のため下のgridで760px（xl以上は840px）に絞る。
+          本文は下のgridで880px（xl 1000px、2xl 1080px）に絞る（2026-09-20 に 760/840 から広げた。運営者の指摘: 1600px の枠では細すぎる）。
           （以前は本文列を含めた全体をこのgridに入れていたため、広い画面ではヘッダー画像や関連記事まで
           760/840pxに縮み、一覧ページより記事ページだけ極端に狭く見えていた） */}
       <header className="mb-8">
@@ -150,9 +150,9 @@ export default async function PostPage({ params }: Props) {
         />
       )}
 
-      {/* 本文列を760px（xl以上は840px）に固定し、目次と一組で中央に置く。
+      {/* 本文列を880px（xl 1000px、2xl 1080px）に固定し、目次と一組で中央に置く。
           以前は列が1fr・本文が40em左寄せで、広い画面だと本文の右に大きな空白ができていた */}
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,760px)_224px] lg:justify-center lg:gap-14 xl:grid-cols-[minmax(0,840px)_224px] xl:gap-16">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,880px)_224px] lg:justify-center lg:gap-14 xl:grid-cols-[minmax(0,1000px)_224px] xl:gap-16 2xl:grid-cols-[minmax(0,1080px)_224px]">
         <article>
           {/* 広い画面では右の追従目次を使うので、こちらはモバイルでだけ出す */}
           <div className="lg:hidden">
